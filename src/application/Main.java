@@ -1,5 +1,6 @@
 package application;
 
+import controller.Quizcontroller;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -18,6 +19,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		try {
+
 			QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
 			QuestionDetailPane questionDetailPane = new QuestionDetailPane();
 

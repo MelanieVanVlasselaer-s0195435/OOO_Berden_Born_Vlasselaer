@@ -1,5 +1,6 @@
 package view.panels;
 
+import controller.Quizcontroller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -10,11 +11,22 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import model.Category;
+
+import java.util.ArrayList;
 
 
 public class CategoryOverviewPane extends GridPane {
 	private TableView table;
 	private Button btnNew;
+
+
+	// controller aangemaakt
+	Quizcontroller controller = new Quizcontroller();
+
+	//test voor categorieën weer te geven (voorlopige, niet volgens Design pattern - TB)
+	ArrayList<Category> categories;
+
 	
 	public CategoryOverviewPane() {
 		this.setPadding(new Insets(5, 5, 5, 5));
@@ -32,7 +44,13 @@ public class CategoryOverviewPane extends GridPane {
         descriptionCol.setCellValueFactory(new PropertyValueFactory("description"));
         table.getColumns().add(descriptionCol);
 		this.add(table, 0, 1, 2, 6);
-		
+
+		//invoegen van de categories
+		categories = controller.getCategories();
+		for(Category x : categories){
+			table.getItems().add(x);
+		}
+
 		btnNew = new Button("New");
 		this.add(btnNew, 0, 11, 1, 1);
 	}
