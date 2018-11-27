@@ -1,7 +1,10 @@
-package Database;
+package database;
+
+
+import java.util.ArrayList;
 
 public interface DBStrategy {
-    public void load();
+    public ArrayList load();
     public void save();
 
     //abstract methods

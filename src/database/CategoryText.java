@@ -1,4 +1,4 @@
-package Database;
+package database;
 
 import model.Category;
 
@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CategoryText extends TxtDBStrategy {
-    File categoryFile = new File("categoryList.txt");
+    File categoryFile = new File("testDatabase\\categoryList.txt");
     ArrayList<Category> categories = new ArrayList<>();
+
     //abstracte klassen implementeren
 
-    public ArrayList<Category> getCategories() {
+    public ArrayList<Category> load () {
         try {
             Scanner scannerFile = new Scanner(categoryFile);
             while (scannerFile.hasNextLine()) {
@@ -29,7 +30,7 @@ public class CategoryText extends TxtDBStrategy {
         return categories;
     }
 
-    public void load() {
+    public void save () {
 
     }
 

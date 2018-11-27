@@ -1,6 +1,6 @@
 package controller;
 
-import Database.CategoryText;
+import database.CategoryText;
 import model.Category;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class Quizcontroller {
     CategoryText text = new CategoryText();
 
     public Quizcontroller(){
-        categories = text.getCategories();
+        categories = text.load();
     }
 
     public ArrayList<Category> getCategories(){
