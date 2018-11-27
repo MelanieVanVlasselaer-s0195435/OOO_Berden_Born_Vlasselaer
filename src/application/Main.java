@@ -18,6 +18,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 
+		Quizcontroller quizcontroller = new Quizcontroller();
+		quizcontroller.start(primaryStage);
+
 		try {
 
 			QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
@@ -44,6 +47,7 @@ public class Main extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	public static void main(String[] args) {

@@ -3,8 +3,14 @@ package controller;
 import database.CategoryText;
 import database.DBcontext;
 import database.TxtDBStrategy;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import model.Category;
+import view.panels.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 
@@ -12,11 +18,6 @@ import java.util.ArrayList;
 
 public class Quizcontroller {
     ArrayList<Category> categories;
-    /*Category a = new Category("Design principles","the solid design principles");
-    Category b = new Category("Design pattern","design patterns discussed this year");
-    Category c = new Category("Java","Java extras");
-    Category d = new Category("UML","Technique of drawing a class diagram");
-    */
     DBcontext context = new DBcontext();
 
     public Quizcontroller(){
@@ -33,5 +34,46 @@ public class Quizcontroller {
             return categories;
         }
     }
+
+    public void start(Stage primaryStage){
+        /*try {
+
+            QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
+            QuestionDetailPane questionDetailPane = new QuestionDetailPane();
+
+            CategoryOverviewPane categoryOverviewPanel = new CategoryOverviewPane();
+            CategoryDetailPane categoryDetailPanel = new CategoryDetailPane();
+
+            TestPane testPane = new TestPane();
+            MessagePane messagePane = new MessagePane();
+
+            Group root = new Group();
+            Scene scene = new Scene(root, 750, 400);
+
+            BorderPane borderPane = new AssesMainPane(messagePane, categoryOverviewPanel, questionOverviewPane);
+            borderPane.prefHeightProperty().bind(scene.heightProperty());
+            borderPane.prefWidthProperty().bind(scene.widthProperty());
+
+            root.getChildren().add(borderPane);
+            primaryStage.setScene(scene);
+            primaryStage.sizeToScene();
+
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+    }
+
+    /*public void toonDetail(){
+        Group root = new Group();
+        Stage secondStage = new Stage();
+        Scene scene = new Scene(root,300,150);
+        CategoryDetailPane detailpanel = new CategoryDetailPane();
+        BorderPane border = new BorderPane(detailpanel);
+        root.getChildren().add(border);
+        secondStage.setScene(scene);
+        secondStage.show();
+    }
+    */
 
 }
