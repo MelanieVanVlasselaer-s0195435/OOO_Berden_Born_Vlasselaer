@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CategoryText extends TxtDBStrategy {
-    File categoryFile = new File("categorylist.txt");
+    File categoryFile = new File("categoryList.txt");
     ArrayList<Category> categories = new ArrayList<>();
     //abstracte klassen implementeren
 
-    public void leesIn() {
+    public ArrayList<Category> getCategories() {
         try {
             Scanner scannerFile = new Scanner(categoryFile);
             while (scannerFile.hasNextLine()) {
@@ -26,6 +26,12 @@ public class CategoryText extends TxtDBStrategy {
         } catch (FileNotFoundException ex) {
             throw new RuntimeException("Fout bij het inlezen", ex);
         }
+        return categories;
     }
+
+    public void load() {
+
+    }
+
 
 }
