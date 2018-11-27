@@ -14,17 +14,22 @@ public class Quizcontroller {
     Category c = new Category("Java","Java extras");
     Category d = new Category("UML","Technique of drawing a class diagram");
 
-    public void Quizcontroller(){
+    public Quizcontroller(){
         categories = new ArrayList<>();
         categories.add(a);
         categories.add(b);
         categories.add(c);
         categories.add(d);
-        System.out.println("ok");
     }
 
     public ArrayList<Category> getCategories(){
-        return categories;
+        if (categories == null) {
+            System.out.println("leeg");
+            return null;
+        }
+        else {
+            return categories;
+        }
     }
 
 }
