@@ -1,6 +1,8 @@
 package controller;
 
 import database.CategoryText;
+import database.DBcontext;
+import database.TxtDBStrategy;
 import model.Category;
 
 import java.util.ArrayList;
@@ -15,10 +17,11 @@ public class Quizcontroller {
     Category c = new Category("Java","Java extras");
     Category d = new Category("UML","Technique of drawing a class diagram");
     */
-    CategoryText text = new CategoryText();
+    DBcontext context = new DBcontext();
 
     public Quizcontroller(){
-        categories = text.load();
+        context.setDBStrategy(new CategoryText());
+        categories = context.load();
     }
 
     public ArrayList<Category> getCategories(){
