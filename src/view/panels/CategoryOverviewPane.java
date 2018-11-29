@@ -26,13 +26,14 @@ public class CategoryOverviewPane extends GridPane {
 
 
 	// controller aangemaakt
-	Quizcontroller quizcontroller = new Quizcontroller();
+	Quizcontroller quizcontroller;
 
 	//test voor categorieën weer te geven (voorlopige, niet volgens Design pattern - TB)
 	ArrayList<Category> categories;
 
 	
-	public CategoryOverviewPane() {
+	public CategoryOverviewPane(Quizcontroller quizcontroller) {
+		this.quizcontroller = quizcontroller;
 		this.setPadding(new Insets(5, 5, 5, 5));
 		this.setVgap(5);
 		this.setHgap(5);
@@ -62,21 +63,12 @@ public class CategoryOverviewPane extends GridPane {
 		btnNew.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				toonDetail();
+				quizcontroller.toonDetailPanel();
 			}
 		});
 	}
 
-	public void toonDetail(){
-        Group root = new Group();
-        Stage secondStage = new Stage();
-        Scene scene = new Scene(root,300,150);
-        CategoryDetailPane detailpanel = new CategoryDetailPane(quizcontroller);
-        BorderPane border = new BorderPane(detailpanel);
-        root.getChildren().add(border);
-        secondStage.setScene(scene);
-        secondStage.show();
-    }
+
 	
 	public void setNewAction(EventHandler<ActionEvent> newAction) {
 		btnNew.setOnAction(newAction);

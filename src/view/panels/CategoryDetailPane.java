@@ -16,6 +16,7 @@ public class CategoryDetailPane extends GridPane {
 	private TextField titleField, descriptionField;
 	private ComboBox categoryField;
 	private Quizcontroller quizcontroller;
+	public boolean close = false;
 
 	public CategoryDetailPane(Quizcontroller controller) {
 		this.quizcontroller = controller;
@@ -56,6 +57,13 @@ public class CategoryDetailPane extends GridPane {
 				String description = descriptionField.getText();
 				String maincategory = (String) categoryField.getValue();
 				quizcontroller.saveCategory(name, description, maincategory);
+				quizcontroller.sluitDetailPanel();
+			}
+		});
+		btnCancel.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				quizcontroller.sluitDetailPanel();
 			}
 		});
 	}
@@ -63,8 +71,6 @@ public class CategoryDetailPane extends GridPane {
 	//Vraag aan leerkracht hoe we dit kunnen activeren/gebruiken
 	public void setSaveAction(EventHandler<ActionEvent> saveAction) {
 		btnOK.setOnAction(saveAction);
-		//quizcontroller.saveCategory(name, description, maincategory);
-		System.out.println("ok");
 	}
 
 	public void setCancelAction(EventHandler<ActionEvent> cancelAction) {

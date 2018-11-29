@@ -9,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Category;
 import model.ModelFacade;
+import view.ViewFacade;
 import view.panels.*;
 
 import javax.swing.*;
@@ -22,6 +23,7 @@ public class Quizcontroller {
     //-> context wordt vervangen modelFacade
     //DBcontext context = new DBcontext();
     ModelFacade modelFacade = new ModelFacade();
+    ViewFacade viewFacade = new ViewFacade();
 
     public Quizcontroller(){
         categories = modelFacade.getCategories();
@@ -41,34 +43,17 @@ public class Quizcontroller {
         modelFacade.addCategory(name,description, mainCategory);
     }
 
-    /*public void start(Stage primaryStage){
-        try {
+    public void toonDetailPanel(){
+        viewFacade.toonDetailPanel();
+    }
 
-            QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
-            QuestionDetailPane questionDetailPane = new QuestionDetailPane();
+    public void sluitDetailPanel(){
+        viewFacade.sluitDetailPanel();
+    }
 
-            CategoryOverviewPane categoryOverviewPanel = new CategoryOverviewPane();
-            CategoryDetailPane categoryDetailPanel = new CategoryDetailPane();
-
-            TestPane testPane = new TestPane();
-            MessagePane messagePane = new MessagePane();
-
-            Group root = new Group();
-            Scene scene = new Scene(root, 750, 400);
-
-            BorderPane borderPane = new AssesMainPane(messagePane, categoryOverviewPanel, questionOverviewPane);
-            borderPane.prefHeightProperty().bind(scene.heightProperty());
-            borderPane.prefWidthProperty().bind(scene.widthProperty());
-
-            root.getChildren().add(borderPane);
-            primaryStage.setScene(scene);
-            primaryStage.sizeToScene();
-
-            primaryStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
+    public void start(Quizcontroller quizcontroller){
+        viewFacade.start(quizcontroller);
+    }
 
     /*public void toonDetail(){
         Group root = new Group();

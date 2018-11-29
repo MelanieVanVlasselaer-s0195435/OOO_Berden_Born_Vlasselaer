@@ -19,35 +19,9 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		Quizcontroller quizcontroller = new Quizcontroller();
-		//quizcontroller.start(primaryStage);
+		quizcontroller.start(quizcontroller);
 
-		try {
 
-			QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
-			QuestionDetailPane questionDetailPane = new QuestionDetailPane();
-
-			CategoryOverviewPane categoryOverviewPanel = new CategoryOverviewPane();
-			// Deze lijn is niet nodig, detailpanel wordt elders aangemaakt.
-			//CategoryDetailPane categoryDetailPanel = new CategoryDetailPane();
-
-			TestPane testPane = new TestPane();
-			MessagePane messagePane = new MessagePane();
-
-			Group root = new Group();
-			Scene scene = new Scene(root, 750, 400);
-
-			BorderPane borderPane = new AssesMainPane(messagePane, categoryOverviewPanel, questionOverviewPane);
-			borderPane.prefHeightProperty().bind(scene.heightProperty());
-			borderPane.prefWidthProperty().bind(scene.widthProperty());
-
-			root.getChildren().add(borderPane);
-			primaryStage.setScene(scene);
-			primaryStage.sizeToScene();
-
-			primaryStage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
 	}
 
