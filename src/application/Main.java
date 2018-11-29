@@ -21,7 +21,7 @@ public class Main extends Application {
 		Quizcontroller quizcontroller = new Quizcontroller();
 		quizcontroller.start(primaryStage);
 
-		try {
+		/*try {
 
 			QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
 			QuestionDetailPane questionDetailPane = new QuestionDetailPane();
@@ -46,7 +46,7 @@ public class Main extends Application {
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 

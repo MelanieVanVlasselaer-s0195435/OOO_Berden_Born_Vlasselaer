@@ -36,7 +36,7 @@ public class Quizcontroller {
     }
 
     public void start(Stage primaryStage){
-        /*try {
+        try {
 
             QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
             QuestionDetailPane questionDetailPane = new QuestionDetailPane();
@@ -61,10 +61,10 @@ public class Quizcontroller {
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
-    /*public void toonDetail(){
+    public void toonDetail(){
         Group root = new Group();
         Stage secondStage = new Stage();
         Scene scene = new Scene(root,300,150);
@@ -74,6 +74,6 @@ public class Quizcontroller {
         secondStage.setScene(scene);
         secondStage.show();
     }
-    */
+
 
 }
