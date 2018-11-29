@@ -62,21 +62,21 @@ public class CategoryOverviewPane extends GridPane {
 		btnNew.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				quizcontroller.toonDetail();
+				toonDetail();
 			}
 		});
 	}
 
-	/*public void toonDetail(){
+	public void toonDetail(){
         Group root = new Group();
         Stage secondStage = new Stage();
         Scene scene = new Scene(root,300,150);
-        CategoryDetailPane detailpanel = new CategoryDetailPane();
+        CategoryDetailPane detailpanel = new CategoryDetailPane(quizcontroller);
         BorderPane border = new BorderPane(detailpanel);
         root.getChildren().add(border);
         secondStage.setScene(scene);
         secondStage.show();
-    }*/
+    }
 	
 	public void setNewAction(EventHandler<ActionEvent> newAction) {
 		btnNew.setOnAction(newAction);

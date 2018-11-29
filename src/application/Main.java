@@ -19,15 +19,16 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		Quizcontroller quizcontroller = new Quizcontroller();
-		quizcontroller.start(primaryStage);
+		//quizcontroller.start(primaryStage);
 
-		/*try {
+		try {
 
 			QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
 			QuestionDetailPane questionDetailPane = new QuestionDetailPane();
 
 			CategoryOverviewPane categoryOverviewPanel = new CategoryOverviewPane();
-			CategoryDetailPane categoryDetailPanel = new CategoryDetailPane();
+			// Deze lijn is niet nodig, detailpanel wordt elders aangemaakt.
+			//CategoryDetailPane categoryDetailPanel = new CategoryDetailPane();
 
 			TestPane testPane = new TestPane();
 			MessagePane messagePane = new MessagePane();
@@ -46,7 +47,7 @@ public class Main extends Application {
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}*/
+		}
 
 	}
 

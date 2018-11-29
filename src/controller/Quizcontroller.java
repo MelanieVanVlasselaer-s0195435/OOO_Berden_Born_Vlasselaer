@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Category;
+import model.ModelFacade;
 import view.panels.*;
 
 import javax.swing.*;
@@ -18,11 +19,12 @@ import java.util.ArrayList;
 
 public class Quizcontroller {
     ArrayList<Category> categories;
-    DBcontext context = new DBcontext();
+    //-> context wordt vervangen modelFacade
+    //DBcontext context = new DBcontext();
+    ModelFacade modelFacade = new ModelFacade();
 
     public Quizcontroller(){
-        context.setDBStrategy(new CategoryText());
-        categories = context.load();
+        categories = modelFacade.getCategories();
     }
 
     public ArrayList<Category> getCategories(){
@@ -35,7 +37,11 @@ public class Quizcontroller {
         }
     }
 
-    public void start(Stage primaryStage){
+    public void saveCategory(String name, String description, String mainCategory){
+        modelFacade.addCategory(name,description, mainCategory);
+    }
+
+    /*public void start(Stage primaryStage){
         try {
 
             QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
@@ -62,9 +68,9 @@ public class Quizcontroller {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
-    public void toonDetail(){
+    /*public void toonDetail(){
         Group root = new Group();
         Stage secondStage = new Stage();
         Scene scene = new Scene(root,300,150);
@@ -73,7 +79,7 @@ public class Quizcontroller {
         root.getChildren().add(border);
         secondStage.setScene(scene);
         secondStage.show();
-    }
+    }*/
 
 
 }
