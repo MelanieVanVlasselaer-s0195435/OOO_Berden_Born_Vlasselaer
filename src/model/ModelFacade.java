@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ModelFacade {
     DBcontext context = new DBcontext();
-    ArrayList <Category> categories = new ArrayList();
+    ArrayList <Category> categories;
 
     public ModelFacade(){
         context.setDBStrategy(new CategoryText());
@@ -19,7 +19,7 @@ public class ModelFacade {
     }
 
     public void addCategory(String name, String description, String mainCategory){
-        Category toAdd = new Category("niks","niks");
+        Category toAdd = null;
         for (Category x : categories){
             if (x.getName().equals(mainCategory)){
                 toAdd = x;

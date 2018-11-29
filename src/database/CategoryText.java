@@ -15,9 +15,11 @@ public class CategoryText extends TxtDBStrategy {
     public CategoryText() {
         //voor mac en windows gebruiker in de groep hun verschillende pathnames te ondersteunen -FB
        categoryFile  = new File("testDatabase\\categoryList.txt");
+
        if (categoryFile.length() == 0) {
            categoryFile  = new File("testDatabase/categoryList.txt");
        }
+
     }
 
     //abstracte klassen implementeren

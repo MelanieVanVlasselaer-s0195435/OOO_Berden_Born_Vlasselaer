@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class Quizcontroller {
     ArrayList<Category> categories;
-    //-> context wordt vervangen modelFacade
+    //-> context wordt aangesproken via de modelFacade -TB
     //DBcontext context = new DBcontext();
     ModelFacade modelFacade = new ModelFacade();
     ViewFacade viewFacade = new ViewFacade();
@@ -39,7 +39,7 @@ public class Quizcontroller {
         }
     }
 
-    public void saveCategory(String name, String description, String mainCategory){
+    public void addCategory(String name, String description, String mainCategory){
         modelFacade.addCategory(name,description, mainCategory);
     }
 

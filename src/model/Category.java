@@ -26,6 +26,10 @@ public class Category {
         this.description = description;
     }
 
+    public void setHoofdcategorie(Category hoofdcategorie) {
+        this.hoofdcategorie = hoofdcategorie;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -38,7 +42,5 @@ public class Category {
         return hoofdcategorie;
     }
 
-    public void setHoofdcategorie(Category hoofdcategorie) {
-        this.hoofdcategorie = hoofdcategorie;
-    }
+
 }

@@ -56,7 +56,7 @@ public class CategoryDetailPane extends GridPane {
 				String name = titleField.getText();
 				String description = descriptionField.getText();
 				String maincategory = (String) categoryField.getValue();
-				quizcontroller.saveCategory(name, description, maincategory);
+				quizcontroller.addCategory(name, description, maincategory);
 				quizcontroller.sluitDetailPanel();
 			}
 		});
