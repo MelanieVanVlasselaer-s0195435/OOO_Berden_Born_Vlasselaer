@@ -1,4 +1,4 @@
-Design principles / the solid design principles
-Design pattern / design patterns discussed this year
-Java / Java extras
-UML / Technique of drawing a class diagram
+Design principles/the solid design principles/null
+Design pattern/design patterns discussed this year/null
+Java/Java extras/null
+UML/Technique of drawing a class diagram/null

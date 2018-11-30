@@ -2,6 +2,7 @@ package controller;
 
 import database.CategoryText;
 import database.DBcontext;
+import database.DatabaseFacade;
 import database.TxtDBStrategy;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -13,6 +14,7 @@ import view.ViewFacade;
 import view.panels.*;
 
 import javax.swing.*;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 
@@ -20,12 +22,16 @@ import java.util.ArrayList;
 
 public class Quizcontroller {
     ArrayList<Category> categories;
+    ArrayList<String> primitieveCategories;
     //-> context wordt aangesproken via de modelFacade -TB
     //DBcontext context = new DBcontext();
     ModelFacade modelFacade = new ModelFacade();
     ViewFacade viewFacade = new ViewFacade();
+    DatabaseFacade databaseFacade = new DatabaseFacade();
 
     public Quizcontroller(){
+        primitieveCategories = databaseFacade.loadCategorieElementen();
+        modelFacade.makeCategories(primitieveCategories);
         categories = modelFacade.getCategories();
     }
 

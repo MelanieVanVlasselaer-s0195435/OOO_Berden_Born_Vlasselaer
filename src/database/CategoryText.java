@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class CategoryText extends TxtDBStrategy {
     File categoryFile;
 
-    ArrayList<Category> categories = new ArrayList<>();
+    ArrayList<String> categorieElementen = new ArrayList<>();
 
     public CategoryText() {
         //voor mac en windows gebruiker in de groep hun verschillende pathnames te ondersteunen -FB
@@ -24,7 +24,7 @@ public class CategoryText extends TxtDBStrategy {
 
     //abstracte klassen implementeren
 
-    public ArrayList<Category> load () {
+    public ArrayList<String> load () {
 
         try {
             Scanner scannerFile = new Scanner(categoryFile);
@@ -32,14 +32,16 @@ public class CategoryText extends TxtDBStrategy {
                 Scanner scannerLijn = new Scanner(scannerFile.nextLine());
                 scannerLijn.useDelimiter("/");
                 String name = scannerLijn.next();
+                categorieElementen.add(name);
                 String description = scannerLijn.next();
-                Category category = new Category(name, description);
-                categories.add(category);
+                categorieElementen.add(description);
+                String hoofdcategorie = scannerLijn.next();
+                categorieElementen.add(hoofdcategorie);
             }
         } catch (FileNotFoundException ex) {
             throw new RuntimeException("Fout bij het inlezen", ex);
         }
-        return categories;
+        return categorieElementen;
     }
 
     public void save () {
