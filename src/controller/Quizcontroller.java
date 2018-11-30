@@ -23,6 +23,7 @@ import java.util.ArrayList;
 public class Quizcontroller {
     ArrayList<Category> categories;
     ArrayList<String> primitieveCategories;
+    ArrayList<String> primitieveQuestions;
     //-> context wordt aangesproken via de modelFacade -TB
     //DBcontext context = new DBcontext();
     ModelFacade modelFacade = new ModelFacade();
@@ -31,8 +32,10 @@ public class Quizcontroller {
 
     public Quizcontroller(){
         primitieveCategories = databaseFacade.loadCategorieElementen();
+        primitieveQuestions = databaseFacade.loadQuestionElementen();
         modelFacade.makeCategories(primitieveCategories);
         categories = modelFacade.getCategories();
+
     }
 
     public ArrayList<Category> getCategories(){

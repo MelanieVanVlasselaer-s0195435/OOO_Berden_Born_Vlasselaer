@@ -4,14 +4,12 @@ import java.util.ArrayList;
 
 public class Question {
     String question;
-    String statement;
     ArrayList<String> statements = new ArrayList();
-    Category category;
+    String category;
     String feedback;
 
-    public Question (String question, String statement, ArrayList<String> statements, Category category, String feedback ) {
+    public Question (String question, ArrayList<String> statements, String category, String feedback ) {
         setQuestion(question);
-        setStatement(statement);
         setStatements(statements);
         setCategory(category);
         setFeedback(feedback);
@@ -22,15 +20,11 @@ public class Question {
         return question;
     }
 
-    public String getStatement() {
-        return statement;
-    }
-
     public ArrayList<String> getStatements() {
         return statements;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
@@ -40,18 +34,14 @@ public class Question {
 
     //Setters
     public void setQuestion(String question) {
-        question = question;
-    }
-
-    public void setStatement(String statement) {
-        statement = statement;
+        this.question = question;
     }
 
     public void setStatements(ArrayList<String> statements) {
-        statements = statements;
+        this.statements = statements;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

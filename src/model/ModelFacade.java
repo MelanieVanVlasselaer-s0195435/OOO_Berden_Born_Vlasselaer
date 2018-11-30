@@ -10,8 +10,6 @@ ArrayList <Category> categories = new ArrayList();
 
 
     public ModelFacade(){
-
-
     }
 
     public void makeCategories(ArrayList<String> elementen){

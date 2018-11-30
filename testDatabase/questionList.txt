@@ -1,0 +1,2 @@
+Welk patroon definieert een familie van algoritmes , kapselt ze in en maakt ze verwisselbaar?/Design Patterns/Beter studeren!/Strategy Facade Observer State
+Welk ontwerp-principe is het minst van toepassing op het strategy patroon?/Design principles/volgende keer beter/Juist Fout fout fout
