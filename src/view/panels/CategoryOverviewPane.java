@@ -31,7 +31,8 @@ public class CategoryOverviewPane extends GridPane implements Observer {
 	Quizcontroller quizcontroller;
 
 	//test voor categorieën weer te geven (voorlopige, niet volgens Design pattern - TB)
-	ArrayList<Category> categories;
+	//ArrayList<Category> categories;
+	//niet meer van toepassing aangezien we een observableList gebruiken
 
 	
 	public CategoryOverviewPane(Quizcontroller quizcontroller) {
@@ -55,10 +56,15 @@ public class CategoryOverviewPane extends GridPane implements Observer {
 		this.add(table, 0, 1, 2, 6);
 
 		//invoegen van de categories
+		/*
 		categories = quizcontroller.getCategories();
 		for (Category x : categories) {
 			table.getItems().add(x);
 		}
+		*/
+
+		// we kunnen nu de tabel koppelen aan de observableList
+		table.setItems(quizcontroller.getCategories());
 
 		btnNew = new Button("New");
 		this.add(btnNew, 0, 11, 1, 1);

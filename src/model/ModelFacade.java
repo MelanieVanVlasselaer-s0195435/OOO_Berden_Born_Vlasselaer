@@ -2,18 +2,32 @@ package model;
 
 import database.CategoryText;
 import database.DBcontext;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
 public class ModelFacade {
-ArrayList <Category> categories = new ArrayList();
-ArrayList <Question> questions = new ArrayList();
+    ObservableList<Category> categories;
+    ObservableList<Question> questions;
 
 
     public ModelFacade(){
+        categories = FXCollections.observableArrayList();
+        questions = FXCollections.observableArrayList();
+        /*categories.addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                System.out.println("de lijst is aangepast");
+            }
+        });
+        */
     }
 
     public void makeCategories(ArrayList<String> elementen){
+        try {
         for(int i = 0; i< elementen.size();i+=3){
             String naam = elementen.get(i);
             String description = elementen.get(i+1);
@@ -22,20 +36,23 @@ ArrayList <Question> questions = new ArrayList();
                 Category category = new Category(naam,description);
                 categories.add(category);
             } else {
-                for (Category x : categories){
-                    if (x.getName().equals(hoofdCategorie)){
+                for (Category x : categories) {
+                    if (x.getName().equals(hoofdCategorie)) {
                         Category geselecteerdeHoofdCategorie = x;
-                        Category category = new Category(naam,description,geselecteerdeHoofdCategorie);
+                        Category category = new Category(naam, description, geselecteerdeHoofdCategorie);
                         categories.add(category);
                     }
                 }
+            }
                 //errorlijn in de toekomst voorzien met try-catch en domainclass - TB
                 Category category = new Category(naam,description);
             }
+        } catch (Exception e) {
+            throw new ModelException("Categorie aanmaken is niet gelukt");
         }
     }
 
-    public ArrayList getCategories(){
+    public ObservableList<Category> getCategories(){
         return categories;
     }
 
@@ -66,7 +83,7 @@ ArrayList <Question> questions = new ArrayList();
         }
     }
 
-    public ArrayList<Question> getQuestions() {
+    public ObservableList<Question> getQuestions() {
         return questions;
     }
 

@@ -2,6 +2,7 @@ package controller;
 
 
 import database.DatabaseFacade;
+import javafx.collections.ObservableList;
 import model.Category;
 import model.ModelFacade;
 import model.Question;
@@ -15,10 +16,6 @@ import java.util.Observable;
 // Is niet hetzelfde als de interface Observable!!! -FB
 
 public class Quizcontroller extends Observable {
-    ArrayList<Category> categories;
-    ArrayList<Question> questions;
-    ArrayList<String> primitieveCategories;
-    ArrayList<String> primitieveQuestions;
     //-> context wordt aangesproken via de modelFacade -TB
     //DBcontext context = new DBcontext();
     ModelFacade modelFacade = new ModelFacade();
@@ -26,37 +23,20 @@ public class Quizcontroller extends Observable {
     DatabaseFacade databaseFacade = new DatabaseFacade();
 
     public Quizcontroller(){
-        primitieveCategories = databaseFacade.loadCategorieElementen();
-        primitieveQuestions = databaseFacade.loadQuestionElementen();
-        modelFacade.makeCategories(primitieveCategories);
-        modelFacade.makeQuestions(primitieveQuestions);
-        categories = modelFacade.getCategories();
-        questions = modelFacade.getQuestions();
-
+        modelFacade.makeCategories(databaseFacade.loadCategorieElementen());
+        modelFacade.makeQuestions(databaseFacade.loadQuestionElementen());
     }
 
-    public ArrayList<Category> getCategories(){
-        if (categories == null) {
-            System.out.println("leeg");
-            return null;
-        }
-        else {
-            return modelFacade.getCategories();
-        }
+    public ObservableList<Category> getCategories(){
+        return modelFacade.getCategories();
     }
 
     public void addCategory(String name, String description, String mainCategory){
         modelFacade.addCategory(name,description, mainCategory);
     }
 
-    public ArrayList<Question> getQuestions(){
-        if (questions == null) {
-            System.out.println("leeg");
-            return null;
-        }
-        else {
-            return  modelFacade.getQuestions();
-        }
+    public ObservableList<Question> getQuestions(){
+        return  modelFacade.getQuestions();
     }
 
     public void addQuestion(String question, ArrayList<String> statements, String category, String feedback){
