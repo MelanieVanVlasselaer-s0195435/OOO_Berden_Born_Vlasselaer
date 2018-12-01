@@ -63,7 +63,7 @@ public class CategoryOverviewPane extends GridPane {
 		btnNew.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				quizcontroller.toonDetailPanel();
+				quizcontroller.toonCategoryDetailPanel();
 			}
 		});
 	}

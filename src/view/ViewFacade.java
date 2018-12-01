@@ -15,12 +15,8 @@ public class ViewFacade {
     public void start(Quizcontroller quizcontroller){
         this.quizcontroller = quizcontroller;
         try {
-
-            QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
-            QuestionDetailPane questionDetailPane = new QuestionDetailPane();
-
+            QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(quizcontroller);
             CategoryOverviewPane categoryOverviewPanel = new CategoryOverviewPane(quizcontroller);
-            CategoryDetailPane categoryDetailPanel = new CategoryDetailPane(quizcontroller);
 
             TestPane testPane = new TestPane();
             MessagePane messagePane = new MessagePane();
@@ -42,10 +38,20 @@ public class ViewFacade {
         }
     }
 
-    public void toonDetailPanel(){
+    public void toonCategoryDetailPanel(){
         Group root = new Group();
         Scene scene = new Scene(root,300,150);
         CategoryDetailPane detailpanel = new CategoryDetailPane(quizcontroller);
+        BorderPane border = new BorderPane(detailpanel);
+        root.getChildren().add(border);
+        secondStage.setScene(scene);
+        secondStage.show();
+    }
+
+    public void toonQuestionDetailPanel() {
+        Group root = new Group();
+        Scene scene = new Scene(root,400,350);
+        QuestionDetailPane detailpanel = new QuestionDetailPane(quizcontroller);
         BorderPane border = new BorderPane(detailpanel);
         root.getChildren().add(border);
         secondStage.setScene(scene);

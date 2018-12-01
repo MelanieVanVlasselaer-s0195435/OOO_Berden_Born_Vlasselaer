@@ -1,5 +1,6 @@
 package view.panels;
 
+import controller.Quizcontroller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -10,12 +11,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import model.Question;
+
+import java.util.ArrayList;
 
 public class QuestionOverviewPane extends GridPane {
 	private TableView table;
 	private Button btnNew;
+	private Quizcontroller controller;
 	
-	public QuestionOverviewPane() {
+	public QuestionOverviewPane(Quizcontroller quizcontroller) {
+		this.controller = quizcontroller;
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
         this.setHgap(5);
@@ -31,9 +37,21 @@ public class QuestionOverviewPane extends GridPane {
         descriptionCol.setCellValueFactory(new PropertyValueFactory("category"));
         table.getColumns().add(descriptionCol);
 		this.add(table, 0, 1, 2, 6);
-		
+		//invoegen van de categories
+		ArrayList<Question> questions = quizcontroller.getQuestions();
+		for (Question x : questions) {
+			table.getItems().add(x);
+		}
+
 		btnNew = new Button("New");
 		this.add(btnNew, 0, 11, 1, 1);
+
+		btnNew.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				quizcontroller.toonQuestionDetailPanel();
+			}
+		});
 	}
 	
 	public void setNewAction(EventHandler<ActionEvent> newAction) {

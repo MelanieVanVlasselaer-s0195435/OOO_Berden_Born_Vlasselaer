@@ -16,10 +16,6 @@ public class DatabaseFacade {
 
     public ArrayList<String> loadQuestionElementen(){
         context.setDBStrategy(new QuestionText());
-        ArrayList<String> vraagelementen = context.load();
-        for (String x: vraagelementen){
-            System.out.println(x);
-        }
-        return null;
+        return context.load();
     }
 }

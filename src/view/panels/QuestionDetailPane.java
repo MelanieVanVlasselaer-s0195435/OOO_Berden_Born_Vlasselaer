@@ -1,5 +1,6 @@
 package view.panels;
 
+import controller.Quizcontroller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -19,7 +20,7 @@ public class QuestionDetailPane extends GridPane {
 	private Button btnAdd, btnRemove;
 	private ComboBox categoryField;
 
-	public QuestionDetailPane() {
+	public QuestionDetailPane(Quizcontroller quizcontroller) {
 		this.setPrefHeight(300);
 		this.setPrefWidth(320);
 		

@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Category;
 import model.ModelFacade;
+import model.Question;
 import view.ViewFacade;
 import view.panels.*;
 
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 
 public class Quizcontroller {
     ArrayList<Category> categories;
+    ArrayList<Question> questions;
     ArrayList<String> primitieveCategories;
     ArrayList<String> primitieveQuestions;
     //-> context wordt aangesproken via de modelFacade -TB
@@ -34,7 +36,9 @@ public class Quizcontroller {
         primitieveCategories = databaseFacade.loadCategorieElementen();
         primitieveQuestions = databaseFacade.loadQuestionElementen();
         modelFacade.makeCategories(primitieveCategories);
+        modelFacade.makeQuestions(primitieveQuestions);
         categories = modelFacade.getCategories();
+        questions = modelFacade.getQuestions();
 
     }
 
@@ -44,7 +48,7 @@ public class Quizcontroller {
             return null;
         }
         else {
-            return categories;
+            return modelFacade.getCategories();
         }
     }
 
@@ -52,28 +56,39 @@ public class Quizcontroller {
         modelFacade.addCategory(name,description, mainCategory);
     }
 
-    public void toonDetailPanel(){
-        viewFacade.toonDetailPanel();
+    public ArrayList<Question> getQuestions(){
+        if (questions == null) {
+            System.out.println("leeg");
+            return null;
+        }
+        else {
+            return  modelFacade.getQuestions();
+        }
+    }
+
+    public void addQuestion(String question, ArrayList<String> statements, String category, String feedback){
+        modelFacade.addQuestion(question,statements,category,feedback);
+    }
+
+
+
+    public void toonCategoryDetailPanel(){
+        viewFacade.toonCategoryDetailPanel();
+    }
+
+    public void toonQuestionDetailPanel(){
+        viewFacade.toonQuestionDetailPanel();
     }
 
     public void sluitDetailPanel(){
         viewFacade.sluitDetailPanel();
     }
 
+
     public void start(Quizcontroller quizcontroller){
         viewFacade.start(quizcontroller);
     }
 
-    /*public void toonDetail(){
-        Group root = new Group();
-        Stage secondStage = new Stage();
-        Scene scene = new Scene(root,300,150);
-        CategoryDetailPane detailpanel = new CategoryDetailPane();
-        BorderPane border = new BorderPane(detailpanel);
-        root.getChildren().add(border);
-        secondStage.setScene(scene);
-        secondStage.show();
-    }*/
 
 
 }
