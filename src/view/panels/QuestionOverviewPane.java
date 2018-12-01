@@ -52,6 +52,7 @@ public class QuestionOverviewPane extends GridPane {
 				quizcontroller.toonQuestionDetailPanel();
 			}
 		});
+
 	}
 	
 	public void setNewAction(EventHandler<ActionEvent> newAction) {

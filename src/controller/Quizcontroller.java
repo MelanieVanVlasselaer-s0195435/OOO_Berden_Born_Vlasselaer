@@ -1,27 +1,20 @@
 package controller;
 
-import database.CategoryText;
-import database.DBcontext;
+
 import database.DatabaseFacade;
-import database.TxtDBStrategy;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import model.Category;
 import model.ModelFacade;
 import model.Question;
 import view.ViewFacade;
-import view.panels.*;
-
-import javax.swing.*;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Observable;
 
 
 // Moet dit een singleton zijn? -TB
+// Quizcontroller extenden we van de klassen Observable
+// Is niet hetzelfde als de interface Observable!!! -FB
 
-public class Quizcontroller {
+public class Quizcontroller extends Observable {
     ArrayList<Category> categories;
     ArrayList<Question> questions;
     ArrayList<String> primitieveCategories;
@@ -88,6 +81,7 @@ public class Quizcontroller {
     public void start(Quizcontroller quizcontroller){
         viewFacade.start(quizcontroller);
     }
+
 
 
 

@@ -18,9 +18,11 @@ import javafx.stage.Stage;
 import model.Category;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 
-public class CategoryOverviewPane extends GridPane {
+public class CategoryOverviewPane extends GridPane implements Observer {
 	private TableView table;
 	private Button btnNew;
 
@@ -78,4 +80,11 @@ public class CategoryOverviewPane extends GridPane {
 		table.setOnMouseClicked(editAction);
 	}
 
+
+	//deze methode wordt door de observable opgeroepen
+	@Override
+	public void update(Observable o, Object arg) {
+		//arg is het object dat de observable kan meegeven
+		System.out.println("server");
+	}
 }
