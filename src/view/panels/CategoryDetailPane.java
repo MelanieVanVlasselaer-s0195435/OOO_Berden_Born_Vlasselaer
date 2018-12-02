@@ -16,7 +16,6 @@ public class CategoryDetailPane extends GridPane {
 	private TextField titleField, descriptionField;
 	private ComboBox categoryField;
 	private Quizcontroller quizcontroller;
-	public boolean close = false;
 
 	public CategoryDetailPane(Quizcontroller controller) {
 		this.quizcontroller = controller;

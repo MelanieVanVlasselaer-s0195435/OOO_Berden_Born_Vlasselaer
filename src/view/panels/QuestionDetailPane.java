@@ -1,26 +1,33 @@
 package view.panels;
 
 import controller.Quizcontroller;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import model.Category;
 
 public class QuestionDetailPane extends GridPane {
 	private Button btnOK, btnCancel;
-	private TextArea statementsArea;
+	// de statementsArea van een textarea verandert naar een ListView mag dit?
+	// --> geeft de mogelijkheid om een observableList mee te geven
+	// - FB
+	//private TextArea statementsArea;
+	private ListView<String> statementsArea;
+
 	private TextField questionField, statementField, feedbackField;
 	private Button btnAdd, btnRemove;
 	private ComboBox categoryField;
 
+	private ObservableList<String> statements;
+
 	public QuestionDetailPane(Quizcontroller quizcontroller) {
+		statements = FXCollections.observableArrayList();
 		this.setPrefHeight(300);
 		this.setPrefWidth(320);
 		
@@ -37,10 +44,12 @@ public class QuestionDetailPane extends GridPane {
 		add(statementField, 1, 1, 2, 1);
 
 		add(new Label("Statements: "), 0, 2, 1, 1);
-		statementsArea = new TextArea();
-		statementsArea.setPrefRowCount(5);
+		statementsArea = new ListView<>();
+		//statementsArea.setPrefRowCount(5);
 		statementsArea.setEditable(false);
 		add(statementsArea, 1, 2, 2, 5);
+		statementsArea.setItems(statements);
+
 
 		Pane addRemove = new HBox();
 		btnAdd = new Button("add");
@@ -55,6 +64,9 @@ public class QuestionDetailPane extends GridPane {
 		add(new Label("Category: "), 0, 9, 1, 1);
 		categoryField = new ComboBox();
 		add(categoryField, 1, 9, 2, 1);
+		for(Category x:quizcontroller.getCategories()){
+			categoryField.getItems().addAll(x.getName());
+		}
 
 		add(new Label("Feedback: "), 0, 10, 1, 1);
 		feedbackField = new TextField();
@@ -63,11 +75,24 @@ public class QuestionDetailPane extends GridPane {
 		btnCancel = new Button("Cancel");
 		btnCancel.setText("Cancel");
 		add(btnCancel, 0, 11, 1, 1);
+		btnCancel.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				quizcontroller.sluitDetailPanel();
+			}
+		});
 
 		btnOK = new Button("Save");
 		btnOK.isDefaultButton();
 		btnOK.setText("Save");
 		add(btnOK, 1, 11, 2, 1);
+		btnOK.setOnAction(new EventHandler<ActionEvent>() {
+			//String question, ArrayList<String> statements, String category, String feedback)
+			@Override
+			public void handle(ActionEvent event) {
+				quizcontroller.addQuestion(questionField.getText(), statements, (String) categoryField.getValue(), feedbackField.getText());
+			}
+		});
 		
 	}
 
@@ -82,12 +107,16 @@ public class QuestionDetailPane extends GridPane {
 	class AddStatementListener implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent e) {
+			statements.add(statementField.getText());
+			statementField.setText("");
 		}
 	}
 
 	class RemoveStatementListener implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent e) {
+			statements.remove(statementField.getText());
+			statementField.setText("");
 		}
 	}
 }
