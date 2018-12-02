@@ -17,8 +17,6 @@ public class ViewFacade {
         try {
             QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(quizcontroller);
             CategoryOverviewPane categoryOverviewPanel = new CategoryOverviewPane(quizcontroller);
-
-            TestPane testPane = new TestPane();
             MessagePane messagePane = new MessagePane(quizcontroller);
 
             Group root = new Group();
@@ -60,7 +58,7 @@ public class ViewFacade {
     public void toonTestPanel() {
         Group root = new Group();
         Scene scene = new Scene(root,400,350);
-        TestPane testPanel = new TestPane();
+        TestPane testPanel = new TestPane(quizcontroller);
         BorderPane border = new BorderPane(testPanel);
         root.getChildren().add(border);
         secondStage.setScene(scene);

@@ -42,5 +42,8 @@ public class Category {
         return hoofdcategorie;
     }
 
-
+    @Override
+    public String toString() {
+        return name + " " + description + " " + hoofdcategorie;
+    }
 }

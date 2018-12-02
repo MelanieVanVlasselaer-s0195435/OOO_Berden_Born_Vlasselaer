@@ -1,14 +1,13 @@
 package model;
 
 import javafx.collections.ObservableList;
-
 import java.util.ArrayList;
 
 public class Question {
-    String question;
-    ArrayList<String> statements = new ArrayList();
-    String category;
-    String feedback;
+    private String question;
+    private ArrayList<String> statements;
+    private String category;
+    private String feedback;
 
     public Question (String question, ArrayList<String> statements, String category, String feedback ) {
         setQuestion(question);
@@ -16,12 +15,12 @@ public class Question {
         setCategory(category);
         setFeedback(feedback);
     }
+
     public Question (String question, ObservableList<String> statements, String category, String feedback ) {
         setQuestion(question);
         for (String x : statements) {
             setStringStatements(x);
         }
-
         setCategory(category);
         setFeedback(feedback);
     }
@@ -63,5 +62,10 @@ public class Question {
 
     public void setFeedback(String feedback) {
         this.feedback = feedback;
+    }
+
+    @Override
+    public String toString() {
+        return  question + " " + category + " " + statements + " " + feedback;
     }
 }
