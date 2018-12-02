@@ -4,20 +4,13 @@ import controller.Quizcontroller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import model.Category;
-
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -30,9 +23,6 @@ public class CategoryOverviewPane extends GridPane implements Observer {
 	// controller aangemaakt
 	Quizcontroller quizcontroller;
 
-	//test voor categorieën weer te geven (voorlopige, niet volgens Design pattern - TB)
-	//ArrayList<Category> categories;
-	//niet meer van toepassing aangezien we een observableList gebruiken
 
 	
 	public CategoryOverviewPane(Quizcontroller quizcontroller) {
@@ -55,15 +45,6 @@ public class CategoryOverviewPane extends GridPane implements Observer {
 		table.getColumns().add(descriptionCol);
 		this.add(table, 0, 1, 2, 6);
 
-		//invoegen van de categories
-		/*
-		categories = quizcontroller.getCategories();
-		for (Category x : categories) {
-			table.getItems().add(x);
-		}
-		*/
-
-		// we kunnen nu de tabel koppelen aan de observableList
 		table.setItems(quizcontroller.getCategories());
 
 		btnNew = new Button("New");

@@ -37,13 +37,7 @@ public class QuestionOverviewPane extends GridPane {
         descriptionCol.setCellValueFactory(new PropertyValueFactory("category"));
         table.getColumns().add(descriptionCol);
 		this.add(table, 0, 1, 2, 6);
-		//invoegen van de categories
-		/*
-		ArrayList<Question> questions = quizcontroller.getQuestions();
-		for (Question x : questions) {
-			table.getItems().add(x);
-		}
-		*/
+		
 		table.setItems(quizcontroller.getQuestions());
 
 		btnNew = new Button("New");

@@ -52,10 +52,7 @@ public class CategoryDetailPane extends GridPane {
 		btnOK.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				String name = titleField.getText();
-				String description = descriptionField.getText();
-				String maincategory = (String) categoryField.getValue();
-				quizcontroller.addCategory(name, description, maincategory);
+				quizcontroller.addCategory(titleField.getText(), descriptionField.getText(), (String) categoryField.getValue());
 				quizcontroller.sluitDetailPanel();
 			}
 		});
