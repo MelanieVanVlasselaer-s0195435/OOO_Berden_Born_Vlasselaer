@@ -30,7 +30,7 @@ public class TestPane extends GridPane {
 		//aanmaken controller
 		this.quizcontroller = quizcontroller;
 		//geeft een observableList terug met allemaal Question objecten in en neemt het eerste object er uit
-		this.question = quizcontroller.getQuestions().get(1);
+		this.question = quizcontroller.getQuestions().get(0);
 		//probleem als ik van dit object de statements opvraag dan krijg ik ALLE statements van alle objecten?!?!
 		//probleem +- opgespoort -> worden verkeerd aangemaakt?!
 
