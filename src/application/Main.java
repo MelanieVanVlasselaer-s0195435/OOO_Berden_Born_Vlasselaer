@@ -15,10 +15,12 @@ import view.panels.QuestionOverviewPane;
 import view.panels.TestPane;
 
 public class Main extends Application {
+	private Quizcontroller quizcontroller;
+
 	@Override
 	public void start(Stage primaryStage) {
 
-		Quizcontroller quizcontroller = new Quizcontroller();
+		quizcontroller = new Quizcontroller();
 		quizcontroller.start(quizcontroller);
 
 
