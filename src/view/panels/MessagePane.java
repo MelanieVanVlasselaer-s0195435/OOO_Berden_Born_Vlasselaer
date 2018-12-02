@@ -2,6 +2,7 @@ package view.panels;
 
 import java.util.Observer;
 
+import controller.Quizcontroller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -17,8 +18,9 @@ import javafx.scene.paint.Color;
 
 public class MessagePane extends GridPane {
 	private Button testButton;
-	
-	public MessagePane (){
+	private Quizcontroller quizcontroller;
+	public MessagePane (Quizcontroller quizcontroller){
+		this.quizcontroller = quizcontroller;
 	    setBorder(new Border(new BorderStroke(Color.BLACK, 
 	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 
@@ -31,6 +33,7 @@ public class MessagePane extends GridPane {
 			
 			@Override
 			public void handle(ActionEvent event) {
+				quizcontroller.toonTestPanel();
 			}
 		});
 		add(testButton, 0,1,1,1);

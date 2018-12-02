@@ -77,7 +77,6 @@ public class Test {
         }
     }
 
-
     public void makeQuestions(ArrayList<String> primitieveQuestions) {
         ArrayList <String> statements = new ArrayList();
         for (int i = 0; i < primitieveQuestions.size();i+=4) {
