@@ -11,9 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import model.Question;
 
-import java.util.ArrayList;
 
 public class QuestionOverviewPane extends GridPane {
 	private TableView table;
@@ -37,7 +35,7 @@ public class QuestionOverviewPane extends GridPane {
         descriptionCol.setCellValueFactory(new PropertyValueFactory("category"));
         table.getColumns().add(descriptionCol);
 		this.add(table, 0, 1, 2, 6);
-		
+
 		table.setItems(quizcontroller.getQuestions());
 
 		btnNew = new Button("New");

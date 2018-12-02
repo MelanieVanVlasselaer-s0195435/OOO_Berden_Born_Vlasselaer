@@ -1,94 +1,41 @@
 package model;
 
-import database.CategoryText;
-import database.DBcontext;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
+
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
 public class ModelFacade {
-    ObservableList<Category> categories;
-    ObservableList<Question> questions;
+    private Test test;
 
 
     public ModelFacade(){
-        categories = FXCollections.observableArrayList();
-        questions = FXCollections.observableArrayList();
-        /*categories.addListener(new InvalidationListener() {
-            @Override
-            public void invalidated(Observable observable) {
-                System.out.println("de lijst is aangepast");
-            }
-        });
-        */
+       test = new Test();
     }
 
-    public void makeCategories(ArrayList<String> elementen){
-        try {
-        for(int i = 0; i< elementen.size();i+=3){
-            String naam = elementen.get(i);
-            String description = elementen.get(i+1);
-            String hoofdCategorie = elementen.get(i+2);
-            if (hoofdCategorie.equals("null")){
-                Category category = new Category(naam,description);
-                categories.add(category);
-            } else {
-                for (Category x : categories) {
-                    if (x.getName().equals(hoofdCategorie)) {
-                        Category geselecteerdeHoofdCategorie = x;
-                        Category category = new Category(naam, description, geselecteerdeHoofdCategorie);
-                        categories.add(category);
-                    }
-                }
-            }
-                //errorlijn in de toekomst voorzien met try-catch en domainclass - TB
-                Category category = new Category(naam,description);
-            }
-        } catch (Exception e) {
-            throw new ModelException("Categorie aanmaken is niet gelukt");
-        }
+    public void makeCategories(ArrayList<String> primitieveCategories){
+        test.makeCategories(primitieveCategories);
     }
+    public void makeQuestions(ArrayList<String> primitieveQuestions) {
+        test.makeQuestions(primitieveQuestions);
+    }
+
 
     public ObservableList<Category> getCategories(){
-        return categories;
+        return test.getCategories();
+    }
+    public ObservableList<Question> getQuestions() {
+        return test.getQuestions();
     }
 
     public void addCategory(String name, String description, String mainCategory){
-        Category toAdd = null;
-        for (Category x : categories){
-            if (x.getName().equals(mainCategory)){
-                toAdd = x;
-            }
-        }
-        Category newCategory = new Category(name, description, toAdd);
-        categories.add(newCategory);
+        Category newCategory = new Category(name, description, mainCategory);
+        test.addCategory(newCategory);
     }
 
-
-    public void makeQuestions(ArrayList<String> primitieveQuestions) {
-        ArrayList <String> statements = new ArrayList();
-        for (int i = 0; i < primitieveQuestions.size();i+=4) {
-            String question = primitieveQuestions.get(i);
-            String category = primitieveQuestions.get(i+1);
-            String feedback = primitieveQuestions.get(i+2);
-            String primitieveStatements = primitieveQuestions.get(i+3);
-            for (String woord:primitieveStatements.split("\\s",0)) {
-                statements.add(woord);
-            }
-            Question x = new Question(question, statements, category, feedback);
-            questions.add(x);
-        }
-    }
-
-    public ObservableList<Question> getQuestions() {
-        return questions;
-    }
 
     public void addQuestion(String question, ObservableList<String> statements, String category, String feedback){
-        Question x = new Question(question, statements, category, feedback);
-        questions.add(x);
+        Question newQuestion = new Question(question, statements, category, feedback);
+        test.addQuestion(newQuestion);
     }
 }

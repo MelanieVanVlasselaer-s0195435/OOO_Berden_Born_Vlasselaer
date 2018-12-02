@@ -4,7 +4,7 @@ public class Category {
 
     private String name;
     private String description;
-    private Category hoofdcategorie;
+    private String hoofdcategorie;
 
     public Category (String name, String description){
         this.setName(name);
@@ -12,7 +12,7 @@ public class Category {
         this.hoofdcategorie = null;
     }
 
-    public Category (String name, String description, Category hoofdcategorie){
+    public Category (String name, String description, String hoofdcategorie){
         this.setName(name);
         this.setDescription(description);
         this.hoofdcategorie = hoofdcategorie;
@@ -26,7 +26,7 @@ public class Category {
         this.description = description;
     }
 
-    public void setHoofdcategorie(Category hoofdcategorie) {
+    public void setHoofdcategorie(String hoofdcategorie) {
         this.hoofdcategorie = hoofdcategorie;
     }
 
@@ -38,7 +38,7 @@ public class Category {
         return this.description;
     }
 
-    public Category getHoofdcategorie() {
+    public String getHoofdcategorie() {
         return hoofdcategorie;
     }
 
