@@ -1,26 +1,32 @@
 package view.panels;
 
 import controller.Quizcontroller;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 public class QuestionDetailPane extends GridPane {
 	private Button btnOK, btnCancel;
-	private TextArea statementsArea;
+	// de statementsArea van een textarea verandert naar een ListView mag dit?
+	// --> geeft de mogelijkheid om een observableList mee te geven
+	// - FB
+	//private TextArea statementsArea;
+	private ListView<String> statementsArea;
+
 	private TextField questionField, statementField, feedbackField;
 	private Button btnAdd, btnRemove;
 	private ComboBox categoryField;
 
+	private ObservableList<String> statements;
+
 	public QuestionDetailPane(Quizcontroller quizcontroller) {
+		statements = FXCollections.observableArrayList();
 		this.setPrefHeight(300);
 		this.setPrefWidth(320);
 		
@@ -37,10 +43,12 @@ public class QuestionDetailPane extends GridPane {
 		add(statementField, 1, 1, 2, 1);
 
 		add(new Label("Statements: "), 0, 2, 1, 1);
-		statementsArea = new TextArea();
-		statementsArea.setPrefRowCount(5);
+		statementsArea = new ListView<>();
+		//statementsArea.setPrefRowCount(5);
 		statementsArea.setEditable(false);
 		add(statementsArea, 1, 2, 2, 5);
+		statementsArea.setItems(statements);
+
 
 		Pane addRemove = new HBox();
 		btnAdd = new Button("add");
@@ -82,12 +90,16 @@ public class QuestionDetailPane extends GridPane {
 	class AddStatementListener implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent e) {
+			statements.add(statementField.getText());
+			statementField.setText("");
 		}
 	}
 
 	class RemoveStatementListener implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent e) {
+			statements.remove(statementField.getText());
+			statementField.setText("");
 		}
 	}
 }
