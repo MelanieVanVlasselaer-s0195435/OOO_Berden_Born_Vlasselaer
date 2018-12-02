@@ -39,7 +39,7 @@ public class Quizcontroller extends Observable {
         return  modelFacade.getQuestions();
     }
 
-    public void addQuestion(String question, ArrayList<String> statements, String category, String feedback){
+    public void addQuestion(String question, ObservableList<String> statements, String category, String feedback){
         modelFacade.addQuestion(question,statements,category,feedback);
     }
 

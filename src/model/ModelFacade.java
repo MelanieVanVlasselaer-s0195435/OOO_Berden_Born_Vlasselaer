@@ -87,7 +87,7 @@ public class ModelFacade {
         return questions;
     }
 
-    public void addQuestion(String question, ArrayList<String> statements, String category, String feedback){
+    public void addQuestion(String question, ObservableList<String> statements, String category, String feedback){
         Question x = new Question(question, statements, category, feedback);
         questions.add(x);
     }

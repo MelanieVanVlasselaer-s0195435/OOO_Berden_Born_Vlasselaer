@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import model.Category;
 
 public class QuestionDetailPane extends GridPane {
 	private Button btnOK, btnCancel;
@@ -63,6 +64,9 @@ public class QuestionDetailPane extends GridPane {
 		add(new Label("Category: "), 0, 9, 1, 1);
 		categoryField = new ComboBox();
 		add(categoryField, 1, 9, 2, 1);
+		for(Category x:quizcontroller.getCategories()){
+			categoryField.getItems().addAll(x.getName());
+		}
 
 		add(new Label("Feedback: "), 0, 10, 1, 1);
 		feedbackField = new TextField();
@@ -71,11 +75,24 @@ public class QuestionDetailPane extends GridPane {
 		btnCancel = new Button("Cancel");
 		btnCancel.setText("Cancel");
 		add(btnCancel, 0, 11, 1, 1);
+		btnCancel.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				quizcontroller.sluitDetailPanel();
+			}
+		});
 
 		btnOK = new Button("Save");
 		btnOK.isDefaultButton();
 		btnOK.setText("Save");
 		add(btnOK, 1, 11, 2, 1);
+		btnOK.setOnAction(new EventHandler<ActionEvent>() {
+			//String question, ArrayList<String> statements, String category, String feedback)
+			@Override
+			public void handle(ActionEvent event) {
+				quizcontroller.addQuestion(questionField.getText(), statements, (String) categoryField.getValue(), feedbackField.getText());
+			}
+		});
 		
 	}
 
