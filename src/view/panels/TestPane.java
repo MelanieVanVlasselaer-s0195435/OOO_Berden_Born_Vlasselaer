@@ -23,17 +23,14 @@ public class TestPane extends GridPane {
 	private Quizcontroller quizcontroller;
 	private Question question;
 	private ArrayList<RadioButton> radiobuttons;
+	int questionIndex;
 
 
 	
 	public TestPane (Quizcontroller quizcontroller){
-		//aanmaken controller
+		questionIndex = 0;
 		this.quizcontroller = quizcontroller;
-		//geeft een observableList terug met allemaal Question objecten in en neemt het eerste object er uit
-		this.question = quizcontroller.getQuestions().get(0);
-		//probleem als ik van dit object de statements opvraag dan krijg ik ALLE statements van alle objecten?!?!
-		//probleem +- opgespoort -> worden verkeerd aangemaakt?!
-
+		this.question = quizcontroller.getQuestions().get(questionIndex);
 		radiobuttons = new ArrayList<>();
 		this.setPrefHeight(300);
 		this.setPrefWidth(750);
@@ -47,7 +44,6 @@ public class TestPane extends GridPane {
 		add(questionField, 0, 0, 1, 1);
 		
 		radioGroup = new ToggleGroup();
-
 		for (String x : question.getStatements()) {
 			RadioButton y = new RadioButton(x);
 			this.radiobuttons.add(y);
@@ -63,18 +59,41 @@ public class TestPane extends GridPane {
 
 		submitButton = new Button("Submit");
 		add(submitButton, 0,5,1,1);
+		submitButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				questionIndex++;
+				generateNextQuestion(questionIndex);
+			}
+		});
 	}
-	
+
+	public void generateNextQuestion(int questionIndex) {
+		if (questionIndex >= quizcontroller.getQuestions().size()) {
+			System.out.println("error");
+		}
+		else {
+			this.question = quizcontroller.getQuestions().get(questionIndex);
+			questionField.setText(question.getQuestion());
+
+			int teller = 0;
+			for (String x : question.getStatements()) {
+				radiobuttons.get(teller).setText(x);
+				teller++;
+			}
+		}
+
+	}
 	public void setProcessAnswerAction(EventHandler<ActionEvent> processAnswerAction) {
 		submitButton.setOnAction(processAnswerAction);
 	}
 
-	/*public List<String> getSelectedStatements() {
+	public List<String> getSelectedStatements() {
 		 List<String> selected = new ArrayList<String>();
-		if(statementGroup.getSelectedToggle()!=null){
-			selected.add(statementGroup.getSelectedToggle().getUserData().toString());
+		if(radioGroup.getSelectedToggle()!=null){
+			selected.add(radioGroup.getSelectedToggle().getUserData().toString());
 		}
 		return selected;
 	}
-	*/
+
 }

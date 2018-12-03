@@ -9,14 +9,12 @@ import java.util.ArrayList;
 public class Test {
     private ObservableList<Category> categories;
     private ObservableList<Question> questions;
-    private ArrayList<Question> questionArray;
 
 
 
     public Test () {
         categories = FXCollections.observableArrayList();
         questions = FXCollections.observableArrayList();
-        questionArray = new ArrayList<>();
     }
 
 
@@ -67,25 +65,7 @@ public class Test {
                 statements.add(woord);
             }
             Question x = new Question(question, statements, category, feedback);
-            System.out.println("object");
-            System.out.println(x.toString());
-
-
             questions.add(x);
-            questionArray.add(x);
-
-            // magic
-
-            System.out.println("observableList");
-            for (Question y : questions) {
-                System.out.println(y.toString());
-            }
-            System.out.println("array");
-            for (Question y : questionArray) {
-                System.out.println(y.toString());
-            }
-            System.out.println(" ");
-
         }
     }
 
