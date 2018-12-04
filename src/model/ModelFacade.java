@@ -4,6 +4,7 @@ package model;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ModelFacade {
     private Test test;
@@ -37,5 +38,13 @@ public class ModelFacade {
 
     public void addQuestion(String question, ObservableList<String> statements, String category, String feedback){
         test.addQuestionWithObservableList(question, statements, category, feedback);
+    }
+
+    public void controlAnswer(String antwoord, int questionIndex) {
+        test.controlAnswer(antwoord,questionIndex);
+    }
+
+    public String getResult() {
+        return test.getResult();
     }
 }

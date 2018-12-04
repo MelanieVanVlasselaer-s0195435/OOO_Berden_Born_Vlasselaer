@@ -4,14 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 
 public class Test {
     private ObservableList<Category> categories;
-
+    private HashMap<String,Integer> resultaten;
 
     public Test() {
         categories = FXCollections.observableArrayList();
+        resultaten = new HashMap<>();
     }
 
 
@@ -107,4 +111,45 @@ public class Test {
         }
     }
 
+    public void controlAnswer(String antwoord, int questionIndex) {
+        Question vraag = getAllQuestions().get(questionIndex);
+        String categorie = findCategory(vraag.getQuestion());
+        if (vraag.getStatements().get(0).equals(antwoord)){
+            if (resultaten.containsKey(categorie)){
+                int currentScoreForCategorie = (int) resultaten.get(categorie);
+                int nieuweScore = currentScoreForCategorie + 1;
+                resultaten.replace(categorie,nieuweScore);
+            } else {
+                resultaten.put(categorie,1);
+            }
+        } else if (!resultaten.containsKey(categorie)) {
+                resultaten.put(categorie,0);
+            }
+
+        }
+
+    public String getResult() {
+        //moet nog uitgewerkt worden - TB
+        int totaleScore = 0;
+        String categoryScores = "";
+        Iterator it = resultaten.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            categoryScores += pair.getKey() + ":" + pair.getValue() + "\n";
+            totaleScore = totaleScore + (int) pair.getValue();
+            it.remove();
+        }
+        return " Total score: " + totaleScore + "\n" + categoryScores;
+    }
+
+    public String findCategory(String question){
+        for (Category category: categories){
+            for(Question questionObject : category.getQuestions()){
+                if (questionObject.getQuestion().equals(question)){
+                    return category.getName();
+                }
+            }
+        }
+        return "niet gevonden";
+    }
 }

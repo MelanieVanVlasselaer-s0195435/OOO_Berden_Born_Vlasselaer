@@ -1,6 +1,7 @@
 package view.panels;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import controller.Quizcontroller;
@@ -24,9 +25,10 @@ public class TestPane extends GridPane {
 	private Question question;
 	private ArrayList<RadioButton> radiobuttons;
 	int questionIndex;
+	private int juisteAntwoorden;
 
 
-	
+
 	public TestPane (Quizcontroller quizcontroller){
 		questionIndex = 0;
 		this.quizcontroller = quizcontroller;
@@ -34,15 +36,15 @@ public class TestPane extends GridPane {
 		radiobuttons = new ArrayList<>();
 		this.setPrefHeight(300);
 		this.setPrefWidth(750);
-		
+
 		this.setPadding(new Insets(5, 5, 5, 5));
-        this.setVgap(5);
-        this.setHgap(5);
+		this.setVgap(5);
+		this.setHgap(5);
 
 		questionField = new Label();
 		questionField.setText(question.getQuestion());
 		add(questionField, 0, 0, 1, 1);
-		
+
 		radioGroup = new ToggleGroup();
 		for (String x : question.getStatements()) {
 			RadioButton y = new RadioButton(x);
@@ -62,6 +64,13 @@ public class TestPane extends GridPane {
 		submitButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				String antwoord = "";
+				for (RadioButton x : radiobuttons){
+					if (x.isSelected()){
+						antwoord = x.getText();
+					}
+				}
+				quizcontroller.controlAnswer(antwoord,questionIndex);
 				questionIndex++;
 				generateNextQuestion(questionIndex);
 			}
@@ -70,7 +79,10 @@ public class TestPane extends GridPane {
 
 	public void generateNextQuestion(int questionIndex) {
 		if (questionIndex >= quizcontroller.getQuestions().size()) {
-			System.out.println("error");
+			quizcontroller.sluitDetailPanel();
+			//tijdelijke code, moet een hashmap met score per categorie teruggeven - TB
+			//quizcontroller.getResult();
+			System.out.println(quizcontroller.getResult());
 		}
 		else {
 			this.question = quizcontroller.getQuestions().get(questionIndex);
@@ -84,12 +96,13 @@ public class TestPane extends GridPane {
 		}
 
 	}
+	// deze setAnswerAction is niet nodig als we de controller meegeven -TB
 	public void setProcessAnswerAction(EventHandler<ActionEvent> processAnswerAction) {
 		submitButton.setOnAction(processAnswerAction);
 	}
 
 	public List<String> getSelectedStatements() {
-		 List<String> selected = new ArrayList<String>();
+		List<String> selected = new ArrayList<String>();
 		if(radioGroup.getSelectedToggle()!=null){
 			selected.add(radioGroup.getSelectedToggle().getUserData().toString());
 		}

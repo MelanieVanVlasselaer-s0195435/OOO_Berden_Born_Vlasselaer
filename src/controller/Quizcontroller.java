@@ -8,6 +8,7 @@ import model.ModelFacade;
 import model.Question;
 import view.ViewFacade;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
 
 
@@ -66,6 +67,11 @@ public class Quizcontroller extends Observable {
     }
 
 
+    public void controlAnswer(String antwoord, int questionIndex) {
+        modelFacade.controlAnswer(antwoord,questionIndex);
+    }
 
-
+    public String getResult() {
+        return modelFacade.getResult();
+    }
 }
