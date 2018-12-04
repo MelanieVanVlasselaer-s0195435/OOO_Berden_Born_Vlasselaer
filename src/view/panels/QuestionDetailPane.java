@@ -10,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import model.Category;
 
 public class QuestionDetailPane extends GridPane {
 	private Button btnOK, btnCancel;
@@ -64,9 +63,7 @@ public class QuestionDetailPane extends GridPane {
 		add(new Label("Category: "), 0, 9, 1, 1);
 		categoryField = new ComboBox();
 		add(categoryField, 1, 9, 2, 1);
-		for(Category x:quizcontroller.getCategories()){
-			categoryField.getItems().addAll(x.getName());
-		}
+		categoryField.setItems(quizcontroller.getCategories());
 
 		add(new Label("Feedback: "), 0, 10, 1, 1);
 		feedbackField = new TextField();

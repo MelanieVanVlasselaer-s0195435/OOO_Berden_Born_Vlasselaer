@@ -9,13 +9,14 @@ public class Question {
     private String category;
     private String feedback;
 
-    public Question (String question, ArrayList<String> statements, String category, String feedback ) {
+    public Question (String question, ArrayList<String> statements, String feedback ) {
         setQuestion(question);
         setStatements(statements);
-        setCategory(category);
         setFeedback(feedback);
+
     }
 
+    /*
     public Question (String question, ObservableList<String> statements, String category, String feedback ) {
         this.statements = new ArrayList<>();
         setQuestion(question);
@@ -25,6 +26,7 @@ public class Question {
         setCategory(category);
         setFeedback(feedback);
     }
+    */
 
     //getters
     public String getQuestion() {
