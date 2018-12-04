@@ -4,8 +4,8 @@ package database;
 import java.util.ArrayList;
 
 public interface DBStrategy {
-    public ArrayList load();
-    public void save();
+    ArrayList load();
+    void save();
 
     //abstract methods
 }
