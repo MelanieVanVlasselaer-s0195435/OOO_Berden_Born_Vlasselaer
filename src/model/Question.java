@@ -17,6 +17,7 @@ public class Question {
     }
 
     public Question (String question, ObservableList<String> statements, String category, String feedback ) {
+        this.statements = new ArrayList<>();
         setQuestion(question);
         for (String x : statements) {
             setStringStatements(x);
