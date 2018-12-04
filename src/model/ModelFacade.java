@@ -16,6 +16,7 @@ public class ModelFacade {
     public void makeCategories(ArrayList<String> primitieveCategories){
         test.makeCategories(primitieveCategories);
     }
+
     public void makeQuestions(ArrayList<String> primitieveQuestions) {
         test.makeQuestions(primitieveQuestions);
     }
@@ -25,7 +26,7 @@ public class ModelFacade {
         return test.getCategories();
     }
     public ObservableList<Question> getQuestions() {
-        return test.getQuestions();
+        return test.getAllQuestions();
     }
 
     public void addCategory(String name, String description, String mainCategory){
@@ -35,7 +36,6 @@ public class ModelFacade {
 
 
     public void addQuestion(String question, ObservableList<String> statements, String category, String feedback){
-        Question newQuestion = new Question(question, statements, category, feedback);
-        test.addQuestion(newQuestion);
+        test.addQuestionWithObservableList(question, statements, category, feedback);
     }
 }
