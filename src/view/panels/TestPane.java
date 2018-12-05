@@ -78,7 +78,7 @@ public class TestPane extends GridPane {
 
 	public void generateNextQuestion(int questionIndex) {
 		if (questionIndex >= quizcontroller.getQuestions().size()) {
-			quizcontroller.sluitDetailPanel();
+			quizcontroller.closeSecondStage();
 			quizcontroller.displayResult();
 		}
 		else {

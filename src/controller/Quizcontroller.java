@@ -56,10 +56,8 @@ public class Quizcontroller extends Observable {
         viewFacade.toonTestPanel();
     }
 
-    public void sluitDetailPanel(){
-        viewFacade.sluitDetailPanel();
+    public void closeSecondStage(){ viewFacade.closeSecondStage();
     }
-
 
     public void start(Quizcontroller quizcontroller){
         viewFacade.start(quizcontroller);

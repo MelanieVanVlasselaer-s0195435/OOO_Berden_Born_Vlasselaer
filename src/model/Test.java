@@ -135,11 +135,11 @@ public class Test {
         Iterator it = resultaten.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
-            categoryScores += pair.getKey() + ":" + pair.getValue() + "\n";
+            categoryScores += pair.getKey() + ":" + pair.getValue() + "/" + findCategoryObject((String)pair.getKey()).getQuestions().size() + "\n";
             totaleScore = totaleScore + (int) pair.getValue();
             it.remove();
         }
-        return " Total score: " + totaleScore + "\n" + categoryScores;
+        return "Your score: " + totaleScore + "/" + getAllQuestions().size() +  "\n" + categoryScores;
     }
 
     public String findCategory(String question){
@@ -151,5 +151,14 @@ public class Test {
             }
         }
         return "niet gevonden";
+    }
+
+    public Category findCategoryObject(String name) {
+        for (Category category: categories) {
+            if (category.getName().equals(name)) {
+                return category;
+            }
+        }
+        return null;
     }
 }

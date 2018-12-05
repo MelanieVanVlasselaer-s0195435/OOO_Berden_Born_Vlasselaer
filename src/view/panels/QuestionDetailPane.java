@@ -75,7 +75,7 @@ public class QuestionDetailPane extends GridPane {
 		btnCancel.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				quizcontroller.sluitDetailPanel();
+				quizcontroller.closeSecondStage();
 			}
 		});
 
@@ -88,7 +88,7 @@ public class QuestionDetailPane extends GridPane {
 			@Override
 			public void handle(ActionEvent event) {
 				quizcontroller.addQuestion(questionField.getText(), statements, (String) categoryField.getValue(), feedbackField.getText());
-				quizcontroller.sluitDetailPanel();
+				quizcontroller.closeSecondStage();
 			}
 		});
 		

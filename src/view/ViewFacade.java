@@ -67,11 +67,11 @@ public class ViewFacade {
 
 
 
-    public void sluitDetailPanel(){
+    public void closeSecondStage(){
         secondStage.close();
     }
 
-    public void showResultPane() {
+    public void  showResultPane() {
         Group root = new Group();
         Scene scene = new Scene(root,200,200);
         ResultPane resultpanel = new ResultPane(quizcontroller);

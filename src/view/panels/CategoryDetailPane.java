@@ -53,13 +53,13 @@ public class CategoryDetailPane extends GridPane {
 			@Override
 			public void handle(ActionEvent event) {
 				quizcontroller.addCategory(titleField.getText(), descriptionField.getText(), (String) categoryField.getValue());
-				quizcontroller.sluitDetailPanel();
+				quizcontroller.closeSecondStage();
 			}
 		});
 		btnCancel.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				quizcontroller.sluitDetailPanel();
+				quizcontroller.closeSecondStage();
 			}
 		});
 	}

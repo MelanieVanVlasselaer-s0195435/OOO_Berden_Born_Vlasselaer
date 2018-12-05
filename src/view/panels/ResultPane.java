@@ -25,7 +25,7 @@ public class ResultPane extends GridPane {
         this.setHgap(5);
 
         questionField = new Label();
-        questionField.setText("Uw resultaat");
+        questionField.setText("Result Page");
         add(questionField, 0, 0, 1, 1);
 
         resultField = new Label();
@@ -37,7 +37,7 @@ public class ResultPane extends GridPane {
         closeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                quizcontroller.sluitDetailPanel();
+                quizcontroller.closeSecondStage();
             }
         });
     }
