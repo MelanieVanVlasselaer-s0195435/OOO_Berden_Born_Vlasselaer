@@ -96,10 +96,6 @@ public class TestPane extends GridPane {
 		}
 
 	}
-	// deze setAnswerAction is niet nodig als we de controller meegeven -TB
-	public void setProcessAnswerAction(EventHandler<ActionEvent> processAnswerAction) {
-		submitButton.setOnAction(processAnswerAction);
-	}
 
 	public List<String> getSelectedStatements() {
 		List<String> selected = new ArrayList<String>();

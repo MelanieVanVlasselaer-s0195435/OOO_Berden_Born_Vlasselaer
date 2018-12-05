@@ -7,10 +7,8 @@ import model.Category;
 import model.ModelFacade;
 import model.Question;
 import view.ViewFacade;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Observable;
+
+import java.util.*;
 
 
 // Moet dit een singleton zijn? -TB
@@ -82,7 +80,9 @@ public class Quizcontroller extends Observable {
         } else {
             LinkedList<String> nextQuestion = new LinkedList<>();
             nextQuestion.add(modelFacade.getQuestions().get(questionIndex).getQuestion());
-            for (String x : modelFacade.getQuestions().get(questionIndex).getStatements()) {
+            ArrayList<String> statements = modelFacade.getQuestions().get(questionIndex).getStatements();
+            Collections.shuffle(statements);
+            for (String x : statements) {
                 nextQuestion.add(x);
             }
             return nextQuestion;
