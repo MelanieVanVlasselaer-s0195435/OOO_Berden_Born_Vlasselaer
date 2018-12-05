@@ -58,9 +58,6 @@ public class TestPane extends GridPane {
 			teller++;
 		}
 
-
-
-
 		submitButton = new Button("Submit");
 		add(submitButton, 0,5,1,1);
 		submitButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -82,7 +79,7 @@ public class TestPane extends GridPane {
 	public void generateNextQuestion(int questionIndex) {
 		if (questionIndex >= quizcontroller.getQuestions().size()) {
 			quizcontroller.sluitDetailPanel();
-			System.out.println(quizcontroller.getResult());
+			quizcontroller.displayResult();
 		}
 		else {
 			nextQuestion = quizcontroller.getNextQuestion(questionIndex);
@@ -96,6 +93,8 @@ public class TestPane extends GridPane {
 		}
 
 	}
+
+	// functie van Fox wordt niet gebruikt? -FB
 
 	public List<String> getSelectedStatements() {
 		List<String> selected = new ArrayList<String>();

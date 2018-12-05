@@ -57,7 +57,7 @@ public class ViewFacade {
     }
     public void toonTestPanel() {
         Group root = new Group();
-        Scene scene = new Scene(root,400,350);
+        Scene scene = new Scene(root,450,350);
         TestPane testPanel = new TestPane(quizcontroller);
         BorderPane border = new BorderPane(testPanel);
         root.getChildren().add(border);
@@ -69,5 +69,15 @@ public class ViewFacade {
 
     public void sluitDetailPanel(){
         secondStage.close();
+    }
+
+    public void showResultPane() {
+        Group root = new Group();
+        Scene scene = new Scene(root,200,200);
+        ResultPane resultpanel = new ResultPane(quizcontroller);
+        BorderPane border = new BorderPane(resultpanel);
+        root.getChildren().add(border);
+        secondStage.setScene(scene);
+        secondStage.show();
     }
 }

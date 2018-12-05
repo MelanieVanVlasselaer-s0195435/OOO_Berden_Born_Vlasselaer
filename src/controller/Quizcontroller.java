@@ -89,4 +89,8 @@ public class Quizcontroller extends Observable {
         }
         return null;
     }
+
+    public void displayResult() {
+        viewFacade.showResultPane();
+    }
 }
