@@ -1,12 +1,11 @@
 package view.panels;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
+import java.util.LinkedList;
 import java.util.List;
 
 import controller.Quizcontroller;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -15,15 +14,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
-import model.Question;
+
 
 public class TestPane extends GridPane {
 	private Label questionField;
 	private Button submitButton;
 	private ToggleGroup radioGroup;
 	private Quizcontroller quizcontroller;
-	private Question question;
 	private ArrayList<RadioButton> radiobuttons;
+	private LinkedList<String> nextQuestion;
 	int questionIndex;
 	private int juisteAntwoorden;
 
@@ -32,7 +31,8 @@ public class TestPane extends GridPane {
 	public TestPane (Quizcontroller quizcontroller){
 		questionIndex = 0;
 		this.quizcontroller = quizcontroller;
-		this.question = quizcontroller.getQuestions().get(questionIndex);
+		nextQuestion = quizcontroller.getNextQuestion(questionIndex);
+
 		radiobuttons = new ArrayList<>();
 		this.setPrefHeight(300);
 		this.setPrefWidth(750);
@@ -42,11 +42,11 @@ public class TestPane extends GridPane {
 		this.setHgap(5);
 
 		questionField = new Label();
-		questionField.setText(question.getQuestion());
+		questionField.setText(nextQuestion.poll());
 		add(questionField, 0, 0, 1, 1);
 
 		radioGroup = new ToggleGroup();
-		for (String x : question.getStatements()) {
+		for (String x : nextQuestion) {
 			RadioButton y = new RadioButton(x);
 			this.radiobuttons.add(y);
 		}
@@ -57,6 +57,8 @@ public class TestPane extends GridPane {
 			add(x, 0, teller);
 			teller++;
 		}
+
+
 
 
 		submitButton = new Button("Submit");
@@ -80,16 +82,14 @@ public class TestPane extends GridPane {
 	public void generateNextQuestion(int questionIndex) {
 		if (questionIndex >= quizcontroller.getQuestions().size()) {
 			quizcontroller.sluitDetailPanel();
-			//tijdelijke code, moet een hashmap met score per categorie teruggeven - TB
-			//quizcontroller.getResult();
 			System.out.println(quizcontroller.getResult());
 		}
 		else {
-			this.question = quizcontroller.getQuestions().get(questionIndex);
-			questionField.setText(question.getQuestion());
+			nextQuestion = quizcontroller.getNextQuestion(questionIndex);
+			questionField.setText(nextQuestion.poll());
 
 			int teller = 0;
-			for (String x : question.getStatements()) {
+			for (String x : nextQuestion) {
 				radiobuttons.get(teller).setText(x);
 				teller++;
 			}

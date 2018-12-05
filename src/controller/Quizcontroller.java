@@ -9,6 +9,7 @@ import model.Question;
 import view.ViewFacade;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Observable;
 
 
@@ -73,5 +74,19 @@ public class Quizcontroller extends Observable {
 
     public String getResult() {
         return modelFacade.getResult();
+    }
+
+    public LinkedList<String> getNextQuestion(int questionIndex) {
+        if (questionIndex >= modelFacade.getQuestions().size()) {
+            System.out.println("error");
+        } else {
+            LinkedList<String> nextQuestion = new LinkedList<>();
+            nextQuestion.add(modelFacade.getQuestions().get(questionIndex).getQuestion());
+            for (String x : modelFacade.getQuestions().get(questionIndex).getStatements()) {
+                nextQuestion.add(x);
+            }
+            return nextQuestion;
+        }
+        return null;
     }
 }
