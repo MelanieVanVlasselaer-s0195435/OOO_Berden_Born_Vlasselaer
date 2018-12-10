@@ -19,7 +19,7 @@ public class Category {
     public Category(String name, String description, String hoofdcategorie) {
         this.setName(name);
         this.setDescription(description);
-        this.hoofdcategorie = hoofdcategorie;
+        this.setHoofdcategorie(hoofdcategorie);
         this.questions =  FXCollections.observableArrayList();
     }
 

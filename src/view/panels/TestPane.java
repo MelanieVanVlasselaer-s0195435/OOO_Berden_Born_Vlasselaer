@@ -59,7 +59,7 @@ public class TestPane extends GridPane {
 		}
 
 		submitButton = new Button("Submit");
-		add(submitButton, 0,5,1,1);
+		add(submitButton, 0,this.getChildren().size(),1,1);
 		submitButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -82,26 +82,26 @@ public class TestPane extends GridPane {
 			quizcontroller.displayResult();
 		}
 		else {
+			this.getChildren().clear();
 			nextQuestion = quizcontroller.getNextQuestion(questionIndex);
 			questionField.setText(nextQuestion.poll());
+			add(questionField, 0, 0);
 
-			int teller = 0;
+			radioGroup = new ToggleGroup();
+			radiobuttons = new ArrayList<>();
 			for (String x : nextQuestion) {
-				radiobuttons.get(teller).setText(x);
+				RadioButton y = new RadioButton(x);
+				this.radiobuttons.add(y);
+			}
+
+			int teller = 1;
+			for (RadioButton x: radiobuttons) {
+				x.setToggleGroup(radioGroup);
+				add(x, 0, teller);
 				teller++;
 			}
+			add(submitButton, 0,this.getChildren().size(),1,1);
 		}
 
 	}
-
-	// functie van Fox wordt niet gebruikt? -FB
-
-	public List<String> getSelectedStatements() {
-		List<String> selected = new ArrayList<String>();
-		if(radioGroup.getSelectedToggle()!=null){
-			selected.add(radioGroup.getSelectedToggle().getUserData().toString());
-		}
-		return selected;
-	}
-
 }

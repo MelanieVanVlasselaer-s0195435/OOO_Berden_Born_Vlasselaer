@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class ModelFacade {
     private Test test;
@@ -46,5 +47,9 @@ public class ModelFacade {
 
     public String getResult() {
         return test.getResult();
+    }
+
+    public LinkedList<String> getNextQuestion(int questionIndex) {
+        return test.getNextQuestion(questionIndex);
     }
 }

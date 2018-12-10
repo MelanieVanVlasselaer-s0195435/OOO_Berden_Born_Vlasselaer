@@ -44,7 +44,6 @@ public class Quizcontroller extends Observable {
     }
 
 
-
     public void toonCategoryDetailPanel(){
         viewFacade.toonCategoryDetailPanel();
     }
@@ -73,21 +72,8 @@ public class Quizcontroller extends Observable {
     }
 
     public LinkedList<String> getNextQuestion(int questionIndex) {
-        if (questionIndex >= modelFacade.getQuestions().size()) {
-            System.out.println("error");
-        } else {
-            LinkedList<String> nextQuestion = new LinkedList<>();
-            nextQuestion.add(modelFacade.getQuestions().get(questionIndex).getQuestion());
-            ArrayList<String> statements = modelFacade.getQuestions().get(questionIndex).getStatements();
-            Collections.shuffle(statements);
-            for (String x : statements) {
-                nextQuestion.add(x);
-            }
-            return nextQuestion;
-        }
-        return null;
+     return modelFacade.getNextQuestion(questionIndex);
     }
-
     public void displayResult() {
         viewFacade.showResultPane();
     }

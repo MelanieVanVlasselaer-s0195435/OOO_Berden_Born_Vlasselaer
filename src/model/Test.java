@@ -3,15 +3,13 @@ package model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 
 public class Test {
     private ObservableList<Category> categories;
     private HashMap<String,Integer> resultaten;
+    private String currentRightAnswer;
 
     public Test() {
         categories = FXCollections.observableArrayList();
@@ -114,7 +112,7 @@ public class Test {
     public void controlAnswer(String antwoord, int questionIndex) {
         Question vraag = getAllQuestions().get(questionIndex);
         String categorie = findCategory(vraag.getQuestion());
-        if (vraag.getStatements().get(0).equals(antwoord)){
+        if (antwoord.equals(currentRightAnswer)){
             if (resultaten.containsKey(categorie)){
                 int currentScoreForCategorie = (int) resultaten.get(categorie);
                 int nieuweScore = currentScoreForCategorie + 1;
@@ -158,6 +156,23 @@ public class Test {
             if (category.getName().equals(name)) {
                 return category;
             }
+        }
+        return null;
+    }
+
+    public LinkedList<String> getNextQuestion(int questionIndex) {
+        if (questionIndex >= this.getAllQuestions().size()) {
+            System.out.println("error");
+        } else {
+            LinkedList<String> nextQuestion = new LinkedList<>();
+            nextQuestion.add(this.getAllQuestions().get(questionIndex).getQuestion());
+            ArrayList<String> statements = this.getAllQuestions().get(questionIndex).getStatements();
+            currentRightAnswer = statements.get(0);
+            Collections.shuffle(statements);
+            for (String x : statements) {
+                nextQuestion.add(x);
+            }
+            return nextQuestion;
         }
         return null;
     }
