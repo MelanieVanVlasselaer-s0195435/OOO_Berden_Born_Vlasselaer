@@ -2,18 +2,22 @@ package model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import model.Evaluation.EvaluationContext;
+import model.Evaluation.Score;
 
 import java.util.*;
 
 
 public class Test {
     private ObservableList<Category> categories;
-    private HashMap<String,Integer> resultaten;
+    //private HashMap<String,Integer> resultaten;
     private String currentRightAnswer;
+    private EvaluationContext evaluationContext;
 
     public Test() {
         categories = FXCollections.observableArrayList();
-        resultaten = new HashMap<>();
+        //resultaten = new HashMap<>();
+        evaluationContext.setEvaluationStrategy(new Score());
     }
 
 
@@ -110,9 +114,12 @@ public class Test {
     }
 
     public void controlAnswer(String antwoord, int questionIndex) {
+
         Question vraag = getAllQuestions().get(questionIndex);
         String categorie = findCategory(vraag.getQuestion());
-        if (antwoord.equals(currentRightAnswer)){
+        if (antwoord.equals(currentRightAnswer)) {
+                evaluationContext.setNextResult(vraag);
+            /*
             if (resultaten.containsKey(categorie)){
                 int currentScoreForCategorie = (int) resultaten.get(categorie);
                 int nieuweScore = currentScoreForCategorie + 1;
@@ -123,12 +130,14 @@ public class Test {
         } else if (!resultaten.containsKey(categorie)) {
                 resultaten.put(categorie,0);
             }
-
+*/
         }
+    }
 
     public String getResult() {
+        return evaluationContext.getEvaluation();
         //moet nog uitgewerkt worden - TB
-        int totaleScore = 0;
+      /*  int totaleScore = 0;
         String categoryScores = "";
         Iterator it = resultaten.entrySet().iterator();
         while (it.hasNext()) {
@@ -138,6 +147,7 @@ public class Test {
             it.remove();
         }
         return "Your score: " + totaleScore + "/" + getAllQuestions().size() +  "\n" + categoryScores;
+        */
     }
 
     public String findCategory(String question){

@@ -43,7 +43,6 @@ public class Quizcontroller extends Observable {
         modelFacade.addQuestion(question,statements,category,feedback);
     }
 
-
     public void toonCategoryDetailPanel(){
         viewFacade.toonCategoryDetailPanel();
     }
@@ -51,6 +50,7 @@ public class Quizcontroller extends Observable {
     public void toonQuestionDetailPanel(){
         viewFacade.toonQuestionDetailPanel();
     }
+
     public void toonTestPanel(){
         viewFacade.toonTestPanel();
     }
@@ -61,7 +61,6 @@ public class Quizcontroller extends Observable {
     public void start(Quizcontroller quizcontroller){
         viewFacade.start(quizcontroller);
     }
-
 
     public void controlAnswer(String antwoord, int questionIndex) {
         modelFacade.controlAnswer(antwoord,questionIndex);
@@ -74,6 +73,7 @@ public class Quizcontroller extends Observable {
     public LinkedList<String> getNextQuestion(int questionIndex) {
      return modelFacade.getNextQuestion(questionIndex);
     }
+
     public void displayResult() {
         viewFacade.showResultPane();
     }

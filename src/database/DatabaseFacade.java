@@ -6,7 +6,6 @@ public class DatabaseFacade {
     DBcontext context = new DBcontext();
 
     public DatabaseFacade(){
-
     }
 
     public ArrayList<String> loadCategorieElementen() {
