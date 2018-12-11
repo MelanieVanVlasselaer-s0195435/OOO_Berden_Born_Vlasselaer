@@ -11,7 +11,7 @@ import java.util.*;
 
 public class Test {
     private ObservableList<Category> categories;
-    //private HashMap<String,Integer> resultaten;
+    private HashMap<String,Integer> resultaten;
     private String currentRightAnswer;
     private EvaluationContext evaluationContext;
     private Question currentQuestion;
@@ -125,10 +125,9 @@ public class Test {
         currentQuestion = getAllQuestions().get(questionIndex);
 
         String categorie = findCategory(currentQuestion.getQuestion());
-        
+
         if (!antwoord.equals(currentRightAnswer)) {
                 evaluationContext.setNextResult();
-
         }
     }
 
@@ -174,6 +173,15 @@ public class Test {
     }
 
     public void setEvaluationStrategy() {
+
+        HashMap<String, int[]> resultaten = new HashMap<>();
+        for (Category x : this.getCategories()) {
+            int[] Array = new int [2];
+            Array[0] =  x.getQuestions().size();
+            Array[1] =  x.getQuestions().size();
+            resultaten.put(x.getName(), Array);
+        }
+        //evaluationContext.setEvaluationStrategy(new Score(this, resultaten));
         evaluationContext.setEvaluationStrategy(new Feedback(this));
     }
 
