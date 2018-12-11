@@ -3,6 +3,7 @@ package model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Evaluation.EvaluationContext;
+import model.Evaluation.Feedback;
 import model.Evaluation.Score;
 
 import java.util.*;
@@ -13,16 +14,20 @@ public class Test {
     //private HashMap<String,Integer> resultaten;
     private String currentRightAnswer;
     private EvaluationContext evaluationContext;
+    private Question currentQuestion;
 
     public Test() {
         categories = FXCollections.observableArrayList();
-        //resultaten = new HashMap<>();
-        evaluationContext.setEvaluationStrategy(new Score());
+        evaluationContext = new EvaluationContext();
     }
 
 
     public ObservableList<Category> getCategories() {
         return categories;
+    }
+
+    public Question getCurrentQuestion() {
+        return currentQuestion;
     }
 
     public ObservableList<Question> getAllQuestions() {
@@ -115,39 +120,16 @@ public class Test {
 
     public void controlAnswer(String antwoord, int questionIndex) {
 
-        Question vraag = getAllQuestions().get(questionIndex);
-        String categorie = findCategory(vraag.getQuestion());
-        if (antwoord.equals(currentRightAnswer)) {
-                evaluationContext.setNextResult(vraag);
-            /*
-            if (resultaten.containsKey(categorie)){
-                int currentScoreForCategorie = (int) resultaten.get(categorie);
-                int nieuweScore = currentScoreForCategorie + 1;
-                resultaten.replace(categorie,nieuweScore);
-            } else {
-                resultaten.put(categorie,1);
-            }
-        } else if (!resultaten.containsKey(categorie)) {
-                resultaten.put(categorie,0);
-            }
-*/
+        currentQuestion = getAllQuestions().get(questionIndex);
+        String categorie = findCategory(currentQuestion.getQuestion());
+        if (!antwoord.equals(currentRightAnswer)) {
+                evaluationContext.setNextResult();
+
         }
     }
 
     public String getResult() {
         return evaluationContext.getEvaluation();
-        //moet nog uitgewerkt worden - TB
-      /*  int totaleScore = 0;
-        String categoryScores = "";
-        Iterator it = resultaten.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            categoryScores += pair.getKey() + ":" + pair.getValue() + "/" + findCategoryObject((String)pair.getKey()).getQuestions().size() + "\n";
-            totaleScore = totaleScore + (int) pair.getValue();
-            it.remove();
-        }
-        return "Your score: " + totaleScore + "/" + getAllQuestions().size() +  "\n" + categoryScores;
-        */
     }
 
     public String findCategory(String question){
@@ -185,5 +167,9 @@ public class Test {
             return nextQuestion;
         }
         return null;
+    }
+
+    public void setEvaluationStrategy() {
+        evaluationContext.setEvaluationStrategy(new Feedback(this));
     }
 }

@@ -1,6 +1,10 @@
 package model.Evaluation;
 
 
+import model.Test;
+
+import java.util.HashMap;
+
 public class EvaluationContext {
     private EvaluationStrategy strat;
 

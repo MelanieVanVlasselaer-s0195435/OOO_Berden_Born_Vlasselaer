@@ -1,18 +1,22 @@
 package model.Evaluation;
 
+import model.Test;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 public class Score implements EvaluationStrategy {
-    private HashMap<String,Integer> resultaten;
-
-    public Score() {
+    private HashMap<String, Integer> resultaten;
+    private Test test;
+    public Score(Test test) {
         resultaten = new HashMap<>();
+        this.test = test;
     }
 
     @Override
     public String getEvaluation() {
+        /*
         int totaleScore = 0;
         String categoryScores = "";
         Iterator it = resultaten.entrySet().iterator();
@@ -23,11 +27,15 @@ public class Score implements EvaluationStrategy {
             it.remove();
         }
         return "Your score: " + totaleScore + "/" + getAllQuestions().size() +  "\n" + categoryScores;
+        */
+        return null;
     }
 
 
     @Override
     public void setNextResult() {
+
+/*
         if (resultaten.containsKey(categorie)){
             int currentScoreForCategorie = (int) resultaten.get(categorie);
             int nieuweScore = currentScoreForCategorie + 1;
@@ -39,5 +47,7 @@ public class Score implements EvaluationStrategy {
      else if (!resultaten.containsKey(categorie)) {
         resultaten.put(categorie,0);
     }
+    }
+    */
     }
 }

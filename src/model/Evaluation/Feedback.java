@@ -1,9 +1,29 @@
 package model.Evaluation;
 
-public class Feedback implements EvaluationStrategy {
 
+import model.Test;
+
+import java.util.ArrayList;
+
+public class Feedback implements EvaluationStrategy {
+    ArrayList<String> feedbacklist;
+    Test test;
+
+    public Feedback (Test test) {
+        feedbacklist = new ArrayList<>();
+        this.test = test;
+    }
     @Override
     public String getEvaluation() {
-        return null;
+        String boodschap = "";
+        for (String x : feedbacklist) {
+            boodschap += x + "\n";
+        }
+        return boodschap;
+    }
+
+    @Override
+    public void setNextResult() {
+        feedbacklist.add(test.getCurrentQuestion().getFeedback());
     }
 }

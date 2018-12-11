@@ -52,4 +52,8 @@ public class ModelFacade {
     public LinkedList<String> getNextQuestion(int questionIndex) {
         return test.getNextQuestion(questionIndex);
     }
+
+    public void setEvaluationStrategy() {
+        test.setEvaluationStrategy();
+    }
 }

@@ -77,4 +77,8 @@ public class Quizcontroller extends Observable {
     public void displayResult() {
         viewFacade.showResultPane();
     }
+
+    public void setEvaluationMethode() {
+        modelFacade.setEvaluationStrategy();
+    }
 }

@@ -29,10 +29,10 @@ public class MessagePane extends GridPane {
         this.setHgap(5);
         
 		testButton = new Button("Evaluate");
-		testButton.setOnAction(new EventHandler<ActionEvent>() { //TODO remove or generalize
-			
+		testButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				quizcontroller.setEvaluationMethode();
 				quizcontroller.toonTestPanel();
 			}
 		});
