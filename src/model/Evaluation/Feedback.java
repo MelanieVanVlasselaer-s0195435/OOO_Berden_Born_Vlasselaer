@@ -25,5 +25,6 @@ public class Feedback implements EvaluationStrategy {
     @Override
     public void setNextResult() {
         feedbacklist.add(test.getCurrentQuestion().getFeedback());
+        //System.out.println(test.getCurrentRightAnswer());
     }
 }

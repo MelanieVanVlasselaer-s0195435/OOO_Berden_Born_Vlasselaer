@@ -29,6 +29,9 @@ public class Test {
     public Question getCurrentQuestion() {
         return currentQuestion;
     }
+    public String getCurrentRightAnswer() {
+        return currentRightAnswer;
+    }
 
     public ObservableList<Question> getAllQuestions() {
         ObservableList<Question> questions = FXCollections.observableArrayList();
@@ -119,17 +122,14 @@ public class Test {
     }
 
     public void controlAnswer(String antwoord, int questionIndex) {
-
         currentQuestion = getAllQuestions().get(questionIndex);
+
         String categorie = findCategory(currentQuestion.getQuestion());
+        
         if (!antwoord.equals(currentRightAnswer)) {
                 evaluationContext.setNextResult();
 
         }
-    }
-
-    public String getResult() {
-        return evaluationContext.getEvaluation();
     }
 
     public String findCategory(String question){
@@ -160,8 +160,12 @@ public class Test {
             nextQuestion.add(this.getAllQuestions().get(questionIndex).getQuestion());
             ArrayList<String> statements = this.getAllQuestions().get(questionIndex).getStatements();
             currentRightAnswer = statements.get(0);
-            Collections.shuffle(statements);
+            ArrayList<String> shuffledList = new ArrayList<>();
             for (String x : statements) {
+                shuffledList.add(x);
+            }
+            Collections.shuffle(shuffledList);
+            for (String x : shuffledList) {
                 nextQuestion.add(x);
             }
             return nextQuestion;
@@ -172,4 +176,9 @@ public class Test {
     public void setEvaluationStrategy() {
         evaluationContext.setEvaluationStrategy(new Feedback(this));
     }
+
+    public String getResult() {
+        return evaluationContext.getEvaluation();
+    }
+
 }
