@@ -4,6 +4,7 @@ import model.Category;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -44,7 +45,17 @@ public class CategoryText extends TxtDBStrategy {
         return categorieElementen;
     }
 
-    public void save () {
+    public void save (ArrayList<String> categorieElementen) {
+        File testFile  = new File("testDatabase\\TestList.txt");
+        try {
+            PrintWriter writer = new PrintWriter(testFile);
+            for(int i = 0; i<categorieElementen.size()-2; i =i+3){
+                writer.println (categorieElementen.get(i) + "/" + categorieElementen.get(i+1) + "/" + categorieElementen.get(i+2));
+            }
+            writer.close ();
+        } catch (FileNotFoundException ex) {
+            throw new RuntimeException("Fout bij het wegschrijven", ex);
+        }
 
     }
 

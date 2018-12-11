@@ -19,8 +19,8 @@ public class DBcontext {
         return strat.load();
     }
 
-    public void save() {
-        strat.save();
+    public void save(ArrayList<String> categorieElementen) {
+        strat.save(categorieElementen);
     }
 
 }

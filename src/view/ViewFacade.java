@@ -15,6 +15,7 @@ public class ViewFacade {
     public void start(Quizcontroller quizcontroller){
         this.quizcontroller = quizcontroller;
         try {
+            InfoPanel infoPanel = new InfoPanel(quizcontroller);
             QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(quizcontroller);
             CategoryOverviewPane categoryOverviewPanel = new CategoryOverviewPane(quizcontroller);
             MessagePane messagePane = new MessagePane(quizcontroller);
@@ -22,7 +23,7 @@ public class ViewFacade {
             Group root = new Group();
             Scene scene = new Scene(root, 750, 400);
 
-            BorderPane borderPane = new AssesMainPane(messagePane, categoryOverviewPanel, questionOverviewPane);
+            BorderPane borderPane = new AssesMainPane(infoPanel,messagePane, categoryOverviewPanel, questionOverviewPane);
             borderPane.prefHeightProperty().bind(scene.heightProperty());
             borderPane.prefWidthProperty().bind(scene.widthProperty());
 

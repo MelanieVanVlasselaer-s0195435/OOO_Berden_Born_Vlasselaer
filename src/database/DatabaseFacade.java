@@ -17,4 +17,9 @@ public class DatabaseFacade {
         context.setDBStrategy(new QuestionText());
         return context.load();
     }
+
+    public void saveCategories(ArrayList<String> categoryElements) {
+        context.setDBStrategy(new CategoryText());
+        context.save(categoryElements);
+    }
 }

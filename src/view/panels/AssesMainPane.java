@@ -13,17 +13,20 @@ public class AssesMainPane extends BorderPane {
 
 
 
-	public AssesMainPane(Pane messagePane, Pane categoryOverviewPanel, Pane questionOverviewPanel){
+	public AssesMainPane(Pane infoPanel,Pane messagePane, Pane categoryOverviewPanel, Pane questionOverviewPanel){
 	    TabPane tabPane = new TabPane();
 	    
 	    FlowPane messageBox = new FlowPane(messagePane);
         	messageBox.setAlignment(Pos.CENTER);
+        //niet tab voor info + selecties te maken + af te sluiten
+        Tab infoTab = new Tab("Info",infoPanel);
         Tab testTab = new Tab("Test", messageBox);
         Tab categoriesTab = new Tab("Categories", categoryOverviewPanel);
         Tab questionsTab = new Tab("Questions", questionOverviewPanel);
         tabPane.getTabs().add(testTab);
         tabPane.getTabs().add(categoriesTab);
         tabPane.getTabs().add(questionsTab);
+        tabPane.getTabs().add(infoTab);
 
 	    this.setCenter(tabPane);
 	}

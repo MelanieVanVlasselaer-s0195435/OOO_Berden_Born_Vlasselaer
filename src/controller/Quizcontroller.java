@@ -81,4 +81,10 @@ public class Quizcontroller extends Observable {
     public void setEvaluationMethode() {
         modelFacade.setEvaluationStrategy();
     }
+
+    public void writeCategories() {
+        ArrayList<String> categoryElements = modelFacade.getCategoryElements();
+        databaseFacade.saveCategories(categoryElements);
+
+    }
 }

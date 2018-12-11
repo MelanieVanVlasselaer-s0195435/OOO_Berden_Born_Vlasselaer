@@ -189,4 +189,13 @@ public class Test {
         return evaluationContext.getEvaluation();
     }
 
+    public ArrayList<String> getCategoryElements() {
+        ArrayList <String> categorieElements = new ArrayList<>();
+        for(Category x: categories){
+            categorieElements.add(x.getName());
+            categorieElements.add(x.getDescription());
+            categorieElements.add(x.getHoofdcategorie());
+        }
+        return categorieElements;
+    }
 }
