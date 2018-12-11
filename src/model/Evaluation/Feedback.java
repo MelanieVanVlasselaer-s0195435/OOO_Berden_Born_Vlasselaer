@@ -6,25 +6,33 @@ import model.Test;
 import java.util.ArrayList;
 
 public class Feedback implements EvaluationStrategy {
-    ArrayList<String> feedbacklist;
-    Test test;
+    private ArrayList<String> feedbacklist;
+    private Test test;
+    private Boolean noFaults;
 
     public Feedback (Test test) {
         feedbacklist = new ArrayList<>();
         this.test = test;
+        noFaults = false;
     }
     @Override
     public String getEvaluation() {
         String boodschap = "";
-        for (String x : feedbacklist) {
-            boodschap += x + "\n";
+        if (noFaults) {
+            for (String x : feedbacklist) {
+                boodschap += x + "\n";
+            }
+            return boodschap;
         }
-        return boodschap;
+        else {
+            boodschap = "Schitterend! Alles perfect!";
+            return boodschap;
+        }
     }
 
     @Override
     public void setNextResult() {
+        noFaults = true;
         feedbacklist.add(test.getCurrentQuestion().getFeedback());
-        //System.out.println(test.getCurrentRightAnswer());
     }
 }
