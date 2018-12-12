@@ -10,5 +10,5 @@ public abstract class TxtDBStrategy implements DBStrategy {
     //-TB
     public abstract ArrayList load();
 
-    public abstract void save(ArrayList<String> categorieElementen);
+    public abstract void save(ArrayList<String> elementen);
 }

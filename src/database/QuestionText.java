@@ -41,7 +41,7 @@ public class QuestionText extends TxtDBStrategy {
 
 
     @Override
-    public void save(ArrayList<String> categorieElementen) {
+    public void save(ArrayList<String> elementen) {
 
     }
     //abstracte klassen implementeren

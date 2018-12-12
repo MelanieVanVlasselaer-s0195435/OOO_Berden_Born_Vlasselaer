@@ -18,8 +18,15 @@ public class DatabaseFacade {
         return context.load();
     }
 
+    public ArrayList<String> setPropertyStrategy() {
+        context.setDBStrategy(new PropertyStrategy());
+        return context.load();
+    }
+
     public void saveCategories(ArrayList<String> categoryElements) {
         context.setDBStrategy(new CategoryText());
         context.save(categoryElements);
     }
+
+
 }
