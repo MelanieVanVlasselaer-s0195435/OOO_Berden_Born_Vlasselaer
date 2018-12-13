@@ -26,7 +26,6 @@ public class CategoryText extends TxtDBStrategy {
     //abstracte klassen implementeren
 
     public ArrayList<String> load () {
-
         try {
             Scanner scannerFile = new Scanner(categoryFile);
             while (scannerFile.hasNextLine()) {
@@ -46,9 +45,8 @@ public class CategoryText extends TxtDBStrategy {
     }
 
     public void save (ArrayList<String> categorieElementen) {
-        File testFile  = new File("testDatabase\\TestList.txt");
         try {
-            PrintWriter writer = new PrintWriter(testFile);
+            PrintWriter writer = new PrintWriter(categoryFile);
             for(int i = 0; i<categorieElementen.size()-2; i =i+3){
                 writer.println (categorieElementen.get(i) + "/" + categorieElementen.get(i+1) + "/" + categorieElementen.get(i+2));
             }

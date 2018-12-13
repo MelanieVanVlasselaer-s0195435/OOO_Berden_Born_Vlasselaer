@@ -60,4 +60,6 @@ public class ModelFacade {
     public ArrayList<String> getCategoryElements() {
         return test.getCategoryElements();
     }
+
+    public ArrayList<String> getQuestionElements() {return test.getQuestionElements(); }
 }

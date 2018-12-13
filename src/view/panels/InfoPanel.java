@@ -32,6 +32,7 @@ public class InfoPanel extends GridPane {
             @Override
             public void handle(ActionEvent event) {
                 quizcontroller.writeCategories();
+                quizcontroller.writeQuestions();
                 System.exit(0);
             }
         });

@@ -29,4 +29,8 @@ public class DatabaseFacade {
     }
 
 
+    public void saveQuestions(ArrayList<String> questionElements) {
+        context.setDBStrategy(new QuestionText());
+        context.save(questionElements);
+    }
 }

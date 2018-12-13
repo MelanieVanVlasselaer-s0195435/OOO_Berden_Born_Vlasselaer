@@ -86,6 +86,10 @@ public class Quizcontroller extends Observable {
     public void writeCategories() {
         ArrayList<String> categoryElements = modelFacade.getCategoryElements();
         databaseFacade.saveCategories(categoryElements);
+    }
 
+    public void writeQuestions() {
+        ArrayList<String> questionElements = modelFacade.getQuestionElements();
+        databaseFacade.saveQuestions(questionElements);
     }
 }
