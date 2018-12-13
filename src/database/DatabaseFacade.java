@@ -29,4 +29,13 @@ public class DatabaseFacade {
     }
 
 
+    public void saveScore(ArrayList<String> score) {
+        context.setDBStrategy(new ScoreStrategy());
+        context.save(score);
+    }
+
+    public ArrayList<String> loadPreviousScore() {
+        context.setDBStrategy(new ScoreStrategy());
+        return context.load();
+    }
 }

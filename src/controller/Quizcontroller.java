@@ -25,6 +25,7 @@ public class Quizcontroller extends Observable {
     public Quizcontroller(){
         modelFacade.makeCategories(databaseFacade.loadCategorieElementen());
         modelFacade.makeQuestions(databaseFacade.loadQuestionElementen());
+        modelFacade.setPreviousScore(databaseFacade.loadPreviousScore());
     }
 
     public ObservableList<Category> getCategories(){
@@ -66,7 +67,7 @@ public class Quizcontroller extends Observable {
         modelFacade.controlAnswer(antwoord,questionIndex);
     }
 
-    public String getResult() {
+    public ArrayList<String> getResult() {
         return modelFacade.getResult();
     }
 
@@ -87,5 +88,13 @@ public class Quizcontroller extends Observable {
         ArrayList<String> categoryElements = modelFacade.getCategoryElements();
         databaseFacade.saveCategories(categoryElements);
 
+    }
+
+    public void writeScore(ArrayList<String> score) {
+        databaseFacade.saveScore(score);
+    }
+
+    public ArrayList<String> getPreviousScore() {
+        return modelFacade.getPreviousScore();
     }
 }

@@ -3,6 +3,7 @@ package model.Evaluation;
 import model.Test;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -16,31 +17,28 @@ public class Score implements EvaluationStrategy {
         this.resultaten = resultaten;
         this.test = test;
         noFaults = false;
-
     }
 
     @Override
-    public String getEvaluation() {
-        String eindboodschap = "";
+    public ArrayList<String> getEvaluation() {
+        ArrayList<String> score = new ArrayList<>();
         if (noFaults) {
             Iterator i = resultaten.entrySet().iterator();
             int totaal = 0;
             int eigenresultaat = 0;
-            String boodschap = "";
             while (i.hasNext()) {
                 Map.Entry pair = (Map.Entry) i.next();
                 int[] array = (int[]) pair.getValue();
-                boodschap += pair.getKey() + ": " + array[0] + "/" + array[1] + "\n";
+                score.add(pair.getKey() + ": " + array[0] + "/" + array[1]);
                 totaal += array[1];
                 eigenresultaat += array[0];
             }
-            eindboodschap += "Your score: " + eigenresultaat + "/" + totaal + "\n";
-            eindboodschap += boodschap;
-            return eindboodschap;
+            score.add(0,"Your score: " + eigenresultaat + "/" + totaal);
+            return score;
         }
         else {
-            eindboodschap = "Schitterend! Alles perfect";
-            return eindboodschap;
+            score.add("schitterend! Alles perfect");
+            return score;
         }
         }
 

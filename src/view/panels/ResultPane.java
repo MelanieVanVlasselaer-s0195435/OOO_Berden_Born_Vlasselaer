@@ -9,14 +9,18 @@ import javafx.scene.control.Label;
 
 import javafx.scene.layout.GridPane;
 
+import java.util.ArrayList;
+
 public class ResultPane extends GridPane {
     private Label questionField;
     private Label resultField;
     private Button closeButton;
     private Quizcontroller quizcontroller;
+    private ArrayList<String> score;
 
     public ResultPane(Quizcontroller quizcontroller) {
         this.quizcontroller = quizcontroller;
+        this.score = quizcontroller.getResult();
         this.setPrefHeight(300);
         this.setPrefWidth(750);
 
@@ -25,11 +29,15 @@ public class ResultPane extends GridPane {
         this.setHgap(5);
 
         questionField = new Label();
-        questionField.setText("Result Page");
+        questionField.setText("Your results");
         add(questionField, 0, 0, 1, 1);
 
         resultField = new Label();
-        resultField.setText(quizcontroller.getResult());
+        String boodschap = "";
+        for (String x : score) {
+            boodschap+= x + "\n";
+        }
+        resultField.setText(boodschap);
         add(resultField, 0, 1, 1, 1);
 
         closeButton = new Button("Close");
@@ -37,6 +45,7 @@ public class ResultPane extends GridPane {
         closeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                quizcontroller.writeScore(score);
                 quizcontroller.closeSecondStage();
             }
         });

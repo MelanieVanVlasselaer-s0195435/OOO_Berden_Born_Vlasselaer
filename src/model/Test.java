@@ -15,6 +15,7 @@ public class Test {
     private String currentRightAnswer;
     private EvaluationContext evaluationContext;
     private Question currentQuestion;
+    private ArrayList<String> previousScore;
 
     public Test() {
         categories = FXCollections.observableArrayList();
@@ -190,7 +191,7 @@ public class Test {
         }
     }
 
-    public String getResult() {
+    public ArrayList<String> getResult() {
         return evaluationContext.getEvaluation();
     }
 
@@ -202,5 +203,11 @@ public class Test {
             categorieElements.add(x.getHoofdcategorie());
         }
         return categorieElements;
+    }
+    public void setPreviousScore(ArrayList<String> previousScore) {
+        this.previousScore = previousScore;
+    }
+    public ArrayList<String> getPreviousScore() {
+        return previousScore;
     }
 }

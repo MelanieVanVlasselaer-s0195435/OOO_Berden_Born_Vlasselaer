@@ -2,6 +2,7 @@ package database;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,15 +23,11 @@ public class ScoreStrategy implements  DBStrategy {
             Scanner scannerFile = new Scanner(scoreFile);
             while (scannerFile.hasNextLine()) {
                 Scanner scannerLijn = new Scanner(scannerFile.nextLine());
-                scannerLijn.useDelimiter("/");
-                String question = scannerLijn.next();
-                scoreList.add(question);
-                String category = scannerLijn.next();
-                scoreList.add(category);
-                String feedback = scannerLijn.next();
-                scoreList.add(feedback);
-                String statemants = scannerLijn.next();
-                scoreList.add(statemants);
+                scannerLijn.useDelimiter("///");
+                String x = scannerLijn.next();
+
+                scoreList.add(x);
+
             }
         } catch (FileNotFoundException ex) {
             throw new RuntimeException("Fout bij het inlezen", ex);
@@ -40,6 +37,14 @@ public class ScoreStrategy implements  DBStrategy {
 
     @Override
     public void save(ArrayList<String> elementen) {
-        
+        try {
+            PrintWriter writer = new PrintWriter(scoreFile);
+            for (String x: elementen) {
+                writer.println(x);
+            }
+            writer.close ();
+        } catch (FileNotFoundException ex) {
+            throw new RuntimeException("Fout bij het wegschrijven", ex);
+        }
     }
 }

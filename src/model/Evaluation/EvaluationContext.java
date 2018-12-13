@@ -3,6 +3,7 @@ package model.Evaluation;
 
 import model.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class EvaluationContext {
@@ -16,7 +17,7 @@ public class EvaluationContext {
             strat = x;
         }
     }
-    public String getEvaluation() {
+    public ArrayList<String> getEvaluation() {
         return strat.getEvaluation();
     }
 

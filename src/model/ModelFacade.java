@@ -45,7 +45,7 @@ public class ModelFacade {
         test.controlAnswer(antwoord,questionIndex);
     }
 
-    public String getResult() {
+    public ArrayList<String> getResult() {
         return test.getResult();
     }
 
@@ -59,5 +59,12 @@ public class ModelFacade {
 
     public ArrayList<String> getCategoryElements() {
         return test.getCategoryElements();
+    }
+
+    public ArrayList<String> getPreviousScore() {
+        return test.getPreviousScore();
+    }
+    public void setPreviousScore(ArrayList<String> previousScore) {
+        test.setPreviousScore(previousScore);
     }
 }

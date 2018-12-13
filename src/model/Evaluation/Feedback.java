@@ -16,17 +16,15 @@ public class Feedback implements EvaluationStrategy {
         noFaults = false;
     }
     @Override
-    public String getEvaluation() {
+    public ArrayList getEvaluation() {
         String boodschap = "";
         if (noFaults) {
-            for (String x : feedbacklist) {
-                boodschap += x + "\n";
-            }
-            return boodschap;
+           return feedbacklist;
         }
         else {
-            boodschap = "Schitterend! Alles perfect!";
-            return boodschap;
+            feedbacklist = new ArrayList<>();
+            feedbacklist.add("schitterend! Alles perfect");
+            return feedbacklist;
         }
     }
 
