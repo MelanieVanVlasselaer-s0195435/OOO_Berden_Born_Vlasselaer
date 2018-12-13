@@ -2,6 +2,7 @@ package database;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -41,7 +42,16 @@ public class QuestionText extends TxtDBStrategy {
 
 
     @Override
-    public void save(ArrayList<String> elementen) {
+    public void save(ArrayList<String> questionElements) {
+        try {
+            PrintWriter writer = new PrintWriter(questionFile);
+            for(int i = 0; i<questionElements.size()-3; i =i+4){
+                writer.println (questionElements.get(i) + "/" + questionElements.get(i+1) + "/" + questionElements.get(i+2) + "/" + questionElements.get(i+3));
+            }
+            writer.close ();
+        } catch (FileNotFoundException ex) {
+            throw new RuntimeException("Fout bij het wegschrijven", ex);
+        }
 
     }
     //abstracte klassen implementeren

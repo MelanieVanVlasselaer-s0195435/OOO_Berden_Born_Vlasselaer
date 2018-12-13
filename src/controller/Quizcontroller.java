@@ -97,4 +97,9 @@ public class Quizcontroller extends Observable {
     public ArrayList<String> getPreviousScore() {
         return modelFacade.getPreviousScore();
     }
+
+    public void writeQuestions() {
+        ArrayList<String> questionElements = modelFacade.getQuestionElements();
+        databaseFacade.saveQuestions(questionElements);
+    }
 }

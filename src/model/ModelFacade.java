@@ -67,4 +67,7 @@ public class ModelFacade {
     public void setPreviousScore(ArrayList<String> previousScore) {
         test.setPreviousScore(previousScore);
     }
+
+    public ArrayList<String> getQuestionElements() {return test.getQuestionElements();
+    }
 }

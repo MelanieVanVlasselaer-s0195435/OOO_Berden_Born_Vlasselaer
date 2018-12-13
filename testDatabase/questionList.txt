@@ -1,2 +1,3 @@
-welk patroon definieert een familie van algoritmes , kapselt ze in en maakt ze verwisselbaar?/design patterns/beter studeren!/juist strategy facade observer state
-welk ontwerp-principe is het minst van toepassing op het strategy patroon?/design principles/volgende keer beter/juist fout fout fout
+welk ontwerp-principe is het minst van toepassing op het strategy patroon?/design principles/volgende keer beter/juist fout fout fout 
+welk patroon definieert een familie van algoritmes , kapselt ze in en maakt ze verwisselbaar?/design patterns/beter studeren!/juist strategy facade observer state 
+Werkt deze vraag-wegschrijf-functie?/uml/Well Crap!/ja nee nee nee 

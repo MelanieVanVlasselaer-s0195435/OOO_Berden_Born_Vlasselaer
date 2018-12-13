@@ -210,4 +210,22 @@ public class Test {
     public ArrayList<String> getPreviousScore() {
         return previousScore;
     }
+
+    public ArrayList<String> getQuestionElements() {
+        ArrayList <String> questionElements = new ArrayList<>();
+        for(Category x: categories){
+            List<Question> questions = x.getQuestions();
+            for (Question y: questions){
+                questionElements.add(y.getQuestion());
+                questionElements.add(x.getName());
+                questionElements.add(y.getFeedback());
+                String statements = "";
+                for (String z : y.getStatements() ){
+                    statements += z + " ";
+                }
+                questionElements.add(statements);
+            }
+        }
+        return questionElements;
+    }
 }

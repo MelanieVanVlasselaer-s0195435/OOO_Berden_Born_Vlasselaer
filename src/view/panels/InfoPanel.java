@@ -32,6 +32,8 @@ public class InfoPanel extends GridPane {
         this.setVgap(5);
         this.setHgap(5);
         questionField = new Label();
+
+        //Deze code hier plaatsen is toch niet MVC? - TB
         previousValue = quizcontroller.getPreviousScore();
         String txt = " ";
         for (String x: previousValue) {
@@ -50,6 +52,7 @@ public class InfoPanel extends GridPane {
             @Override
             public void handle(ActionEvent event) {
                 quizcontroller.writeCategories();
+                quizcontroller.writeQuestions();
                 System.exit(0);
             }
         });

@@ -38,4 +38,9 @@ public class DatabaseFacade {
         context.setDBStrategy(new ScoreStrategy());
         return context.load();
     }
+
+    public void saveQuestions(ArrayList<String> questionElements) {
+        context.setDBStrategy(new QuestionText());
+        context.save(questionElements);
+    }
 }
