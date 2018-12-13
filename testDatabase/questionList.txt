@@ -1,3 +1,5 @@
 welk ontwerp-principe is het minst van toepassing op het strategy patroon?/design principles/volgende keer beter/juist fout fout fout 
 welk patroon definieert een familie van algoritmes , kapselt ze in en maakt ze verwisselbaar?/design patterns/beter studeren!/juist strategy facade observer state 
 Werkt deze vraag-wegschrijf-functie?/uml/Well Crap!/ja nee nee nee 
+Werkt de vraag toevoeg weer?/test/hopelijk volgende keer wel!/ja nee nope nadda 
+Is OOO leuk?/test/programeren ja! theorie al wat minder/hangt ervan af altijd nooit 

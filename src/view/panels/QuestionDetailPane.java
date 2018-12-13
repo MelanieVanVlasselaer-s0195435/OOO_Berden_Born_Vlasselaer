@@ -87,7 +87,7 @@ public class QuestionDetailPane extends GridPane {
 			//String question, ArrayList<String> statements, String category, String feedback)
 			@Override
 			public void handle(ActionEvent event) {
-				quizcontroller.addQuestion(questionField.getText(), statements, (String) categoryField.getValue(), feedbackField.getText());
+				quizcontroller.addQuestion(questionField.getText(), statements, (String) categoryField.getValue().toString(), feedbackField.getText());
 				quizcontroller.closeSecondStage();
 			}
 		});
