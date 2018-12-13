@@ -11,15 +11,9 @@ public class PropertyStrategy implements DBStrategy {
     @Override
     public ArrayList load() {
         try {
-
-
             InputStream input = new FileInputStream("testDatabase/evalution.properties");
-
             prop.load(input);
-
             elementen.add(prop.getProperty("evaluation.mode"));
-
-
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
@@ -36,6 +30,7 @@ public class PropertyStrategy implements DBStrategy {
 
     @Override
     public void save(ArrayList<String> elementen) {
+
 
     }
 }

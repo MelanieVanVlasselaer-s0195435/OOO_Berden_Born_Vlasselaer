@@ -6,14 +6,12 @@ import java.util.ArrayList;
 public class Question {
     private String question;
     private ArrayList<String> statements;
-    private String category;
     private String feedback;
 
     public Question (String question, ArrayList<String> statements, String feedback ) {
         setQuestion(question);
         setStatements(statements);
         setFeedback(feedback);
-
     }
 
     //getters
@@ -50,7 +48,7 @@ public class Question {
 
     @Override
     public String toString() {
-        return  question + " " + category + " " + statements + " " + feedback;
+        return  question + " " + statements + " " + feedback;
     }
 
     @Override

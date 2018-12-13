@@ -173,7 +173,7 @@ public class Test {
     }
 
     public void setEvaluationStrategy(ArrayList<String> list) {
-
+        //array aanmaken die voor elke categorie standaard 10/10 geeft (de 10 is gelijk aan het aantal vragen dat een categorie heeft)
         HashMap<String, int[]> resultaten = new HashMap<>();
         for (Category x : this.getCategories()) {
             int[] Array = new int [2];
