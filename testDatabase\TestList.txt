@@ -1,0 +1,4 @@
+design principles/the solid design principles/null
+design patterns/design patterns discussed this year/null
+java/java extras/null
+uml/technique of drawing a class diagram/null
