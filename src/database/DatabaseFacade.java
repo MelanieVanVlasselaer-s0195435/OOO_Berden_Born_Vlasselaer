@@ -18,7 +18,7 @@ public class DatabaseFacade {
         return context.load();
     }
 
-    public ArrayList<String> setPropertyStrategy() {
+    public ArrayList<String> loadEvalutionStrategy() {
         context.setDBStrategy(new PropertyStrategy());
         return context.load();
     }

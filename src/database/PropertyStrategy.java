@@ -7,17 +7,17 @@ import java.util.Properties;
 public class PropertyStrategy implements DBStrategy {
     Properties prop = new Properties();
     InputStream input = null;
-
+    ArrayList <String> elementen = new ArrayList<>();
     @Override
     public ArrayList load() {
         try {
 
-            //input = new FileInputStream("bsldkfjevaluation.properties");
+
             InputStream input = new FileInputStream("testDatabase/evalution.properties");
 
             prop.load(input);
 
-            System.out.println(prop.getProperty("evaluation.mode"));
+            elementen.add(prop.getProperty("evaluation.mode"));
 
 
         } catch (IOException ex) {
@@ -31,7 +31,7 @@ public class PropertyStrategy implements DBStrategy {
                 }
             }
         }
-        return null;
+        return elementen;
     }
 
     @Override

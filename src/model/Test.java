@@ -172,7 +172,7 @@ public class Test {
         return null;
     }
 
-    public void setEvaluationStrategy() {
+    public void setEvaluationStrategy(ArrayList<String> list) {
 
         HashMap<String, int[]> resultaten = new HashMap<>();
         for (Category x : this.getCategories()) {
@@ -181,8 +181,13 @@ public class Test {
             Array[1] =  x.getQuestions().size();
             resultaten.put(x.getName(), Array);
         }
-        //evaluationContext.setEvaluationStrategy(new Score(this, resultaten));
-        evaluationContext.setEvaluationStrategy(new Feedback(this));
+
+        if (list.get(0).equals("score")) {
+            evaluationContext.setEvaluationStrategy(new Score(this, resultaten));
+        }
+        else {
+            evaluationContext.setEvaluationStrategy(new Feedback(this));
+        }
     }
 
     public String getResult() {

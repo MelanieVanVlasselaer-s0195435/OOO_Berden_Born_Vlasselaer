@@ -25,7 +25,6 @@ public class Quizcontroller extends Observable {
     public Quizcontroller(){
         modelFacade.makeCategories(databaseFacade.loadCategorieElementen());
         modelFacade.makeQuestions(databaseFacade.loadQuestionElementen());
-        databaseFacade.setPropertyStrategy();
     }
 
     public ObservableList<Category> getCategories(){
@@ -80,7 +79,8 @@ public class Quizcontroller extends Observable {
     }
 
     public void setEvaluationMethode() {
-        modelFacade.setEvaluationStrategy();
+
+        modelFacade.setEvaluationStrategy(databaseFacade.loadEvalutionStrategy());
     }
 
     public void writeCategories() {

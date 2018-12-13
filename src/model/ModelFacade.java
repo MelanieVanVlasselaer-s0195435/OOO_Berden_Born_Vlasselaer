@@ -53,8 +53,8 @@ public class ModelFacade {
         return test.getNextQuestion(questionIndex);
     }
 
-    public void setEvaluationStrategy() {
-        test.setEvaluationStrategy();
+    public void setEvaluationStrategy(ArrayList<String> list) {
+        test.setEvaluationStrategy(list);
     }
 
     public ArrayList<String> getCategoryElements() {
