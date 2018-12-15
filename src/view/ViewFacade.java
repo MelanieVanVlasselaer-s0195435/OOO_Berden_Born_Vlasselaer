@@ -47,6 +47,18 @@ public class ViewFacade {
         secondStage.show();
     }
 
+    // Pane voor wijzigen van een Categorie
+
+    public void toonCategoryEditPanel(String name, String description, String mainCategory) {
+        Group root = new Group();
+        Scene scene = new Scene(root, 300, 150);
+        EditCategoryPane editPane = new EditCategoryPane(quizcontroller, name, description, mainCategory);
+        BorderPane border = new BorderPane(editPane);
+        root.getChildren().add(border);
+        secondStage.setScene(scene);
+        secondStage.show();
+    }
+
     public void toonQuestionDetailPanel() {
         Group root = new Group();
         Scene scene = new Scene(root,400,350);

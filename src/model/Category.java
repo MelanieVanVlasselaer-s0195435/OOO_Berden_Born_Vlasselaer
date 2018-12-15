@@ -22,12 +22,12 @@ public class Category {
         this.setHoofdcategorie(hoofdcategorie);
         this.questions =  FXCollections.observableArrayList();
     }
-
-    private void setName(String name) {
+    // SETTERS PUBLIC GEMAAKT, WEET NIET OF DIT MOCHT / MAG ??? -MVV
+    public void setName(String name) {
         this.name = name;
     }
 
-    private void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

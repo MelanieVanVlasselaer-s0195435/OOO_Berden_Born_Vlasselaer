@@ -11,7 +11,7 @@ import java.util.*;
 
 public class Test {
     private ObservableList<Category> categories;
-    private HashMap<String,Integer> resultaten;
+    private HashMap<String, Integer> resultaten;
     private String currentRightAnswer;
     private EvaluationContext evaluationContext;
     private Question currentQuestion;
@@ -30,6 +30,7 @@ public class Test {
     public Question getCurrentQuestion() {
         return currentQuestion;
     }
+
     public String getCurrentRightAnswer() {
         return currentRightAnswer;
     }
@@ -44,6 +45,20 @@ public class Test {
         }
         return questions;
 
+    }
+
+    public void editCategory(String oldName, String name, String description, String mainCategory) {
+        int index = 0;
+
+        for (Category x : categories) {
+            if (x.getName().equals(oldName)) {
+                Category category = new Category(name, description, mainCategory);
+                categories.set(index, category);
+                break;
+            }
+
+            index++;
+        }
     }
 
     public void addCategory(Category category) {
@@ -128,14 +143,14 @@ public class Test {
         String categorie = findCategory(currentQuestion.getQuestion());
 
         if (!antwoord.equals(currentRightAnswer)) {
-                evaluationContext.setNextResult();
+            evaluationContext.setNextResult();
         }
     }
 
-    public String findCategory(String question){
-        for (Category category: categories){
-            for(Question questionObject : category.getQuestions()){
-                if (questionObject.getQuestion().equals(question)){
+    public String findCategory(String question) {
+        for (Category category : categories) {
+            for (Question questionObject : category.getQuestions()) {
+                if (questionObject.getQuestion().equals(question)) {
                     return category.getName();
                 }
             }
@@ -144,7 +159,7 @@ public class Test {
     }
 
     public Category findCategoryObject(String name) {
-        for (Category category: categories) {
+        for (Category category : categories) {
             if (category.getName().equals(name)) {
                 return category;
             }
@@ -177,16 +192,15 @@ public class Test {
         //array aanmaken die voor elke categorie standaard 10/10 geeft (de 10 is gelijk aan het aantal vragen dat een categorie heeft) -FB
         HashMap<String, int[]> resultaten = new HashMap<>();
         for (Category x : this.getCategories()) {
-            int[] Array = new int [2];
-            Array[0] =  x.getQuestions().size();
-            Array[1] =  x.getQuestions().size();
+            int[] Array = new int[2];
+            Array[0] = x.getQuestions().size();
+            Array[1] = x.getQuestions().size();
             resultaten.put(x.getName(), Array);
         }
 
         if (list.get(0).equals("SCORE")) {
             evaluationContext.setEvaluationStrategy(new Score(this, resultaten));
-        }
-        else {
+        } else {
             evaluationContext.setEvaluationStrategy(new Feedback(this));
         }
     }
@@ -196,31 +210,33 @@ public class Test {
     }
 
     public ArrayList<String> getCategoryElements() {
-        ArrayList <String> categorieElements = new ArrayList<>();
-        for(Category x: categories){
+        ArrayList<String> categorieElements = new ArrayList<>();
+        for (Category x : categories) {
             categorieElements.add(x.getName());
             categorieElements.add(x.getDescription());
             categorieElements.add(x.getHoofdcategorie());
         }
         return categorieElements;
     }
+
     public void setPreviousScore(ArrayList<String> previousScore) {
         this.previousScore = previousScore;
     }
+
     public ArrayList<String> getPreviousScore() {
         return previousScore;
     }
 
     public ArrayList<String> getQuestionElements() {
-        ArrayList <String> questionElements = new ArrayList<>();
-        for(Category x: categories){
+        ArrayList<String> questionElements = new ArrayList<>();
+        for (Category x : categories) {
             List<Question> questions = x.getQuestions();
-            for (Question y: questions){
+            for (Question y : questions) {
                 questionElements.add(y.getQuestion());
                 questionElements.add(x.getName());
                 questionElements.add(y.getFeedback());
                 String statements = "";
-                for (String z : y.getStatements() ){
+                for (String z : y.getStatements()) {
                     statements += z + " ";
                 }
                 questionElements.add(statements);

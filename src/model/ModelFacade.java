@@ -12,11 +12,11 @@ public class ModelFacade {
     private Test test;
 
 
-    public ModelFacade(){
-       test = new Test();
+    public ModelFacade() {
+        test = new Test();
     }
 
-    public void makeCategories(ArrayList<String> primitieveCategories){
+    public void makeCategories(ArrayList<String> primitieveCategories) {
         test.makeCategories(primitieveCategories);
     }
 
@@ -25,25 +25,31 @@ public class ModelFacade {
     }
 
 
-    public ObservableList<Category> getCategories(){
+    public ObservableList<Category> getCategories() {
         return test.getCategories();
     }
+
     public ObservableList<Question> getQuestions() {
         return test.getAllQuestions();
     }
 
-    public void addCategory(String name, String description, String mainCategory){
+    // Methode voor edit Category
+    public void editCategory(String oldName, String name, String description, String mainCategory) {
+        test.editCategory(oldName, name, description, mainCategory);
+    }
+
+    public void addCategory(String name, String description, String mainCategory) {
         Category newCategory = new Category(name, description, mainCategory);
         test.addCategory(newCategory);
     }
 
 
-    public void addQuestion(String question, ObservableList<String> statements, String category, String feedback){
+    public void addQuestion(String question, ObservableList<String> statements, String category, String feedback) {
         test.addQuestionWithObservableList(question, statements, category, feedback);
     }
 
     public void controlAnswer(String antwoord, int questionIndex) {
-        test.controlAnswer(antwoord,questionIndex);
+        test.controlAnswer(antwoord, questionIndex);
     }
 
     public ArrayList<String> getResult() {
@@ -65,11 +71,13 @@ public class ModelFacade {
     public ArrayList<String> getPreviousScore() {
         return test.getPreviousScore();
     }
+
     public void setPreviousScore(ArrayList<String> previousScore) {
         test.setPreviousScore(previousScore);
     }
 
-    public ArrayList<String> getQuestionElements() {return test.getQuestionElements();
+    public ArrayList<String> getQuestionElements() {
+        return test.getQuestionElements();
     }
 
     public List<String> getEvaluationMethods() {

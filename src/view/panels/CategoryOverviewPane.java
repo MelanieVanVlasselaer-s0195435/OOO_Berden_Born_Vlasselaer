@@ -11,6 +11,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import model.Category;
+
+import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -55,6 +58,29 @@ public class CategoryOverviewPane extends GridPane implements Observer {
 				quizcontroller.toonCategoryDetailPanel();
 			}
 		});
+
+		// Oproepen actie achter "Edit"
+		Button btnEdit = new Button("Edit");
+		this.add(btnEdit, 1, 11, 1, 1);
+		btnEdit.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				onEdit(table);
+			}
+		});
+	}
+
+	// De geselecteerde lijn in table ophalen (voorlopig door middel van cast naar Category object)
+
+	public void onEdit(TableView table) {
+		if (table.getSelectionModel().getSelectedItem() != null) {
+			String name = ((Category) table.getSelectionModel().getSelectedItem()).getName();
+			String description = ((Category) table.getSelectionModel().getSelectedItem()).getDescription();
+			String mainCategory = ((Category) table.getSelectionModel().getSelectedItem()).getHoofdcategorie();
+
+			System.out.println(name);
+			quizcontroller.toonEditPane(name, description, mainCategory);
+		}
 	}
 
 
