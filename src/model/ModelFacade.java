@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 public class ModelFacade {
     private Test test;
@@ -69,5 +70,9 @@ public class ModelFacade {
     }
 
     public ArrayList<String> getQuestionElements() {return test.getQuestionElements();
+    }
+
+    public List<String> getEvaluationMethods() {
+        return test.getEvaluationMethods();
     }
 }

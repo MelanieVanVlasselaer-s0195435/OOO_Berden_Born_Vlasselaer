@@ -7,6 +7,7 @@ import java.util.Properties;
 public class PropertyStrategy implements DBStrategy {
     Properties prop = new Properties();
     InputStream input = null;
+    OutputStream output;
     ArrayList <String> elementen = new ArrayList<>();
     @Override
     public ArrayList load() {
@@ -29,7 +30,23 @@ public class PropertyStrategy implements DBStrategy {
     }
 
     @Override
-    public void save(ArrayList<String> elementen) {
+    public void save(ArrayList<String> strategies) {
+        String strategy = strategies.get(0);
+        try {
+            OutputStream output = new FileOutputStream("testDatabase/evalution.properties");
+            prop.setProperty("evaluation.mode",strategy);
+            prop.store(output, null);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (output != null) {
+                try {
+                    output.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
 
     }

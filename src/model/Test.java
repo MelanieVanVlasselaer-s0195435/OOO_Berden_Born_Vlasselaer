@@ -174,7 +174,7 @@ public class Test {
     }
 
     public void setEvaluationStrategy(ArrayList<String> list) {
-        //array aanmaken die voor elke categorie standaard 10/10 geeft (de 10 is gelijk aan het aantal vragen dat een categorie heeft)
+        //array aanmaken die voor elke categorie standaard 10/10 geeft (de 10 is gelijk aan het aantal vragen dat een categorie heeft) -FB
         HashMap<String, int[]> resultaten = new HashMap<>();
         for (Category x : this.getCategories()) {
             int[] Array = new int [2];
@@ -183,7 +183,7 @@ public class Test {
             resultaten.put(x.getName(), Array);
         }
 
-        if (list.get(0).equals("score")) {
+        if (list.get(0).equals("SCORE")) {
             evaluationContext.setEvaluationStrategy(new Score(this, resultaten));
         }
         else {
@@ -227,5 +227,9 @@ public class Test {
             }
         }
         return questionElements;
+    }
+
+    public List<String> getEvaluationMethods() {
+        return evaluationContext.getList();
     }
 }

@@ -23,6 +23,13 @@ public class DatabaseFacade {
         return context.load();
     }
 
+    public void saveEvalutionStrategy(String evaluationStrategy) {
+        context.setDBStrategy(new PropertyStrategy());
+        ArrayList<String> evaluationStrategies = new ArrayList<>();
+        evaluationStrategies.add(evaluationStrategy);
+        context.save(evaluationStrategies);
+    }
+
     public void saveCategories(ArrayList<String> categoryElements) {
         context.setDBStrategy(new CategoryText());
         context.save(categoryElements);

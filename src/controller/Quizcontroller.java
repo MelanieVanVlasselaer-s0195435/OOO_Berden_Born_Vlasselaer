@@ -80,8 +80,12 @@ public class Quizcontroller extends Observable {
     }
 
     public void setEvaluationMethode() {
-
+    //Florians versie van setEvaluationStrategy
         modelFacade.setEvaluationStrategy(databaseFacade.loadEvalutionStrategy());
+    }
+
+    public void saveEvaluationMethode(String evaluationStrategy) {
+        databaseFacade.saveEvalutionStrategy(evaluationStrategy);
     }
 
     public void writeCategories() {
@@ -102,4 +106,10 @@ public class Quizcontroller extends Observable {
         ArrayList<String> questionElements = modelFacade.getQuestionElements();
         databaseFacade.saveQuestions(questionElements);
     }
+
+    public List<String> getEvaluationMethods() {
+        return modelFacade.getEvaluationMethods();
+    }
+
+
 }
