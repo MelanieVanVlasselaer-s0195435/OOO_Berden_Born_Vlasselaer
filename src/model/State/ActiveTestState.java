@@ -24,6 +24,11 @@ public class ActiveTestState implements State {
     }
 
     @Override
+    public void editQuestion(String oldQuestion, String question, String category, String feedback, ObservableList<String> statements) {
+        JOptionPane.showMessageDialog(null,"Kan geen Question aanpassen tijdens een test");
+    }
+
+    @Override
     public void addCategory(Category category) {
         JOptionPane.showMessageDialog(null,"Kan geen Category toevoegen tijdens een test");
     }

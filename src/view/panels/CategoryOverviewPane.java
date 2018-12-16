@@ -13,7 +13,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import model.Category;
 
-import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -78,8 +77,7 @@ public class CategoryOverviewPane extends GridPane implements Observer {
 			String description = ((Category) table.getSelectionModel().getSelectedItem()).getDescription();
 			String mainCategory = ((Category) table.getSelectionModel().getSelectedItem()).getHoofdcategorie();
 
-			System.out.println(name);
-			quizcontroller.toonEditPane(name, description, mainCategory);
+			quizcontroller.toonCategoryEditPane(name, description, mainCategory);
 		}
 	}
 

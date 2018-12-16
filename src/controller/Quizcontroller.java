@@ -37,6 +37,11 @@ public class Quizcontroller extends Observable {
         modelFacade.editCategory(oldName, name, description, mainCategory);
     }
 
+    // Methode voor edit Question
+    public void editQuestion(String oldQuestion, String question, String category, String feedback, ObservableList<String> statements) {
+        modelFacade.editQuestion(oldQuestion, question, category, feedback, statements);
+    }
+
     public void addCategory(String name, String description, String mainCategory){
         modelFacade.addCategory(name,description, mainCategory);
     }
@@ -53,10 +58,16 @@ public class Quizcontroller extends Observable {
         viewFacade.toonCategoryDetailPanel();
     }
 
-    // Ophalen EditPane
+    // Ophalen EditPane Category
 
-    public void toonEditPane(String name, String description, String mainCategory) {
+    public void toonCategoryEditPane(String name, String description, String mainCategory) {
         viewFacade.toonCategoryEditPanel(name, description, mainCategory);
+    }
+
+    // Ophalen EditPane Question
+
+    public void toonQuestionEditPane(String question, String feedback, ArrayList<String> statements) {
+        viewFacade.toonQuestionEditPanel(question, feedback, statements);
     }
 
     public void toonQuestionDetailPanel(){

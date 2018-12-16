@@ -7,6 +7,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import view.panels.*;
 
+import java.util.ArrayList;
+
 public class ViewFacade {
     Quizcontroller quizcontroller;
     Stage primaryStage = new Stage();
@@ -58,6 +60,17 @@ public class ViewFacade {
         secondStage.setScene(scene);
         secondStage.show();
     }
+
+    public void toonQuestionEditPanel(String question, String feedback, ArrayList<String> statements) {
+        Group root = new Group();
+        Scene scene = new Scene(root, 400, 350);
+        EditQuestionPane editPane = new EditQuestionPane(quizcontroller, question, feedback, statements);
+        BorderPane border = new BorderPane(editPane);
+        root.getChildren().add(border);
+        secondStage.setScene(scene);
+        secondStage.show();
+    }
+
 
     public void toonQuestionDetailPanel() {
         Group root = new Group();

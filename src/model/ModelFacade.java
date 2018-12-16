@@ -38,6 +38,11 @@ public class ModelFacade {
         test.editCategory(oldName, name, description, mainCategory);
     }
 
+    // Methode voor edit question
+    public void editQuestion(String oldQuestion, String question, String category, String feedback, ObservableList<String> statements) {
+        test.editQuestion(oldQuestion, question, category, feedback, statements);
+    }
+
     public void addCategory(String name, String description, String mainCategory) {
         Category newCategory = new Category(name, description, mainCategory);
         test.addCategory(newCategory);

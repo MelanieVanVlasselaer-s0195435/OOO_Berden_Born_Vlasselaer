@@ -11,51 +11,75 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import model.Question;
+
+import java.util.ArrayList;
 
 
 public class QuestionOverviewPane extends GridPane {
-	private TableView table;
-	private Button btnNew;
-	private Quizcontroller controller;
-	
-	public QuestionOverviewPane(Quizcontroller quizcontroller) {
-		this.controller = quizcontroller;
-		this.setPadding(new Insets(5, 5, 5, 5));
+    private TableView table;
+    private Button btnNew;
+    private Quizcontroller controller;
+
+    public QuestionOverviewPane(Quizcontroller quizcontroller) {
+        this.controller = quizcontroller;
+        this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
         this.setHgap(5);
-        
-		this.add(new Label("Questions:"), 0, 0, 1, 1);
-		
-		table = new TableView<>();
-		table.setPrefWidth(REMAINING);
+
+        this.add(new Label("Questions:"), 0, 0, 1, 1);
+
+        table = new TableView<>();
+        table.setPrefWidth(REMAINING);
         TableColumn nameCol = new TableColumn<>("Question");
         nameCol.setCellValueFactory(new PropertyValueFactory<>("question"));
         table.getColumns().add(nameCol);
         TableColumn descriptionCol = new TableColumn<>("Stataments");
         descriptionCol.setCellValueFactory(new PropertyValueFactory("statements"));
         table.getColumns().add(descriptionCol);
-		this.add(table, 0, 1, 2, 6);
+        this.add(table, 0, 1, 2, 6);
 
-		table.setItems(quizcontroller.getQuestions());
+        table.setItems(quizcontroller.getQuestions());
 
-		btnNew = new Button("New");
-		this.add(btnNew, 0, 11, 1, 1);
+        btnNew = new Button("New");
+        this.add(btnNew, 0, 11, 1, 1);
 
-		btnNew.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				quizcontroller.toonQuestionDetailPanel();
-			}
-		});
+        btnNew.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                quizcontroller.toonQuestionDetailPanel();
+            }
+        });
 
-	}
-	
-	public void setNewAction(EventHandler<ActionEvent> newAction) {
-		btnNew.setOnAction(newAction);
-	}
-	
-	public void setEditAction(EventHandler<MouseEvent> editAction) {
-		table.setOnMouseClicked(editAction);
-	}
+        // Oproepen actie achter "Edit"
+        Button btnEdit = new Button("Edit");
+        this.add(btnEdit, 1, 11, 1, 1);
+        btnEdit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                onEdit(table);
+            }
+        });
+
+    }
+
+    public void onEdit(TableView table) {
+        if (table.getSelectionModel().getSelectedItem() != null) {
+            String question = ((Question) table.getSelectionModel().getSelectedItem()).getQuestion();
+            String feedback = ((Question) table.getSelectionModel().getSelectedItem()).getFeedback();
+            ArrayList<String> statements = ((Question) table.getSelectionModel().getSelectedItem()).getStatements();
+
+            controller.toonQuestionEditPane(question, feedback, statements);
+        }
+    }
+
+
+    public void setNewAction(EventHandler<ActionEvent> newAction) {
+        btnNew.setOnAction(newAction);
+    }
+
+    public void setEditAction(EventHandler<MouseEvent> editAction) {
+        table.setOnMouseClicked(editAction);
+    }
 
 }

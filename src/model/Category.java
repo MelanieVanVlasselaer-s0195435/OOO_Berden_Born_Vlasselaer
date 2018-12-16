@@ -68,6 +68,25 @@ public class Category {
         this.questions = questions;
     }
 
+    public void editQuestionWithObservableList(String oldQuestion, String question, String feedback, ObservableList<String> statements) {
+        int index = 0;
+
+        ArrayList<String> statementsArray = new ArrayList<>();
+        for (String x : statements) {
+            statementsArray.add(x);
+        }
+
+        for (Question x : questions) {
+            if (x.getQuestion().equals(oldQuestion)) {
+                Question newQuestion = new Question(question, statementsArray, feedback);
+                questions.set(index, newQuestion);
+                break;
+            }
+
+            index++;
+        }
+    }
+
     @Override
     public String toString() {
         return name;

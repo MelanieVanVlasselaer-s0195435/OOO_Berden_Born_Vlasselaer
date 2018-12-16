@@ -69,6 +69,7 @@ public class QuestionDetailPane extends GridPane {
 		feedbackField = new TextField();
 		add(feedbackField, 1, 10, 2, 1);
 
+
 		btnCancel = new Button("Cancel");
 		btnCancel.setText("Cancel");
 		add(btnCancel, 0, 11, 1, 1);

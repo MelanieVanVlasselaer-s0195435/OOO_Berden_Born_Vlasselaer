@@ -35,6 +35,25 @@ public class InactiveTestState implements State {
     }
 
     @Override
+    public void editQuestion(String oldQuestion, String question, String category, String feedback, ObservableList<String> statements) {
+        int index = 0;
+        boolean categoryExist = false;
+
+        for (Category x : test.getCategories()) {
+            if (x.getName().equals(category)) {
+                index = test.getCategories().indexOf(x);
+                categoryExist = true;
+                break;
+            }
+        }
+
+        if (categoryExist) {
+            test.getCategories().get(index).editQuestionWithObservableList(oldQuestion, question, feedback, statements);
+        }
+
+    }
+
+    @Override
     public void addCategory(Category category) {
         test.getCategories().add(category);
     }

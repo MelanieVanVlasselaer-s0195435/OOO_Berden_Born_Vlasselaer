@@ -58,9 +58,15 @@ public class Test {
 
     }
 
+    // Methode voor editCategory
     public void editCategory(String oldName, String name, String description, String mainCategory) {
         state.editCategory(oldName,name,description,mainCategory);
         //State handelt het af - TB
+    }
+
+    public void editQuestion(String oldQuestion, String question, String category, String feedback, ObservableList<String> statements) {
+        // Verwoede poging tot State-gebruik, geen idee of ik het hierachter juist heb gedaan? -MVV
+        state.editQuestion(oldQuestion, question, category, feedback, statements);
     }
 
     public void addCategory(Category category) {
