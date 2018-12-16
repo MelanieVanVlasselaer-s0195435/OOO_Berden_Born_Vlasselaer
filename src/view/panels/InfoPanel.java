@@ -55,6 +55,8 @@ public class InfoPanel extends GridPane {
                 System.exit(0);
             }
         });
+
+        //voor te kiezen welke strategie
         lblstrategy = new Label("Kies uw gewenste strategy");
         this.add(lblstrategy, 0, 2, 1, 1);
         stratComboBox = new ComboBox<>();

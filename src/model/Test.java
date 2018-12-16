@@ -3,6 +3,7 @@ package model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Evaluation.EvaluationContext;
+import model.Evaluation.EvaluationFactory;
 import model.Evaluation.Feedback;
 import model.Evaluation.Score;
 
@@ -11,7 +12,7 @@ import java.util.*;
 
 public class Test {
     private ObservableList<Category> categories;
-    private HashMap<String, Integer> resultaten;
+    private HashMap<String, int[]> resultaten;
     private String currentRightAnswer;
     private EvaluationContext evaluationContext;
     private Question currentQuestion;
@@ -189,20 +190,27 @@ public class Test {
     }
 
     public void setEvaluationStrategy(ArrayList<String> list) {
+
+
         //array aanmaken die voor elke categorie standaard 10/10 geeft (de 10 is gelijk aan het aantal vragen dat een categorie heeft) -FB
-        HashMap<String, int[]> resultaten = new HashMap<>();
+        resultaten = new HashMap<>();
         for (Category x : this.getCategories()) {
-            int[] Array = new int[2];
-            Array[0] = x.getQuestions().size();
-            Array[1] = x.getQuestions().size();
+            int[] Array = new int [2];
+            Array[0] =  x.getQuestions().size();
+            Array[1] =  x.getQuestions().size();
             resultaten.put(x.getName(), Array);
         }
+        EvaluationFactory strategyFactory = new EvaluationFactory();
+        evaluationContext.setEvaluationStrategy(strategyFactory.createStrategy(list.get(0), this, resultaten));
 
+        /* - Vervangen door factory/reflection
         if (list.get(0).equals("SCORE")) {
             evaluationContext.setEvaluationStrategy(new Score(this, resultaten));
-        } else {
+        }
+        else {
             evaluationContext.setEvaluationStrategy(new Feedback(this));
         }
+        */
     }
 
     public ArrayList<String> getResult() {

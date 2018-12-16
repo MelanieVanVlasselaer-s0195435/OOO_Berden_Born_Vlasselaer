@@ -13,9 +13,7 @@ public class Score implements EvaluationStrategy {
     private Test test;
     private Boolean noFaults;
 
-    public Score(Test test, HashMap resultaten) {
-        this.resultaten = resultaten;
-        this.test = test;
+    public Score() {
         noFaults = false;
     }
 
@@ -58,6 +56,16 @@ public class Score implements EvaluationStrategy {
             }
         }
 
+    }
+
+    @Override
+    public void setResultaten(HashMap<String, int[]> resultaten) {
+        this.resultaten =resultaten;
+    }
+
+    @Override
+    public void setTest(Test test) {
+        this.test= test;
     }
 }
 

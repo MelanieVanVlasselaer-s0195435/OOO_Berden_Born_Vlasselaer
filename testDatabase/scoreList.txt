@@ -1,6 +1,3 @@
-Your score: 3/6
-java: 0/0
-test: 2/2
-uml: 0/1
-design patterns: 0/1
-design principles: 1/2
+volgende keer beter
+beter studeren!
+hopelijk volgende keer wel!
