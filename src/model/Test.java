@@ -4,23 +4,33 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Evaluation.EvaluationContext;
 import model.Evaluation.EvaluationFactory;
-import model.Evaluation.Feedback;
-import model.Evaluation.Score;
+import model.State.ActiveTestState;
+import model.State.InactiveTestState;
+import model.State.State;
 
 import java.util.*;
 
 
 public class Test {
     private ObservableList<Category> categories;
-    private HashMap<String, int[]> resultaten;
     private String currentRightAnswer;
     private EvaluationContext evaluationContext;
     private Question currentQuestion;
     private ArrayList<String> previousScore;
 
+    State activeTestState;
+    State inactiveState;
+
+    State state;
+
+
     public Test() {
         categories = FXCollections.observableArrayList();
         evaluationContext = new EvaluationContext();
+        activeTestState = new ActiveTestState(this);
+        inactiveState = new InactiveTestState(this);
+
+        state = inactiveState;
     }
 
 
@@ -49,58 +59,25 @@ public class Test {
     }
 
     public void editCategory(String oldName, String name, String description, String mainCategory) {
-        int index = 0;
-
-        for (Category x : categories) {
-            if (x.getName().equals(oldName)) {
-                Category category = new Category(name, description, mainCategory);
-                categories.set(index, category);
-                break;
-            }
-
-            index++;
-        }
+        state.editCategory(oldName,name,description,mainCategory);
+        //State handelt het af - TB
     }
 
     public void addCategory(Category category) {
-        categories.add(category);
+        state.addCategory(category);
+        //=> State handelt het af - TB
+        //categories.add(category);
     }
 
     public void addQuestionWithObservableList(String question, ObservableList<String> statements, String category, String feedback) {
-        int index = 0;
-        boolean categoryExist = false;
-        for (Category cat : categories) {
-
-            if (cat.getName().equals(category)) {
-                index = categories.indexOf(cat);
-                categoryExist = true;
-                break;
-            }
-
-        }
-
-
-        if (categoryExist) {
-            categories.get(index).addQuestionWithObservableList(question, statements, feedback);
-        }
+        state.addQuestionWithObservableList(question,statements,category,feedback);
+        // => State handelt het af - TB
     }
 
     // Redundante code, moet nog aangepast worden - MVV
     public void addQuestionWithArrayList(String question, ArrayList<String> statements, String category, String feedback) {
-        int index = 0;
-        boolean categoryExist = false;
-        for (Category cat : categories) {
-            if (cat.getName().equals(category)) {
-                index = categories.indexOf(cat);
-                categoryExist = true;
-                break;
-            }
-
-        }
-
-        if (categoryExist) {
-            categories.get(index).addQuestion(question, statements, feedback);
-        }
+        state.addQuestionWithArrayList(question,statements,category,feedback);
+        //=> State handelt het af - TB
     }
 
     public void makeCategories(ArrayList<String> elementen) {
@@ -190,27 +167,8 @@ public class Test {
     }
 
     public void setEvaluationStrategy(ArrayList<String> list) {
-
-
-        //array aanmaken die voor elke categorie standaard 10/10 geeft (de 10 is gelijk aan het aantal vragen dat een categorie heeft) -FB
-        resultaten = new HashMap<>();
-        for (Category x : this.getCategories()) {
-            int[] Array = new int [2];
-            Array[0] =  x.getQuestions().size();
-            Array[1] =  x.getQuestions().size();
-            resultaten.put(x.getName(), Array);
-        }
-        EvaluationFactory strategyFactory = new EvaluationFactory();
-        evaluationContext.setEvaluationStrategy(strategyFactory.createStrategy(list.get(0), this, resultaten));
-
-        /* - Vervangen door factory/reflection
-        if (list.get(0).equals("SCORE")) {
-            evaluationContext.setEvaluationStrategy(new Score(this, resultaten));
-        }
-        else {
-            evaluationContext.setEvaluationStrategy(new Feedback(this));
-        }
-        */
+        state.setEvaluationStrategy(list);
+        //=> state handelt het af - TB
     }
 
     public ArrayList<String> getResult() {
@@ -256,4 +214,25 @@ public class Test {
     public List<String> getEvaluationMethods() {
         return evaluationContext.getList();
     }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public State getActiveTestState() {
+        return activeTestState;
+    }
+
+    public State getInactiveState() {
+        return inactiveState;
+    }
+
+    public EvaluationContext getEvaluationContext() {
+        return evaluationContext;
+    }
+
 }

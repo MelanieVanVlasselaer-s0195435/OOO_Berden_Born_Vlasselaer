@@ -83,4 +83,12 @@ public class ModelFacade {
     public List<String> getEvaluationMethods() {
         return test.getEvaluationMethods();
     }
+
+    public void setTestStateActive() {
+        test.setState(test.getActiveTestState());
+    }
+
+    public void setTestStateInactive() {
+        test.setState(test.getInactiveState());
+    }
 }

@@ -1,3 +1,6 @@
-volgende keer beter
-beter studeren!
-hopelijk volgende keer wel!
+Your score: 2/5
+java: 0/0
+test: 0/2
+uml: 0/1
+design patterns: 1/1
+design principles: 1/1

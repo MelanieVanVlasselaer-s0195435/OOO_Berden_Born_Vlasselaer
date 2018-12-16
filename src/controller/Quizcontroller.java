@@ -64,10 +64,13 @@ public class Quizcontroller extends Observable {
     }
 
     public void toonTestPanel(){
+        modelFacade.setTestStateActive();
         viewFacade.toonTestPanel();
     }
 
-    public void closeSecondStage(){ viewFacade.closeSecondStage();
+    public void closeSecondStage(){
+        modelFacade.setTestStateInactive();
+        viewFacade.closeSecondStage();
     }
 
     public void start(Quizcontroller quizcontroller){
