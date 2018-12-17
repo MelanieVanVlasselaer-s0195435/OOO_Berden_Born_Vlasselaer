@@ -48,8 +48,8 @@ public class Test {
     }
 
     public ObservableList<Question> getAllQuestions() {
-        ObservableList<Question> questions = FXCollections.observableArrayList();
-
+        //ObservableList<Question> questions = FXCollections.observableArrayList();
+        questions.clear();
         for (Category category : categories) {
             for (Question question : category.getQuestions()) {
                 questions.add(question);
@@ -193,7 +193,7 @@ public class Test {
     }
 
     public void setPreviousScore(ArrayList<String> previousScore) {
-        //this.previousScore = FXCollections.observableArrayList();
+        this.previousScore.clear();
         for (String x : previousScore) {
             this.previousScore.add(x);
         }
