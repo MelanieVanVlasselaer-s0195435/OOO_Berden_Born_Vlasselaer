@@ -1,6 +1,4 @@
-package database;
-
-import model.Category;
+package database.TXT;
 
 import java.io.File;
 import java.io.FileNotFoundException;

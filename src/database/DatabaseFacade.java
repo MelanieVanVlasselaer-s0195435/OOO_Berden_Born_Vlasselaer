@@ -1,5 +1,8 @@
 package database;
 
+import database.TXT.CategoryText;
+import database.TXT.QuestionText;
+
 import java.util.ArrayList;
 
 public class DatabaseFacade {

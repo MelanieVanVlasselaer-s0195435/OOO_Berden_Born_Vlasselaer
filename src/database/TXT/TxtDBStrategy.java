@@ -1,4 +1,6 @@
-package database;
+package database.TXT;
+
+import database.DBStrategy;
 
 import java.util.ArrayList;
 

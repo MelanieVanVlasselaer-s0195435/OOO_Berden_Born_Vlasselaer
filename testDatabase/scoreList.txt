@@ -1,6 +1,6 @@
-Your score: 2/5
+Your score: 0/3
 java: 0/0
-test: 0/2
+test: 0/0
 uml: 0/1
-design patterns: 1/1
-design principles: 1/1
+design patterns: 0/1
+design principles: 0/1
