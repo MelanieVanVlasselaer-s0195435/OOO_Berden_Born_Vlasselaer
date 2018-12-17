@@ -45,7 +45,7 @@ public class ResultPane extends GridPane {
         closeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                quizcontroller.writeScore(score);
+                quizcontroller.setScore(score);
                 quizcontroller.closeSecondStage();
             }
         });

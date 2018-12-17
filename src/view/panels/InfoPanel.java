@@ -10,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 
 public class InfoPanel extends GridPane {
     private Button closeButton;
-    private Label questionField;
+    private ListView<String> questionView;
     Label lblstrategy;
     ComboBox<String> stratComboBox;
     private Quizcontroller quizcontroller;
@@ -30,21 +31,11 @@ public class InfoPanel extends GridPane {
         this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
         this.setHgap(5);
-        questionField = new Label();
+        questionView = new ListView<String>();
 
         //Deze code hier plaatsen is toch niet MVC? - TB
-        previousValue = quizcontroller.getPreviousScore();
-        String txt = " ";
-        for (String x: previousValue) {
-            txt += x + "\n";
-        }
-        if (!txt.equals(" ")) {
-            questionField.setText(txt);
-        }
-        else {
-            questionField.setText("U hebt deze test nog nooit afgelegd");
-        }
-        add(questionField, 0, 0, 1, 1);
+        questionView.setItems(quizcontroller.getPreviousScore());
+        add(questionView, 0, 0, 1, 1);
         closeButton = new Button("Finish");
         add(closeButton,0, 1, 1, 1);
         closeButton.setOnAction(new EventHandler<ActionEvent>() {

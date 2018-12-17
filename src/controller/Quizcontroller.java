@@ -119,11 +119,12 @@ public class Quizcontroller extends Observable {
 
     }
 
-    public void writeScore(ArrayList<String> score) {
+    public void setScore(ArrayList<String> score) {
+        modelFacade.setPreviousScore(score);
         databaseFacade.saveScore(score);
     }
 
-    public ArrayList<String> getPreviousScore() {
+    public ObservableList<String> getPreviousScore() {
         return modelFacade.getPreviousScore();
     }
 

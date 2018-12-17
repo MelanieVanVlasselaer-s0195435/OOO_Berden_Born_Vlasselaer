@@ -73,7 +73,7 @@ public class ModelFacade {
         return test.getCategoryElements();
     }
 
-    public ArrayList<String> getPreviousScore() {
+    public ObservableList<String> getPreviousScore() {
         return test.getPreviousScore();
     }
 

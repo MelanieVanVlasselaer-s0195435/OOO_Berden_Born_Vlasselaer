@@ -16,7 +16,7 @@ public class Test {
     private String currentRightAnswer;
     private EvaluationContext evaluationContext;
     private Question currentQuestion;
-    private ArrayList<String> previousScore;
+    private ObservableList<String> previousScore;
 
     State activeTestState;
     State inactiveState;
@@ -26,6 +26,7 @@ public class Test {
 
     public Test() {
         categories = FXCollections.observableArrayList();
+        previousScore = FXCollections.observableArrayList();
         evaluationContext = new EvaluationContext();
         activeTestState = new ActiveTestState(this);
         inactiveState = new InactiveTestState(this);
@@ -192,10 +193,14 @@ public class Test {
     }
 
     public void setPreviousScore(ArrayList<String> previousScore) {
-        this.previousScore = previousScore;
+        //this.previousScore = FXCollections.observableArrayList();
+        for (String x : previousScore) {
+            this.previousScore.add(x);
+        }
+
     }
 
-    public ArrayList<String> getPreviousScore() {
+    public ObservableList<String> getPreviousScore() {
         return previousScore;
     }
 
