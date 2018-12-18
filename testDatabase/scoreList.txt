@@ -1,1 +1,6 @@
-schitterend! Alles perfect
+Your score: 0/4
+java: 0/0
+test: 0/0
+uml: 0/1
+design patterns: 0/1
+design principles: 0/2

@@ -17,6 +17,7 @@ public class Test {
     private EvaluationContext evaluationContext;
     private Question currentQuestion;
     private ObservableList<String> previousScore;
+    private ObservableList<Question> questions;
 
     State activeTestState;
     State inactiveState;
@@ -25,11 +26,13 @@ public class Test {
 
 
     public Test() {
+        questions = FXCollections.observableArrayList();
         categories = FXCollections.observableArrayList();
         previousScore = FXCollections.observableArrayList();
         evaluationContext = new EvaluationContext();
         activeTestState = new ActiveTestState(this);
         inactiveState = new InactiveTestState(this);
+
 
         state = inactiveState;
     }
@@ -48,7 +51,6 @@ public class Test {
     }
 
     public ObservableList<Question> getAllQuestions() {
-        //ObservableList<Question> questions = FXCollections.observableArrayList();
         questions.clear();
         for (Category category : categories) {
             for (Question question : category.getQuestions()) {
@@ -78,6 +80,7 @@ public class Test {
 
     public void addQuestionWithObservableList(String question, ObservableList<String> statements, String category, String feedback) {
         state.addQuestionWithObservableList(question,statements,category,feedback);
+        this.getAllQuestions();
         // => State handelt het af - TB
     }
 
