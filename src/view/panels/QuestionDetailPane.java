@@ -114,7 +114,7 @@ public class QuestionDetailPane extends GridPane {
 	class RemoveStatementListener implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent e) {
-			statements.remove(statementField.getText());
+			statements.remove(statementsArea.getSelectionModel().getSelectedItem());
 			statementField.setText("");
 		}
 	}
