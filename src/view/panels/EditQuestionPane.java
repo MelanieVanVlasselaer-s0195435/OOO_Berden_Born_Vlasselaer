@@ -10,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import model.Category;
 
 import java.util.ArrayList;
 
@@ -38,7 +37,7 @@ public class EditQuestionPane extends GridPane {
         add(questionField, 1, 0, 2, 1);
 
         add(new Label("Statement: "), 0, 1, 1, 1);
-        statementField = new TextField(feedback);
+        statementField = new TextField();
         add(statementField, 1, 1, 2, 1);
 
         // ArrayList statements toevoegen aan ObservableList statements
@@ -70,6 +69,7 @@ public class EditQuestionPane extends GridPane {
 
         add(new Label("Feedback: "), 0, 10, 1, 1);
         feedbackField = new TextField();
+        feedbackField.setText(feedback);
         add(feedbackField, 1, 10, 2, 1);
 
 
@@ -88,10 +88,9 @@ public class EditQuestionPane extends GridPane {
         btnOK.setText("Save");
         add(btnOK, 1, 11, 2, 1);
         btnOK.setOnAction(new EventHandler<ActionEvent>() {
-            //String question, ArrayList<String> statements, String category, String feedback)
             @Override
             public void handle(ActionEvent event) {
-                //quizcontroller.addQuestion(questionField.getText(), statements, (String) categoryField.getValue().toString(), feedbackField.getText());
+                quizcontroller.modifyQuestion(questionField.getText(), statements, categoryField.getValue().toString(), feedbackField.getText());
                 quizcontroller.closeSecondStage();
             }
         });
@@ -109,7 +108,7 @@ public class EditQuestionPane extends GridPane {
     class RemoveStatementListener implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent e) {
-            statements.remove(statementField.getText());
+            statements.remove(statementsArea.getSelectionModel().getSelectedItem());
             statementField.setText("");
         }
     }

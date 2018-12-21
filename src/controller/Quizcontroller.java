@@ -66,8 +66,11 @@ public class Quizcontroller extends Observable {
 
     // Ophalen EditPane Question
 
-    public void toonQuestionEditPane(String question, String feedback, ArrayList<String> statements) {
-        viewFacade.toonQuestionEditPanel(question, feedback, statements);
+    public void toonQuestionEditPane(Object selectedObject) {
+        if (selectedObject instanceof Question) {
+            Question selectedQuestion = (Question) selectedObject;
+            viewFacade.toonQuestionEditPanel(selectedQuestion.getQuestion(), selectedQuestion.getFeedback(), selectedQuestion.getStatements());
+        }
     }
 
     public void toonQuestionDetailPanel(){
@@ -138,4 +141,11 @@ public class Quizcontroller extends Observable {
     }
 
 
+    public void toonErrorPage(String errorText) {
+        viewFacade.showErrorpage(errorText);
+    }
+
+    public void modifyQuestion(String question, ObservableList<String> statements, String category, String feedback) {
+        modelFacade.modifyQuestion(question, statements, category, feedback);
+    }
 }

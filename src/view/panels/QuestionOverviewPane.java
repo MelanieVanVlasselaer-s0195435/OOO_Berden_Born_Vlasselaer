@@ -11,7 +11,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import model.Question;
 
 import java.util.ArrayList;
 
@@ -65,11 +64,10 @@ public class QuestionOverviewPane extends GridPane {
 
     public void onEdit(TableView table) {
         if (table.getSelectionModel().getSelectedItem() != null) {
-            String question = ((Question) table.getSelectionModel().getSelectedItem()).getQuestion();
-            String feedback = ((Question) table.getSelectionModel().getSelectedItem()).getFeedback();
-            ArrayList<String> statements = ((Question) table.getSelectionModel().getSelectedItem()).getStatements();
-
-            controller.toonQuestionEditPane(question, feedback, statements);
+            controller.toonQuestionEditPane(table.getSelectionModel().getSelectedItem());
+        }
+        else {
+            controller.toonErrorPage("Geen question geselecteerd!");
         }
     }
 

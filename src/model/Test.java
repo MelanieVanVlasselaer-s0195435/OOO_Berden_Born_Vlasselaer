@@ -249,4 +249,9 @@ public class Test {
         return evaluationContext;
     }
 
+    public void modifyQuestion(String question, ObservableList<String> statements, String category, String feedback) {
+        //vind de categorie die de originele question had
+        // functie categorie x . modifyquestion
+        state.modifyQuestion(question,statements,category,feedback);
+    }
 }

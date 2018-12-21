@@ -95,14 +95,6 @@ public class QuestionDetailPane extends GridPane {
 		
 	}
 
-	public void setSaveAction(EventHandler<ActionEvent> saveAction) {
-		btnOK.setOnAction(saveAction);
-	}
-
-	public void setCancelAction(EventHandler<ActionEvent> cancelAction) {
-		btnCancel.setOnAction(cancelAction);
-	}
-
 	class AddStatementListener implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent e) {

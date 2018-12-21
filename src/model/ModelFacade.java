@@ -96,4 +96,8 @@ public class ModelFacade {
     public void setTestStateInactive() {
         test.setState(test.getInactiveState());
     }
+
+    public void modifyQuestion(String question, ObservableList<String> statements, String category, String feedback) {
+        test.modifyQuestion(question, statements, category, feedback);
+    }
 }

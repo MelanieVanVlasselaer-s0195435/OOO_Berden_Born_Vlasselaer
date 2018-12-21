@@ -15,4 +15,5 @@ public interface State {
     void addQuestionWithObservableList(String question, ObservableList<String> statements, String category, String feedback);
     void setEvaluationStrategy(ArrayList<String> list);
 
+    void modifyQuestion(String question, ObservableList<String> statements, String category, String feedback);
 }

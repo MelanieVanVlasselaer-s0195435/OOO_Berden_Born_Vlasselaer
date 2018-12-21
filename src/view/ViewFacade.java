@@ -90,6 +90,15 @@ public class ViewFacade {
         secondStage.setScene(scene);
         secondStage.show();
     }
+    public void showErrorpage(String errorText) {
+        Group root = new Group();
+        Scene scene = new Scene(root,200,75);
+        ErrorPanel errorPanel = new ErrorPanel(quizcontroller, errorText);
+        BorderPane border = new BorderPane(errorPanel);
+        root.getChildren().add(border);
+        secondStage.setScene(scene);
+        secondStage.show();
+    }
 
 
 

@@ -116,4 +116,9 @@ public class InactiveTestState implements State {
         }
         */
     }
+
+    @Override
+    public void modifyQuestion(String question, ObservableList<String> statements, String category, String feedback) {
+        //hier de echte functie schrijven
+    }
 }
