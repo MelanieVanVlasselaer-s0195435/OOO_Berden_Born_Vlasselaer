@@ -10,7 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../ExcelPlugIin.jar!/" />
+          <root url="jar://$MODULE_DIR$/jars/ExcelPlugIin.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
