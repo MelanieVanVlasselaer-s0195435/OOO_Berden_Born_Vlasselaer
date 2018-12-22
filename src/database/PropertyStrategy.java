@@ -30,7 +30,8 @@ public class PropertyStrategy implements DBStrategy {
     }
 
     @Override
-    public void save(ArrayList<String> strategies) {
+    public void save(ArrayList elementen) {
+        ArrayList<String> strategies = (ArrayList<String>) elementen;
         String strategy = strategies.get(0);
         try {
             OutputStream output = new FileOutputStream("testDatabase/evalution.properties");

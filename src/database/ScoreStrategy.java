@@ -36,10 +36,11 @@ public class ScoreStrategy implements  DBStrategy {
     }
 
     @Override
-    public void save(ArrayList<String> elementen) {
+    public void save(ArrayList elementen) {
+        ArrayList<String> scores = (ArrayList<String>) elementen;
         try {
             PrintWriter writer = new PrintWriter(scoreFile);
-            for (String x: elementen) {
+            for (String x: scores) {
                 writer.println(x);
             }
             writer.close ();

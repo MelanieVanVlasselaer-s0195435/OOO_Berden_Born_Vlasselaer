@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public interface DBStrategy {
     ArrayList load();
-    void save(ArrayList<String> elementen);
+    void save(ArrayList elementen);
 
     //abstract methods
 }

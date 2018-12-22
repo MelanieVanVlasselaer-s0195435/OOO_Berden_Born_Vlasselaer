@@ -51,7 +51,7 @@ public class ActiveTestState implements State {
 
     @Override
     public void modifyQuestion(String question, ObservableList<String> statements, String category, String feedback) {
-        JOptionPane.showMessageDialog((null, "Kan geen vraag aanpassen"));
+        JOptionPane.showMessageDialog(null, "Kan geen vraag aanpassen");
     }
 
 }

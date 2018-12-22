@@ -23,8 +23,13 @@ public class Quizcontroller extends Observable {
     DatabaseFacade databaseFacade = new DatabaseFacade();
 
     public Quizcontroller(){
+        /*
         modelFacade.makeCategories(databaseFacade.loadCategorieElementen());
         modelFacade.makeQuestions(databaseFacade.loadQuestionElementen());
+        */
+        //dit vervangen we door
+        modelFacade.makeCategories(databaseFacade.loadTest().get(0));
+        modelFacade.makeQuestions(databaseFacade.loadTest().get(1));
         modelFacade.setPreviousScore(databaseFacade.loadPreviousScore());
     }
 
@@ -116,10 +121,23 @@ public class Quizcontroller extends Observable {
         databaseFacade.saveEvalutionStrategy(evaluationStrategy);
     }
 
+    /* => WEGSCHRIJVEN VAN GEGEVENS MOET NU IN 1 KEER GEBEUREN, DUS IPV
     public void writeCategories() {
         ArrayList<String> categoryElements = modelFacade.getCategoryElements();
         databaseFacade.saveCategories(categoryElements);
-
+    }
+    public void writeQuestions() {
+        ArrayList<String> questionElements = modelFacade.getQuestionElements();
+        databaseFacade.saveQuestions(questionElements);
+    }
+    Schrijven WE 1 TEST */
+    public void writeTest() {
+        ArrayList<ArrayList<String>> testElements = new ArrayList<>();
+        ArrayList<String> categoryElements = modelFacade.getCategoryElements();
+        testElements.add(0,categoryElements);
+        ArrayList<String> questionElements = modelFacade.getQuestionElements();
+        testElements.add(questionElements);
+        databaseFacade.saveTest(testElements);
     }
 
     public void setScore(ArrayList<String> score) {
@@ -131,10 +149,6 @@ public class Quizcontroller extends Observable {
         return modelFacade.getPreviousScore();
     }
 
-    public void writeQuestions() {
-        ArrayList<String> questionElements = modelFacade.getQuestionElements();
-        databaseFacade.saveQuestions(questionElements);
-    }
 
     public List<String> getEvaluationMethods() {
         return modelFacade.getEvaluationMethods();

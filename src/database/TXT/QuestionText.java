@@ -42,7 +42,7 @@ public class QuestionText extends TxtDBStrategy {
 
 
     @Override
-    public void save(ArrayList<String> questionElements) {
+    public void save(ArrayList questionElements) {
         try {
             PrintWriter writer = new PrintWriter(questionFile);
             for(int i = 0; i<questionElements.size()-3; i =i+4){
