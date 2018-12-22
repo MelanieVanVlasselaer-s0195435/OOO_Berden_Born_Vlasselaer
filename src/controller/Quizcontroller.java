@@ -28,6 +28,7 @@ public class Quizcontroller extends Observable {
         modelFacade.makeQuestions(databaseFacade.loadQuestionElementen());
         */
         //dit vervangen we door
+        databaseFacade.setSource();
         modelFacade.makeCategories(databaseFacade.loadTest().get(0));
         modelFacade.makeQuestions(databaseFacade.loadTest().get(1));
         modelFacade.setPreviousScore(databaseFacade.loadPreviousScore());
@@ -161,5 +162,17 @@ public class Quizcontroller extends Observable {
 
     public void modifyQuestion(String question, ObservableList<String> statements, String category, String feedback) {
         modelFacade.modifyQuestion(question, statements, category, feedback);
+    }
+
+    public List getTestSources() {
+        return databaseFacade.getTestSources();
+    }
+
+    public void saveTestSource(String source) {
+        databaseFacade.saveTestSource(source);
+    }
+
+    public void showClosingScreen() {
+        viewFacade.showClosingScreen();
     }
 }

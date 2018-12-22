@@ -1,0 +1,4 @@
+EXCEL  welk ontwerp-principe is het minst van toepassing op het strategy patroon?/EXCEL design principles/volgende keer beter/juist fout fout fout
+EXCEL welk patroon definieert een familie van algoritmes , kapselt ze in en maakt ze verwisselbaar?/EXCEL design patterns/beter studeren!/juist strategy facade observer state
+EXCEL  moet Adapter altijd gebruikt worden?/EXCEL design patterns/Niets moet ALTIJD gebruikt worden!/nee ja
+EXCEL  Werkt deze vraag-wegschrijf-functie?/EXCEL uml/Well Crap!/ja nee nee nee

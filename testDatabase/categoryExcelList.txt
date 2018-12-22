@@ -1,0 +1,5 @@
+EXCEL design principles/the solid design principles/null
+EXCEL design patterns/design patterns discussed this year/null
+EXCEL java/java extras/null
+EXCEL uml/technique of drawing a class diagram/null
+EXCEL test/dit is een testklasse!/null

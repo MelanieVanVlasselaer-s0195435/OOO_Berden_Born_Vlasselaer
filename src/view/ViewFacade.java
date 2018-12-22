@@ -115,4 +115,14 @@ public class ViewFacade {
         secondStage.setScene(scene);
         secondStage.show();
     }
+
+    public void showClosingScreen() {
+        Group root = new Group();
+        Scene scene = new Scene(root,300,100);
+        ClosingPanel closingPanel = new ClosingPanel(quizcontroller);
+        BorderPane border = new BorderPane(closingPanel);
+        root.getChildren().add(border);
+        secondStage.setScene(scene);
+        secondStage.show();
+    }
 }

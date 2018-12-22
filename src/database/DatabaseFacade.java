@@ -6,16 +6,19 @@ import database.TXT.TxtDBStrategy;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class DatabaseFacade {
     DBcontext context = new DBcontext();
+    TestSourceFactory factory = new TestSourceFactory();
+    DBStrategy currentsource;
 
     public DatabaseFacade(){
     }
 
 
     public ArrayList<ArrayList<String>> loadTest(){
-        context.setDBStrategy(new TxtDBStrategy());
+        context.setDBStrategy(currentsource);
         return context.load();
 /*
         NOG BETER
@@ -25,7 +28,7 @@ public class DatabaseFacade {
     }
 
     public void saveTest(ArrayList elementen){
-        context.setDBStrategy(new TxtDBStrategy());
+        context.setDBStrategy(currentsource);
         context.save(elementen);
 /*
         NOG BETER
@@ -86,4 +89,20 @@ public class DatabaseFacade {
     }
 
 
+    public List getTestSources() {
+        return DBcontext.getTestSources();
+    }
+
+    public void saveTestSource(String source) {
+        context.setDBStrategy(new SourcePropertyStrategy());
+        ArrayList<String> evaluationStrategies = new ArrayList<>();
+        evaluationStrategies.add(source);
+        context.save(evaluationStrategies);
+    }
+
+    public void setSource() {
+        context.setDBStrategy(new SourcePropertyStrategy());
+        String from = (String) context.load().get(0);
+        currentsource = factory.createStrategy(from);
+    }
 }

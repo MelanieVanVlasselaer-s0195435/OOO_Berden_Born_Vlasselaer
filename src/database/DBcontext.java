@@ -1,9 +1,18 @@
 package database;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DBcontext {
     private DBStrategy strat;
+
+    public static List getTestSources() {
+        List<String> lijst = new ArrayList<>();
+        for (TestSourceEnum source :TestSourceEnum.values()) {
+            lijst.add(source.toString());
+        }
+        return lijst;
+    }
 
     public DBStrategy getDBStrategy(){
         return strat;

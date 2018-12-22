@@ -20,6 +20,7 @@ public class InfoPanel extends GridPane {
     private Button closeButton;
     private ListView<String> questionView;
     Label lblstrategy;
+
     ComboBox<String> stratComboBox;
     private Quizcontroller quizcontroller;
     private ArrayList<String> previousValue;
@@ -42,7 +43,7 @@ public class InfoPanel extends GridPane {
             @Override
             public void handle(ActionEvent event) {
                 quizcontroller.writeTest();
-                System.exit(0);
+                quizcontroller.showClosingScreen();
             }
         });
 
