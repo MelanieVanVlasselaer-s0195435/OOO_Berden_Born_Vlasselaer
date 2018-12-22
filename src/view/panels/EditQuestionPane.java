@@ -66,6 +66,7 @@ public class EditQuestionPane extends GridPane {
         categoryField = new ComboBox();
         add(categoryField, 1, 9, 2, 1);
         categoryField.setItems(quizcontroller.getCategories());
+        categoryField.getSelectionModel().select(quizcontroller.getCategories().get(0));
 
         add(new Label("Feedback: "), 0, 10, 1, 1);
         feedbackField = new TextField();
@@ -90,7 +91,7 @@ public class EditQuestionPane extends GridPane {
         btnOK.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                quizcontroller.modifyQuestion(questionField.getText(), statements, categoryField.getValue().toString(), feedbackField.getText());
+                quizcontroller.modifyQuestion(question, questionField.getText(), statements, categoryField.getValue().toString(), feedbackField.getText());
                 quizcontroller.closeSecondStage();
             }
         });

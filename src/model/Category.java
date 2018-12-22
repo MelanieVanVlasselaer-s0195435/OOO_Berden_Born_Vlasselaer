@@ -22,16 +22,15 @@ public class Category {
         this.setHoofdcategorie(hoofdcategorie);
         this.questions =  FXCollections.observableArrayList();
     }
-    // SETTERS PUBLIC GEMAAKT, WEET NIET OF DIT MOCHT / MAG ??? -MVV
-    public void setName(String name) {
+    private void setName(String name) {
         this.name = name;
     }
 
-    public void setDescription(String description) {
+    private void setDescription(String description) {
         this.description = description;
     }
 
-    public void setHoofdcategorie(String hoofdcategorie) {
+    private void setHoofdcategorie(String hoofdcategorie) {
         this.hoofdcategorie = hoofdcategorie;
     }
 
@@ -46,7 +45,14 @@ public class Category {
     public String getHoofdcategorie() {
         return hoofdcategorie;
     }
-
+    public Question getQuestion(String question) {
+        for (Question x : questions) {
+            if (x.getQuestion().equals(question)) {
+                return x;
+            }
+        }
+        return null;
+    }
 
     public void addQuestion(String question, ArrayList<String> statements, String feedback) {
         questions.add(new Question(question, statements, feedback));
@@ -68,25 +74,15 @@ public class Category {
         this.questions = questions;
     }
 
-    public void editQuestionWithObservableList(String oldQuestion, String question, String feedback, ObservableList<String> statements) {
-        int index = 0;
-
-        ArrayList<String> statementsArray = new ArrayList<>();
+    public void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String category, String feedback) {
+        ArrayList<String> statsList = new ArrayList<>();
         for (String x : statements) {
-            statementsArray.add(x);
+            statsList.add(x);
         }
-
-        for (Question x : questions) {
-            if (x.getQuestion().equals(oldQuestion)) {
-                Question newQuestion = new Question(question, statementsArray, feedback);
-                questions.set(index, newQuestion);
-                break;
-            }
-
-            index++;
-        }
+        Question newQuestion = new Question(question, statsList,feedback);
+        questions.remove(this.getQuestion(oldquestion));
+        questions.add(newQuestion);
     }
-
     @Override
     public String toString() {
         return name;

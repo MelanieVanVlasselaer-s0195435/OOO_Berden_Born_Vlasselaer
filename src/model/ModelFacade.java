@@ -38,10 +38,6 @@ public class ModelFacade {
         test.editCategory(oldName, name, description, mainCategory);
     }
 
-    // Methode voor edit question
-    public void editQuestion(String oldQuestion, String question, String category, String feedback, ObservableList<String> statements) {
-        test.editQuestion(oldQuestion, question, category, feedback, statements);
-    }
 
     public void addCategory(String name, String description, String mainCategory) {
         Category newCategory = new Category(name, description, mainCategory);
@@ -97,7 +93,7 @@ public class ModelFacade {
         test.setState(test.getInactiveState());
     }
 
-    public void modifyQuestion(String question, ObservableList<String> statements, String category, String feedback) {
-        test.modifyQuestion(question, statements, category, feedback);
+    public void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String category, String feedback) {
+        test.modifyQuestion(oldquestion, question, statements, category, feedback);
     }
 }

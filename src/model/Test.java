@@ -67,11 +67,6 @@ public class Test {
         //State handelt het af - TB
     }
 
-    public void editQuestion(String oldQuestion, String question, String category, String feedback, ObservableList<String> statements) {
-        // Verwoede poging tot State-gebruik, geen idee of ik het hierachter juist heb gedaan? -MVV
-        state.editQuestion(oldQuestion, question, category, feedback, statements);
-    }
-
     public void addCategory(Category category) {
         state.addCategory(category);
         //=> State handelt het af - TB
@@ -146,9 +141,20 @@ public class Test {
         return "niet gevonden";
     }
 
-    public Category findCategoryObject(String name) {
+    public Question getQuestionObjectByQuestionName(String question) {
         for (Category category : categories) {
-            if (category.getName().equals(name)) {
+            for (Question questionObject : category.getQuestions()) {
+                if (questionObject.getQuestion().equals(question)) {
+                    return questionObject;
+                }
+            }
+        }
+        return null;
+    }
+
+    public Category getCategoryObjectByCategoryName(String categoryName) {
+        for (Category category : categories) {
+            if (category.getName().equals(categoryName)) {
                 return category;
             }
         }
@@ -249,9 +255,7 @@ public class Test {
         return evaluationContext;
     }
 
-    public void modifyQuestion(String question, ObservableList<String> statements, String category, String feedback) {
-        //vind de categorie die de originele question had
-        // functie categorie x . modifyquestion
-        state.modifyQuestion(question,statements,category,feedback);
+    public void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String category, String feedback) {
+        state.modifyQuestion(oldquestion, question,statements,category,feedback);
     }
 }

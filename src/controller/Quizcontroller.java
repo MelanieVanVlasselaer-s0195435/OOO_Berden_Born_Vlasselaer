@@ -43,10 +43,6 @@ public class Quizcontroller extends Observable {
         modelFacade.editCategory(oldName, name, description, mainCategory);
     }
 
-    // Methode voor edit Question
-    public void editQuestion(String oldQuestion, String question, String category, String feedback, ObservableList<String> statements) {
-        modelFacade.editQuestion(oldQuestion, question, category, feedback, statements);
-    }
 
     public void addCategory(String name, String description, String mainCategory){
         modelFacade.addCategory(name,description, mainCategory);
@@ -160,8 +156,8 @@ public class Quizcontroller extends Observable {
         viewFacade.showErrorpage(errorText);
     }
 
-    public void modifyQuestion(String question, ObservableList<String> statements, String category, String feedback) {
-        modelFacade.modifyQuestion(question, statements, category, feedback);
+    public void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String category, String feedback) {
+        modelFacade.modifyQuestion(oldquestion, question, statements, category, feedback);
     }
 
     public List getTestSources() {
