@@ -11,11 +11,6 @@ import java.util.Scanner;
 
 public  class TxtDBStrategy implements DBStrategy {
 
-    //in voorbeeld in les plaatst Fox de scanner /scannerfile etc in deze methoden, wij een niveau lager
-    //hij plaatst elk gescant object in een arraylist van objecten
-    //=> hij gaat uiteindelijk in het niveau van CatagoryTxt & VraagTXT de elementen omzetten naar vragen/categoriën => niet MVC?
-    //-TB
-
     File categoryFile;
     File questionFile;
 
@@ -40,11 +35,6 @@ public  class TxtDBStrategy implements DBStrategy {
         testinformatie.add(0,this.loadCategories());
         testinformatie.add(1,this.loadQuestions());
         return testinformatie;
-
-        //hier maak ik Linkedlist van Arraylisten (2) (1 met categorie-elementen en 1 met categorie vragen)
-        //LinkedList.add(load categories)
-        //linkedList.add(load questions)
-
     }
 
 
@@ -53,17 +43,8 @@ public  class TxtDBStrategy implements DBStrategy {
         this.saveCategories(testElementen.get(0));
         this.saveQuestions(testElementen.get(1));
 
-        //hier geef ik Linkedlist van Arraylisten (2) (1 met categorie-elementen en 1 met categorie vragen)
-        //this.saveCategories(linklist.get(0))
-        //this.saveQuestions(linklist.get(1))
-
     }
 
-
-
-
-    // Hier plaats ik de functies uit de oude klassen (uit de TXT strategy voor vraag en categorie met de functies saveCategories, saveQuestions, loadCategories,LoadQuestions
-    // in totaal dus 4 methoden (2 x load, 2x save)
 
     private ArrayList<String> loadCategories() {
         ArrayList<String> categorieElements = new ArrayList<>();
@@ -132,9 +113,5 @@ public  class TxtDBStrategy implements DBStrategy {
             throw new RuntimeException("Fout bij het wegschrijven", ex);
         }
     }
-
-    //=> DEZE methode doen we ook voor ExcelDBSTrategy, maar dan uiteraard geen Scanner/writer voor TXt
-        //+ EXCELDBSTrategy zal ook adapter zijn om aan het DBStrategy te voldoen
-
 
 }

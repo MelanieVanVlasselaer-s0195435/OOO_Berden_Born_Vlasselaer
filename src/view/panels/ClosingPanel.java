@@ -25,7 +25,7 @@ public class ClosingPanel extends GridPane {
     public ClosingPanel(Quizcontroller quizcontroller) {
         this.quizcontroller = quizcontroller;
         this.setPrefHeight(250);
-        this.setPrefWidth(200);
+        this.setPrefWidth(300);
 
         this.setPadding(new Insets(0, 1, 1, 1));
         this.setVgap(5);
@@ -33,7 +33,7 @@ public class ClosingPanel extends GridPane {
 
 
         //voor te kiezen welke inleesMethode
-        lblsource = new Label("van waar moet de test ingelezen worden?");
+        lblsource = new Label("van waar moet de test volgende keer ingelezen worden?");
         this.add(lblsource, 2, 2, 1, 1);
         sourceComboBox = new ComboBox<>();
         ObservableList<String> sourcelist = FXCollections.observableList(quizcontroller.getTestSources());

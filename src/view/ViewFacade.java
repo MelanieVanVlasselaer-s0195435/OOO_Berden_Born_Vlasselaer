@@ -118,7 +118,7 @@ public class ViewFacade {
 
     public void showClosingScreen() {
         Group root = new Group();
-        Scene scene = new Scene(root,300,100);
+        Scene scene = new Scene(root,400,100);
         ClosingPanel closingPanel = new ClosingPanel(quizcontroller);
         BorderPane border = new BorderPane(closingPanel);
         root.getChildren().add(border);
