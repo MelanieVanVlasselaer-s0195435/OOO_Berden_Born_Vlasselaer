@@ -29,7 +29,6 @@ public class InactiveTestState implements State {
                 test.getCategories().set(index, category);
                 break;
             }
-
             index++;
         }
     }
@@ -50,9 +49,7 @@ public class InactiveTestState implements State {
                 categoryExist = true;
                 break;
             }
-
         }
-
         if (categoryExist) {
             test.getCategories().get(index).addQuestion(question, statements, feedback);
         }
@@ -94,7 +91,7 @@ public class InactiveTestState implements State {
     public void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String category, String feedback) {
         if (test.getCategoryObjectByCategoryName(category)!= null) {
             if (test.getCategoryObjectByCategoryName(test.findCategory(oldquestion)).getName().equals(category)) {
-                test.getCategoryObjectByCategoryName(category).modifyQuestion(oldquestion, question, statements, category, feedback);
+                test.getCategoryObjectByCategoryName(category).modifyQuestion(oldquestion, question, statements, feedback);
             }
             else {
                 test.getCategoryObjectByCategoryName(test.findCategory(oldquestion)).getQuestions().remove(test.getQuestionObjectByQuestionName(oldquestion));

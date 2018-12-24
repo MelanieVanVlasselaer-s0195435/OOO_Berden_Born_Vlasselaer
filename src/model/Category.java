@@ -23,7 +23,12 @@ public class Category {
         this.questions =  FXCollections.observableArrayList();
     }
     private void setName(String name) {
-        this.name = name;
+        if (name.matches(".*\\d+.*")) {
+            throw new RuntimeException("Categorie naam mag geen cijfer bevatten");
+        }
+        else {
+            this.name = name.toLowerCase();
+        }
     }
 
     private void setDescription(String description) {
@@ -45,7 +50,8 @@ public class Category {
     public String getHoofdcategorie() {
         return hoofdcategorie;
     }
-    public Question getQuestion(String question) {
+
+    private Question getQuestionObject (String question) {
         for (Question x : questions) {
             if (x.getQuestion().equals(question)) {
                 return x;
@@ -70,17 +76,13 @@ public class Category {
         return questions;
     }
 
-    public void setQuestions(ObservableList<Question> questions) {
-        this.questions = questions;
-    }
-
-    public void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String category, String feedback) {
+    public void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String feedback) {
         ArrayList<String> statsList = new ArrayList<>();
         for (String x : statements) {
             statsList.add(x);
         }
         Question newQuestion = new Question(question, statsList,feedback);
-        questions.remove(this.getQuestion(oldquestion));
+        questions.remove(this.getQuestionObject(oldquestion));
         questions.add(newQuestion);
     }
     @Override

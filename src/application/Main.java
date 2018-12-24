@@ -20,7 +20,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 
-		quizcontroller = new Quizcontroller();
+		quizcontroller = Quizcontroller.getInstance();
 		quizcontroller.start(quizcontroller);
 
 
