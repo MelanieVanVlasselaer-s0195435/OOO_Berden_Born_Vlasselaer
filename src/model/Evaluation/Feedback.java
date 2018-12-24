@@ -18,7 +18,6 @@ public class Feedback implements EvaluationStrategy {
     }
     @Override
     public ArrayList getEvaluation() {
-        String boodschap = "";
         if (noFaults) {
            return feedbacklist;
         }
