@@ -24,19 +24,26 @@ public class Category {
     }
     private void setName(String name) {
         if (name.matches(".*\\d+.*")) {
-            throw new RuntimeException("Categorie naam mag geen cijfer bevatten");
+            throw new ModelException("Categorie naam mag geen cijfer bevatten");
         }
         else {
             this.name = name.toLowerCase();
         }
     }
-
     private void setDescription(String description) {
-        this.description = description;
-    }
+        if (description.matches(".*\\d+.*")) {
+            throw new ModelException("Categorie description mag geen cijfer bevatten");
+        } else {
+            this.description = description.toLowerCase();
+        }
 
+    }
     private void setHoofdcategorie(String hoofdcategorie) {
-        this.hoofdcategorie = hoofdcategorie;
+        if (hoofdcategorie.matches(".*\\d+.*")) {
+            throw new ModelException("De hoofdcategorie mag geen cijfer bevatten");
+        } else {
+            this.hoofdcategorie = hoofdcategorie.toLowerCase();
+        }
     }
 
     public String getName() {
@@ -66,9 +73,7 @@ public class Category {
 
     public void addQuestionWithObservableList(String question, ObservableList<String> statements, String feedback) {
         ArrayList<String> statementsArray = new ArrayList<>();
-        for (String x : statements) {
-            statementsArray.add(x);
-        }
+        statementsArray.addAll(statements);
         addQuestion(question, statementsArray, feedback);
     }
 
@@ -78,9 +83,7 @@ public class Category {
 
     public void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String feedback) {
         ArrayList<String> statsList = new ArrayList<>();
-        for (String x : statements) {
-            statsList.add(x);
-        }
+        statsList.addAll(statements);
         Question newQuestion = new Question(question, statsList,feedback);
         questions.remove(this.getQuestionObject(oldquestion));
         questions.add(newQuestion);

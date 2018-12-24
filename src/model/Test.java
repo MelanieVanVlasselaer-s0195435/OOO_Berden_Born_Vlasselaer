@@ -3,7 +3,6 @@ package model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Evaluation.EvaluationContext;
-import model.Evaluation.EvaluationFactory;
 import model.State.ActiveTestState;
 import model.State.InactiveTestState;
 import model.State.State;
@@ -18,11 +17,9 @@ public class Test {
     private Question currentQuestion;
     private ObservableList<String> previousScore;
     private ObservableList<Question> questions;
-
-    State activeTestState;
-    State inactiveState;
-
-    State state;
+    private State activeTestState;
+    private State inactiveState;
+    private State state;
 
 
     public Test() {
@@ -44,10 +41,6 @@ public class Test {
         return currentQuestion;
     }
 
-    public String getCurrentRightAnswer() {
-        return currentRightAnswer;
-    }
-
     public ObservableList<Question> getAllQuestions() {
         questions.clear();
         for (Category category : categories) {
@@ -59,37 +52,30 @@ public class Test {
 
     }
 
-    // Methode voor editCategory
-    public void editCategory(String oldName, String name, String description, String mainCategory) {
+    protected void editCategory(String oldName, String name, String description, String mainCategory) {
         state.editCategory(oldName,name,description,mainCategory);
-        //State handelt het af - TB
     }
 
-    public void addCategory(Category category) {
+    protected void addCategory(Category category) {
         state.addCategory(category);
-        //=> State handelt het af - TB
-        //categories.add(category);
     }
 
-    public void addQuestionWithObservableList(String question, ObservableList<String> statements, String category, String feedback) {
+    protected void addQuestionWithObservableList(String question, ObservableList<String> statements, String category, String feedback) {
         state.addQuestionWithObservableList(question,statements,category,feedback);
         this.getAllQuestions();
-        // => State handelt het af - TB
     }
 
-    // Redundante code, moet nog aangepast worden - MVV
-    public void addQuestionWithArrayList(String question, ArrayList<String> statements, String category, String feedback) {
+    protected void addQuestionWithArrayList(String question, ArrayList<String> statements, String category, String feedback) {
         state.addQuestionWithArrayList(question,statements,category,feedback);
-        //=> State handelt het af - TB
     }
 
-    public void makeCategories(ArrayList<String> elementen) {
+    protected void makeCategories(ArrayList<String> elementen) {
         try {
             for (int i = 0; i < elementen.size(); i += 3) {
                 String naam = elementen.get(i);
                 String description = elementen.get(i + 1);
                 String hoofdCategorie = elementen.get(i + 2);
-                Category category = null;
+                Category category;
                 if (hoofdCategorie.equals("null")) {
                     category = new Category(naam, description);
                 } else {
@@ -103,7 +89,7 @@ public class Test {
     }
 
 
-    public void makeQuestions(ArrayList<String> primitieveQuestions) {
+    protected void makeQuestions(ArrayList<String> primitieveQuestions) {
         for (int i = 0; i < primitieveQuestions.size(); i += 4) {
             String question = primitieveQuestions.get(i);
             String category = primitieveQuestions.get(i + 1);
@@ -118,7 +104,7 @@ public class Test {
         }
     }
 
-    public void controlAnswer(String antwoord, int questionIndex) {
+    protected void controlAnswer(String antwoord, int questionIndex) {
         currentQuestion = getAllQuestions().get(questionIndex);
 
         String categorie = findCategory(currentQuestion.getQuestion());
@@ -159,7 +145,7 @@ public class Test {
         return null;
     }
 
-    public LinkedList<String> getNextQuestion(int questionIndex) {
+    protected LinkedList<String> getNextQuestion(int questionIndex) {
         if (questionIndex >= this.getAllQuestions().size()) {
             System.out.println("error");
         } else {
@@ -180,16 +166,15 @@ public class Test {
         return null;
     }
 
-    public void setEvaluationStrategy(ArrayList<String> list) {
+    protected void setEvaluationStrategy(ArrayList<String> list) {
         state.setEvaluationStrategy(list);
-        //=> state handelt het af - TB
     }
 
-    public ArrayList<String> getResult() {
+    protected ArrayList<String> getResult() {
         return evaluationContext.getEvaluation();
     }
 
-    public ArrayList<String> getCategoryElements() {
+    protected ArrayList<String> getCategoryElements() {
         ArrayList<String> categorieElements = new ArrayList<>();
         for (Category x : categories) {
             categorieElements.add(x.getName());
@@ -199,7 +184,7 @@ public class Test {
         return categorieElements;
     }
 
-    public void setPreviousScore(ArrayList<String> previousScore) {
+    protected void setPreviousScore(ArrayList<String> previousScore) {
         this.previousScore.clear();
         for (String x : previousScore) {
             this.previousScore.add(x);
@@ -207,11 +192,11 @@ public class Test {
 
     }
 
-    public ObservableList<String> getPreviousScore() {
+    protected ObservableList<String> getPreviousScore() {
         return previousScore;
     }
 
-    public ArrayList<String> getQuestionElements() {
+    protected ArrayList<String> getQuestionElements() {
         ArrayList<String> questionElements = new ArrayList<>();
         for (Category x : categories) {
             List<Question> questions = x.getQuestions();
@@ -229,23 +214,19 @@ public class Test {
         return questionElements;
     }
 
-    public List<String> getEvaluationMethods() {
+    protected List<String> getEvaluationMethods() {
         return evaluationContext.getList();
     }
 
-    public void setState(State state) {
+    protected void setState(State state) {
         this.state = state;
     }
 
-    public State getState() {
-        return state;
-    }
-
-    public State getActiveTestState() {
+    protected State getActiveTestState() {
         return activeTestState;
     }
 
-    public State getInactiveState() {
+    protected State getInactiveState() {
         return inactiveState;
     }
 
@@ -253,7 +234,7 @@ public class Test {
         return evaluationContext;
     }
 
-    public void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String category, String feedback) {
+    protected void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String category, String feedback) {
         state.modifyQuestion(oldquestion, question,statements,category,feedback);
     }
 }

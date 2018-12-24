@@ -1,6 +1,5 @@
 package model;
 
-import javafx.collections.ObservableList;
 import java.util.ArrayList;
 
 public class Question {
@@ -8,13 +7,13 @@ public class Question {
     private ArrayList<String> statements;
     private String feedback;
 
-    public Question (String question, ArrayList<String> statements, String feedback ) {
+    protected Question (String question, ArrayList<String> statements, String feedback ) {
         setQuestion(question);
         setStatements(statements);
         setFeedback(feedback);
     }
 
-    //getters
+
     public String getQuestion() {
         return question;
     }
@@ -27,22 +26,14 @@ public class Question {
         return feedback;
     }
 
-    //Setters
-    public void setQuestion(String question) {
+
+    private void setQuestion(String question) {
         this.question = question;
     }
-
-    //setter van een meegegeven arrayList
-    public void setStatements(ArrayList<String> statements) {
+    private void setStatements(ArrayList<String> statements) {
         this.statements = statements;
     }
-
-    //setters als we een string aan onze lijst van statments willen toevoegen
-    public void setStringStatements(String statement) {
-        this.statements.add(statement);
-    }
-
-    public void setFeedback(String feedback) {
+    private void setFeedback(String feedback) {
         this.feedback = feedback;
     }
 
