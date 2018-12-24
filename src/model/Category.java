@@ -26,11 +26,17 @@ public class Category {
         if (name.matches(".*\\d+.*")) {
             throw new ModelException("Categorie naam mag geen cijfer bevatten");
         }
+        if (name == null) {
+            throw new ModelException("De Categorie naam mag niet leeg zijn");
+        }
         else {
             this.name = name.toLowerCase();
         }
     }
     private void setDescription(String description) {
+        if (description == null) {
+            throw new ModelException("De categorie omschrijving mag niet leeg zijn");
+        }
         if (description.matches(".*\\d+.*")) {
             throw new ModelException("Categorie description mag geen cijfer bevatten");
         } else {

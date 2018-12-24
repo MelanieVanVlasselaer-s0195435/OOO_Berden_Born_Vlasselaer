@@ -13,7 +13,6 @@ public class Question {
         setFeedback(feedback);
     }
 
-
     public String getQuestion() {
         return question;
     }
@@ -28,13 +27,17 @@ public class Question {
 
 
     private void setQuestion(String question) {
-        this.question = question;
+        if (question == null) {
+            throw new ModelException("De vraag-stelling mag niet leeg zijn");
+        }
+            this.question = question.toLowerCase();
     }
     private void setStatements(ArrayList<String> statements) {
-        this.statements = statements;
-    }
+            this.statements = statements;
+        }
+
     private void setFeedback(String feedback) {
-        this.feedback = feedback;
+            this.feedback = feedback.toLowerCase();
     }
 
     @Override
