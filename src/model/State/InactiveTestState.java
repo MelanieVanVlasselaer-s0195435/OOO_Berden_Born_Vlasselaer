@@ -3,6 +3,7 @@ package model.State;
 import javafx.collections.ObservableList;
 import model.Category;
 import model.Evaluation.EvaluationFactory;
+import model.Evaluation.EvaluationStrategy;
 import model.ModelException;
 import model.Test;
 
@@ -84,7 +85,14 @@ public class InactiveTestState implements State {
         }
         EvaluationFactory strategyFactory = new EvaluationFactory();
         test.getEvaluationContext().setEvaluationStrategy(strategyFactory.createStrategy(list.get(0), test, resultaten));
+    }
 
+    @Override
+    public void setEvaluationStrategy(String strategy) {
+        HashMap<String, int[]> resultaten = new HashMap<>();
+        EvaluationFactory strategyFactory = new EvaluationFactory();
+        EvaluationStrategy newStrategy = strategyFactory.createStrategy(strategy, test, resultaten);
+        test.getEvaluationContext().setEvaluationStrategy(newStrategy);
     }
 
     @Override

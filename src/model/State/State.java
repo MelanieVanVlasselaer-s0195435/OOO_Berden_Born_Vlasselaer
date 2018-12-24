@@ -13,6 +13,7 @@ public interface State {
     void addQuestionWithArrayList(String question, ArrayList<String> statements, String category, String feedback);
     void addQuestionWithObservableList(String question, ObservableList<String> statements, String category, String feedback);
     void setEvaluationStrategy(ArrayList<String> list);
+    void setEvaluationStrategy(String strategy);
 
     void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String category, String feedback);
 }

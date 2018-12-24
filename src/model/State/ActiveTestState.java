@@ -45,6 +45,11 @@ public class ActiveTestState implements State {
     }
 
     @Override
+    public void setEvaluationStrategy(String strategy) {
+        JOptionPane.showMessageDialog(null,"Kan de evaluatiemethode niet aanpassen tijdens een test");
+    }
+
+    @Override
     public void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String category, String feedback) {
         JOptionPane.showMessageDialog(null, "Kan geen vraag aanpassen");
     }

@@ -187,6 +187,11 @@ public class Test {
         //=> state handelt het af - TB
     }
 
+    public void setEvaluationStrategy(String strategy) {
+        state.setEvaluationStrategy(strategy);
+        //=> state handelt het af - TB
+    }
+
     public ArrayList<String> getResult() {
         return evaluationContext.getEvaluation();
     }

@@ -4,6 +4,7 @@ package controller;
 import database.DatabaseFacade;
 import javafx.collections.ObservableList;
 import model.Category;
+import model.Evaluation.EvaluationFactory;
 import model.ModelFacade;
 import model.Question;
 import view.ViewFacade;
@@ -141,6 +142,7 @@ public class Quizcontroller {
 
     public void saveEvaluationMethode(String evaluationStrategy) {
         databaseFacade.saveEvalutionStrategy(evaluationStrategy);
+        modelFacade.setEvaluationStrategy(evaluationStrategy);
     }
 
 }

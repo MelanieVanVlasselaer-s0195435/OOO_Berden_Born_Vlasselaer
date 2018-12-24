@@ -65,6 +65,10 @@ public class ModelFacade {
         test.setEvaluationStrategy(list);
     }
 
+    public void setEvaluationStrategy(String strategy) {
+        test.setEvaluationStrategy(strategy);
+    }
+
     public ArrayList<String> getCategoryElements() {
         return test.getCategoryElements();
     }
