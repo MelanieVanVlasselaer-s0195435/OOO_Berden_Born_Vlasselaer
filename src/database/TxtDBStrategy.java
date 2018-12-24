@@ -1,4 +1,4 @@
-package database.TXT;
+package database;
 
 import database.DBStrategy;
 
@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public  class TxtDBStrategy implements DBStrategy {

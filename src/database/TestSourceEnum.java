@@ -1,8 +1,8 @@
 package database;
 
 public enum TestSourceEnum {
-    TXT("database.TXT.TxtDBStrategy"),
-    EXCEL("database.EXCEL.ExcelDBStrategy");
+    TXT("database.TxtDBStrategy"),
+    EXCEL("database.ExcelDBStrategy");
 
     private final String className;
 

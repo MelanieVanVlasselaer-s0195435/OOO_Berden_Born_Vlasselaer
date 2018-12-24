@@ -1,11 +1,6 @@
 package database;
 
-import database.TXT.CategoryText;
-import database.TXT.QuestionText;
-import database.TXT.TxtDBStrategy;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class DatabaseFacade {

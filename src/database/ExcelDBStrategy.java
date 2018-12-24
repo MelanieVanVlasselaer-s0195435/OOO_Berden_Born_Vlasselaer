@@ -1,4 +1,4 @@
-package database.EXCEL;
+package database;
 
 import database.DBStrategy;
 import excel.ExcelPlugin;
