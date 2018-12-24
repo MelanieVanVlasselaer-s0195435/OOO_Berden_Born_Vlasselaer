@@ -4,16 +4,20 @@ import database.DBStrategy;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public  class TxtDBStrategy implements DBStrategy {
 
-    File categoryFile;
-    File questionFile;
+    //File categoryFile;
+    //File questionFile;
+    InputStream categoryFile;
+    InputStream questionFile;
 
     public TxtDBStrategy(){
+        /*
         categoryFile  = new File("testDatabase\\categoryList.txt");
         if (categoryFile.length() == 0) {
             categoryFile  = new File("testDatabase/categoryList.txt");
@@ -24,11 +28,14 @@ public  class TxtDBStrategy implements DBStrategy {
         if (questionFile.length() == 0) {
             questionFile  = new File("testDatabase/questionList.txt");
         }
+        */
+        categoryFile = this.getClass().getResourceAsStream("categoryList.txt");
+        questionFile = this.getClass().getResourceAsStream("questionList.txt");
+
 
     }
 
 
-    //Dit kan misschien een interface worden - TB
     public ArrayList load(){
         ArrayList<ArrayList<String>> testinformatie = new ArrayList<>();
         testinformatie.add(0,this.loadCategories());
@@ -48,48 +55,41 @@ public  class TxtDBStrategy implements DBStrategy {
     private ArrayList<String> loadCategories() {
         ArrayList<String> categorieElements = new ArrayList<>();
 
-        try {
-            Scanner scannerFile = new Scanner(categoryFile);
-            while (scannerFile.hasNextLine()) {
-                Scanner scannerLijn = new Scanner(scannerFile.nextLine());
-                scannerLijn.useDelimiter("/");
-                String name = scannerLijn.next();
-                categorieElements.add(name);
-                String description = scannerLijn.next();
-                categorieElements.add(description);
-                String hoofdcategorie = scannerLijn.next();
-                categorieElements.add(hoofdcategorie);
-            }
-        } catch (FileNotFoundException ex) {
-            throw new RuntimeException("Fout bij het inlezen", ex);
+        Scanner scannerFile = new Scanner(categoryFile);
+        while (scannerFile.hasNextLine()) {
+            Scanner scannerLijn = new Scanner(scannerFile.nextLine());
+            scannerLijn.useDelimiter("/");
+            String name = scannerLijn.next();
+            categorieElements.add(name);
+            String description = scannerLijn.next();
+            categorieElements.add(description);
+            String hoofdcategorie = scannerLijn.next();
+            categorieElements.add(hoofdcategorie);
         }
         return categorieElements;
     }
 
     private ArrayList loadQuestions() {
         ArrayList<String> questionElements = new ArrayList<>();
-        try {
-            Scanner scannerFile = new Scanner(questionFile);
-            while (scannerFile.hasNextLine()) {
-                Scanner scannerLijn = new Scanner(scannerFile.nextLine());
-                scannerLijn.useDelimiter("/");
-                String question = scannerLijn.next();
-                questionElements.add(question);
-                String category = scannerLijn.next();
-                questionElements.add(category);
-                String feedback = scannerLijn.next();
-                questionElements.add(feedback);
-                String statemants = scannerLijn.next();
-                questionElements.add(statemants);
-            }
-        } catch (FileNotFoundException ex) {
-            throw new RuntimeException("Fout bij het inlezen", ex);
+        Scanner scannerFile = new Scanner(questionFile);
+        while (scannerFile.hasNextLine()) {
+            Scanner scannerLijn = new Scanner(scannerFile.nextLine());
+            scannerLijn.useDelimiter("/");
+            String question = scannerLijn.next();
+            questionElements.add(question);
+            String category = scannerLijn.next();
+            questionElements.add(category);
+            String feedback = scannerLijn.next();
+            questionElements.add(feedback);
+            String statemants = scannerLijn.next();
+            questionElements.add(statemants);
         }
         return questionElements;
     }
 
 
     private void saveCategories(ArrayList <String> categorieElementen) {
+        /*
         try {
             PrintWriter writer = new PrintWriter(categoryFile);
             for(int i = 0; i<categorieElementen.size()-2; i =i+3){
@@ -99,9 +99,11 @@ public  class TxtDBStrategy implements DBStrategy {
         } catch (FileNotFoundException ex) {
             throw new RuntimeException("Fout bij het wegschrijven", ex);
         }
+        */
     }
 
     private void saveQuestions(ArrayList <String> questionElements) {
+        /*
         try {
             PrintWriter writer = new PrintWriter(questionFile);
             for(int i = 0; i<questionElements.size()-3; i =i+4){
@@ -111,6 +113,7 @@ public  class TxtDBStrategy implements DBStrategy {
         } catch (FileNotFoundException ex) {
             throw new RuntimeException("Fout bij het wegschrijven", ex);
         }
+        */
     }
 
 }

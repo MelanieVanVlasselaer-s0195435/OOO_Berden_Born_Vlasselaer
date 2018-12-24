@@ -1,12 +1,14 @@
 package database;
 
+import com.oracle.tools.packager.IOUtils;
 import database.DBStrategy;
 import excel.ExcelPlugin;
 import jxl.read.biff.BiffException;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
 
@@ -16,13 +18,16 @@ import java.util.ArrayList;
 public class ExcelDBStrategy implements DBStrategy {
 
     File excelFile;
+    InputStream excelStream;
 
     public ExcelDBStrategy(){
+/*
         excelFile  = new File("testDatabase\\testExcel.xls");
         if (excelFile.length() == 0) {
             excelFile  = new File("testDatabase/testExcel.xls");
         }
-
+        */
+        excelStream = this.getClass().getResourceAsStream("testExcel.xls");
     }
 
     //Dit kan misschien een interface worden - TB
@@ -35,9 +40,11 @@ public class ExcelDBStrategy implements DBStrategy {
 
 
     public void save(ArrayList elementen){
+        /*
         ArrayList<ArrayList<String>> testElementen = (ArrayList<ArrayList<String>>) elementen;
         this.saveCategories(testElementen.get(0));
         this.saveQuestions(testElementen.get(1));
+        */
     }
 
     private ArrayList<String> loadCategories() {

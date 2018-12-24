@@ -12,8 +12,8 @@ public class PropertyStrategy implements DBStrategy {
     @Override
     public ArrayList load() {
         try {
-            input = new FileInputStream("testDatabase/game.properties");
-            //input = this.getClass().getResourceAsStream("testDatabase\\game.properties");
+            //input = new FileInputStream("testDatabase/game.properties");
+            input = this.getClass().getResourceAsStream("game.properties");
             //input = this.getClass().getClassLoader().getResourceAsStream("/testDatabase\\game.properties");
             prop.load(input);
             elementen.add(prop.getProperty("evaluation.mode"));
@@ -34,6 +34,7 @@ public class PropertyStrategy implements DBStrategy {
 
     @Override
     public void save(ArrayList elementen) {
+        /*
         ArrayList<String> strategies = (ArrayList<String>) elementen;
         String strategy = strategies.get(0);
         String source = strategies.get(1);
@@ -53,5 +54,6 @@ public class PropertyStrategy implements DBStrategy {
                 }
             }
         }
+        */
     }
 }
