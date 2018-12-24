@@ -13,6 +13,8 @@ public class PropertyStrategy implements DBStrategy {
     public ArrayList load() {
         try {
             input = new FileInputStream("testDatabase/game.properties");
+            //input = this.getClass().getResourceAsStream("testDatabase\\game.properties");
+            //input = this.getClass().getClassLoader().getResourceAsStream("/testDatabase\\game.properties");
             prop.load(input);
             elementen.add(prop.getProperty("evaluation.mode"));
             elementen.add(prop.getProperty("source.mode"));
@@ -51,7 +53,5 @@ public class PropertyStrategy implements DBStrategy {
                 }
             }
         }
-
-
     }
 }
