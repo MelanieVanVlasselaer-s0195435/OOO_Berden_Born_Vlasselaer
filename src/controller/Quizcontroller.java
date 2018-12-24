@@ -19,8 +19,11 @@ public class Quizcontroller {
 
     private Quizcontroller(){
         databaseFacade.setSource();
-        modelFacade.makeCategories(databaseFacade.loadTest().get(0));
-        modelFacade.makeQuestions(databaseFacade.loadTest().get(1));
+        ArrayList<ArrayList<String>> elementen = databaseFacade.loadTest();
+        ArrayList<String> categorieElementen = elementen.get(0);
+        modelFacade.makeCategories(categorieElementen);
+        ArrayList<String> vraagelementen = elementen.get(1);
+        modelFacade.makeQuestions(vraagelementen);
         modelFacade.setPreviousScore(databaseFacade.loadPreviousScore());
     }
 
