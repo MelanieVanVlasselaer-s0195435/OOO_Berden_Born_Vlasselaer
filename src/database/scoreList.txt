@@ -1,6 +1,0 @@
-Your score: 2/4
-java: 0/0
-test: 0/0
-uml: 1/1
-design patterns: 1/2
-design principles: 0/1

@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OOO_Berden_Born_Vlasselaer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/OOO_Berden_Born_Vlasselaer_jar</output-path>
+    <root id="archive" name="OOO_Berden_Born_Vlasselaer.jar">
+      <element id="module-output" name="OOO_Berden_Born_Vlasselaer" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/jars/ExcelPlugIin.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/jars/jxl-2.6.12.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
