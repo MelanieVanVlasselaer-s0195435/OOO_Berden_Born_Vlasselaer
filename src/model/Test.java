@@ -32,8 +32,6 @@ public class Test {
         evaluationContext = new EvaluationContext();
         activeTestState = new ActiveTestState(this);
         inactiveState = new InactiveTestState(this);
-
-
         state = inactiveState;
     }
 
