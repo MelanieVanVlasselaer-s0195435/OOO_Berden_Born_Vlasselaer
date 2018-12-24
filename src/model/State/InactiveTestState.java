@@ -78,7 +78,6 @@ public class InactiveTestState implements State {
 
     @Override
     public void setEvaluationStrategy(ArrayList<String> list) {
-        //array aanmaken die voor elke categorie standaard 10/10 geeft (de 10 is gelijk aan het aantal vragen dat een categorie heeft) -FB
         HashMap<String, int[]> resultaten = new HashMap<>();
         for (Category x : test.getCategories()) {
             int[] Array = new int [2];
@@ -89,32 +88,19 @@ public class InactiveTestState implements State {
         EvaluationFactory strategyFactory = new EvaluationFactory();
         test.getEvaluationContext().setEvaluationStrategy(strategyFactory.createStrategy(list.get(0), test, resultaten));
 
-        /* - Vervangen door factory/reflection - TB
-        if (list.get(0).equals("SCORE")) {
-            evaluationContext.setEvaluationStrategy(new Score(this, resultaten));
-        }
-        else {
-            evaluationContext.setEvaluationStrategy(new Feedback(this));
-        }
-        */
     }
 
     @Override
     public void modifyQuestion(String oldquestion, String question, ObservableList<String> statements, String category, String feedback) {
         if (test.getCategoryObjectByCategoryName(category)!= null) {
             if (test.getCategoryObjectByCategoryName(test.findCategory(oldquestion)).getName().equals(category)) {
-                System.out.println("niet gewijzigd");
-                //de categorie-naam van het oude question is hetzelfde als de nieuwe category -> we kunnen dus gewoon schrappen/adden
                 test.getCategoryObjectByCategoryName(category).modifyQuestion(oldquestion, question, statements, category, feedback);
             }
             else {
-                System.out.println("wel gewijzigd");
                 test.getCategoryObjectByCategoryName(test.findCategory(oldquestion)).getQuestions().remove(test.getQuestionObjectByQuestionName(oldquestion));
                 test.getCategoryObjectByCategoryName(category).addQuestionWithObservableList(question, statements, feedback);
             }
             test.getAllQuestions();
-        } else {
-            // als de categorie nog niet bestaat? -> niet mogelijk aangezien het uit een lijst gekozen moet worden
         }
     }
 }
